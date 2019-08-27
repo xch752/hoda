@@ -145,6 +145,18 @@
           "query": "",
           "id": 19,
           "pathName": "pages/message/ChatRoom"
+        },
+        {
+          "name": "ChatRoomPair",
+          "query": "",
+          "id": 20,
+          "pathName": "pages/message/ChatRoomPair"
+        },
+        {
+          "name": "Pair",
+          "query": "",
+          "id": 21,
+          "pathName": "pages/message/Pair"
         }
       ]
     }

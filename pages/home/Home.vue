@@ -85,19 +85,19 @@
 					</text>
 					<view class="flex justify-start">
 						<view class="text-center" v-if="item.height"
-						style="background:#EAD2FE;width: 163upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//Height@3x.png" mode="aspectFit">
 							</image>
 							{{item.height}}cm
 						</view>
 						<view class="text-center" v-if="item.figure"
-						style="background:#EAD2FE;width: 127upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.figure}}
 						</view>
 						<view class="text-center" v-if="item.job"
-						style="background:#EAD2FE;width: 127upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.job}}
@@ -105,19 +105,19 @@
 					</view>
 					<view class="flex justify-start">
 						<view class="text-center" v-if="item.income"
-						style="background:#EAD2FE;width: 188upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.income}}
 						</view>
 						<view class="text-center" v-if="item.emotion"
-						style="background:#EAD2FE;width: 127upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.emotion}}
 						</view>
 						<view class="text-center" v-if="item.smoking"
-						style="background:#EAD2FE;width: 127upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.smoking}}
@@ -125,19 +125,19 @@
 					</view>
 					<view class="flex justify-start">
 						<view class="text-center" v-if="item.drinking"
-						 style="background:#EAD2FE;width: 127upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
+						 style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.drinking}}
 						</view>
 						<view class="text-center" v-if="item.child"
-						style="background:#EAD2FE;width: 127upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.child}}
 						</view>
 						<view class="text-center" v-if="item.relation" 
-						style="background:#EAD2FE;width: 182upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.relation}}
@@ -145,14 +145,14 @@
 					</view>
 					<view class="flex justify-start">
 						<view class="text-center" v-if="item.constellation"
-						style="background:#EAD2FE;width: 158upx;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
+						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
 							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.constellation}}
 						</view>
 					</view>	
 				</view>
-				<!-- 个人账号 -->
+				<!-- 社交账号 -->
 				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						社交账号
@@ -188,7 +188,33 @@
 						<text class="text-lg margin-left-sm">**********</text>
 					</view>
 				</view>
-				<!-- 相册 -->
+				<!-- 兴趣爱好 -->
+				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+					<text class="text-bold">
+						兴趣爱好
+					</text>
+					<view class="margin-top-sm">
+						{{item.interest}}
+					</view>
+				</view>
+				<!-- Q&A -->
+				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+					<text class="text-bold">
+						Q:金钱在两个人的关系里有多重要？
+					</text>
+					<view class="margin-top-sm">
+						A:非常重要
+					</view>
+				</view>
+				<!-- 当前位置 -->
+				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+					<text class="text-bold">
+						当前位置
+					</text>
+					<view class="margin-top-sm">
+						{{item.address}}
+					</view>
+				</view>
 			</scroll-view>
 		</view>
 	</view>
@@ -227,7 +253,9 @@
 						drinking:'保密',
 						child:'没有',
 						relation:'长期关系',
-						constellation:'天枰座'
+						constellation:'天枰座',
+						interest:['篮球'],
+						address:['中国','深圳']
 					},
 					{
 						id:1,
@@ -246,7 +274,9 @@
 						drinking:'保密',
 						child:'没有',
 						relation:'长期关系',
-						constellation:'金牛座'
+						constellation:'金牛座',
+						interest:['爬山','游泳'],
+						address:['中国','南京']
 					},
 					{
 						id:2,
@@ -265,7 +295,9 @@
 						drinking:'保密',
 						child:'没有',
 						relation:'长期关系',
-						constellation:'金牛座'
+						constellation:'摩羯座',
+						interest:['游戏','乒乓'],
+						address:['中国','北京']
 					},
 					{
 						id:3,
@@ -278,13 +310,15 @@
 						height:156,
 						figure:'丰满',
 						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
+						income:'101-200w',
+						emotion:'在一段恋情中',
 						smoking:'保密',
 						drinking:'保密',
 						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座'
+						relation:'稳定的私密关系',
+						constellation:'双鱼座',
+						interest:['瑜伽','游泳','攀岩'],
+						address:['中国','杭州']
 					},
 					{
 						id:4,
@@ -303,7 +337,9 @@
 						drinking:'保密',
 						child:'没有',
 						relation:'长期关系',
-						constellation:'金牛座'
+						constellation:'金牛座',
+						interest:['游戏','游泳'],
+						address:['中国','上海']
 					},
 					// {
 					// 	id:5,

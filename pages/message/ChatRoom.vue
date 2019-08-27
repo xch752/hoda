@@ -1,12 +1,5 @@
 <template>
 	<view class="full">
-		<!-- <view class="header">
-			<view class="flex margin-top-xl" style="margin-top: 60upx;">
-				<view class="flex-twice" @click="closePage"><view class="text-white text-df margin-top-sm"><text class="cuIcon-back xl margin-left-sm"></text></view></view>
-				<view class="flex-treble"><view class="text-white text-xl text-center">{{title}}</view></view>
-				<view class="flex-twice"></view>
-			</view>
-		</view> -->
 		<view class="bottom">
 			<view class="flex justify-start">
 				<image src="../../static/img/Voice@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>

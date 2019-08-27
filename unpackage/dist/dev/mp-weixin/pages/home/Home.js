@@ -301,6 +301,32 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -334,7 +360,9 @@ var _default =
         drinking: '保密',
         child: '没有',
         relation: '长期关系',
-        constellation: '天枰座' },
+        constellation: '天枰座',
+        interest: ['篮球'],
+        address: ['中国', '深圳'] },
 
       {
         id: 1,
@@ -353,7 +381,9 @@ var _default =
         drinking: '保密',
         child: '没有',
         relation: '长期关系',
-        constellation: '金牛座' },
+        constellation: '金牛座',
+        interest: ['爬山', '游泳'],
+        address: ['中国', '南京'] },
 
       {
         id: 2,
@@ -372,7 +402,9 @@ var _default =
         drinking: '保密',
         child: '没有',
         relation: '长期关系',
-        constellation: '金牛座' },
+        constellation: '摩羯座',
+        interest: ['游戏', '乒乓'],
+        address: ['中国', '北京'] },
 
       {
         id: 3,
@@ -385,13 +417,15 @@ var _default =
         height: 156,
         figure: '丰满',
         job: '艺人',
-        income: '51-100w',
-        emotion: '单身',
+        income: '101-200w',
+        emotion: '在一段恋情中',
         smoking: '保密',
         drinking: '保密',
         child: '没有',
-        relation: '长期关系',
-        constellation: '金牛座' },
+        relation: '稳定的私密关系',
+        constellation: '双鱼座',
+        interest: ['瑜伽', '游泳', '攀岩'],
+        address: ['中国', '杭州'] },
 
       {
         id: 4,
@@ -410,7 +444,9 @@ var _default =
         drinking: '保密',
         child: '没有',
         relation: '长期关系',
-        constellation: '金牛座' }] };
+        constellation: '金牛座',
+        interest: ['游戏', '游泳'],
+        address: ['中国', '上海'] }] };
 
 
 

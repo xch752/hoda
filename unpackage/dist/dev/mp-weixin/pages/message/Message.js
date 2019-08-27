@@ -190,7 +190,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {
@@ -199,30 +198,38 @@ var _default =
       matchUserList: [
       {
         id: 0,
-        url: '' },
+        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        title: '星星' },
 
       {
         id: 1,
-        url: '' },
+        url: 'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
+        title: '可可' },
 
       {
         id: 2,
-        url: '' },
+        url: 'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
+        title: '露露' },
+
       {
         id: 3,
-        url: '' },
+        url: 'https://static.mianyangjuan.com//Line_sm@3x.png',
+        title: '西西' },
 
       {
         id: 4,
-        url: '' },
+        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+        title: '兮兮' },
 
       {
         id: 5,
-        url: '' },
+        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+        title: '依依' },
 
       {
         id: 6,
-        url: '' }],
+        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        title: '克克' }],
 
 
       isChatRecord: true,
@@ -293,6 +300,17 @@ var _default =
       if (this.checkValue === 'like') {
         this.checkValue = 'message';
       }
+
+    },
+    toChatRoomPair: function toChatRoomPair(title, url) {
+      uni.navigateTo({
+        url: 'ChatRoomPair?title=' + title + '&url=' + url,
+        success: function success() {
+          console.log("success toChatRoomPair");
+        },
+        fail: function fail() {
+          console.log("fail toChatRoomPair");
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

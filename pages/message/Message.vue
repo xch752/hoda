@@ -24,11 +24,10 @@
 				</view>
 			</view>
 			<scroll-view scroll-x="true" class="matchUser flex scroll-view" >
-				<view class="matchUserItem scroll-view-item">
-					<view class="matchUserItemContent"></view>
-				</view>
-				<view class="matchUserItem scroll-view-item" v-for="item of matchUserList" :key="item.id">
-					<view class="matchUserItemContent"></view>
+				<view class="matchUserItem scroll-view-item" v-for="item of matchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
+					<view class="matchUserItemContent">
+						<view style="width: 100%;height: 100%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+					</view>
 				</view>
 			</scroll-view>
 			<!-- 消息 -->
@@ -52,7 +51,7 @@
 						<view class="chatListItemDetail flex justify-start">
 							<image src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit"></image>
 							<view class="text-white text-xs text-center" 
-							style="min-width: 20upx;width: auto;;height: 20upx;background-color: red;border-radius: 10upx;margin: 25upx 0 0 -20upx;"
+							style="min-width: 20upx;width: auto;height: 20upx;background-color: red;border-radius: 10upx;margin: 25upx 0 0 -20upx;"
 							></view>
 							<view>
 								<view class="chat-title text-black text-lg text-bold">{{item.title}}</view>
@@ -92,30 +91,38 @@
 				matchUserList:[
 					{
 						id:0,
-						url:'',
+						url:'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+						title:'星星'
 					},
 					{
 						id:1,
-						url:''
+						url:'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
+						title:'可可'
 					},
 					{
 						id:2,
-						url:''
-					},{
+						url:'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
+						title:'露露'
+					},
+					{
 						id:3,
-						url:'',
+						url:'https://static.mianyangjuan.com//Line_sm@3x.png',
+						title:'西西'
 					},
 					{
 						id:4,
-						url:''
+						url:'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+						title:'兮兮'
 					},
 					{
 						id:5,
-						url:''
+						url:'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+						title:'依依'
 					},
 					{
 						id:6,
-						url:''
+						url:'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+						title:'克克'
 					}
 				],
 				isChatRecord:true,
@@ -187,7 +194,18 @@
 					this.checkValue='message';
 				}
 				
-			}
+			},
+			toChatRoomPair(title,url){
+				uni.navigateTo({
+					url:'ChatRoomPair?title='+title+'&url='+url,
+					success() {
+						console.log("success toChatRoomPair");
+					},
+					fail(){
+						console.log("fail toChatRoomPair");
+					}
+				})
+			},
 		}
 	}
 </script>
@@ -220,7 +238,7 @@
 		width:100%; 
 		height:100%; 
 		border-radius:50%; 
-		background:#fff; 
+		background-color: #FFFFFF;
 	}
 	.chatchoose{
 		width: 100%;

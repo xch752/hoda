@@ -7862,6 +7862,40 @@ createPage(_Feedback.default);
 
 /***/ }),
 
+/***/ 241:
+/*!********************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FPair"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _Pair = _interopRequireDefault(__webpack_require__(/*! ./pages/message/Pair.vue */ 242));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_Pair.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 250:
+/*!****************************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FChatRoomPair"} ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _ChatRoomPair = _interopRequireDefault(__webpack_require__(/*! ./pages/message/ChatRoomPair.vue */ 251));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_ChatRoomPair.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
 /***/ 27:
 /*!****************************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2FsetBasicInfor%2FGender"} ***!
