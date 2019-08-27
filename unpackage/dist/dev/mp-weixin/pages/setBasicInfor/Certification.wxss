@@ -1,0 +1,29 @@
+
+.text-xl.data-v-8eb3780a{
+	letter-spacing:5rpx
+}
+/* .full{
+	top:0;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display:flex;
+	flex-direction:column;
+	background-color: #ffffff;
+	margin: 0;
+} */
+/* .tip{
+	margin-top:25upx;
+} */
+.radius.data-v-8eb3780a{
+	border-radius: 20rpx;
+}
+.bg-add.data-v-8eb3780a{
+	height: 100rpx;
+	width: 100rpx;
+}
+.bg-pic.data-v-8eb3780a{
+	width: 526rpx;
+	height: 742rpx;
+}
+

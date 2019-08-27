@@ -1,0 +1,152 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.7.0",
+  "appid": "wxc80dfbc2926371ac",
+  "projectname": "test",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 2,
+      "list": [
+        {
+          "name": "Gender",
+          "query": "",
+          "id": 0,
+          "pathName": "pages/setBasicInfor/Gender"
+        },
+        {
+          "name": "Certification",
+          "query": "",
+          "id": 1,
+          "pathName": "pages/setBasicInfor/Certification"
+        },
+        {
+          "name": "CertificationPay",
+          "query": "",
+          "id": 2,
+          "pathName": "pages/setBasicInfor/CertificationPay"
+        },
+        {
+          "name": "Height",
+          "query": "",
+          "id": 3,
+          "pathName": "pages/setBasicInfor/Height"
+        },
+        {
+          "name": "Figure",
+          "query": "",
+          "id": 4,
+          "pathName": "pages/setBasicInfor/Figure"
+        },
+        {
+          "name": "Income",
+          "query": "",
+          "id": 5,
+          "pathName": "pages/setBasicInfor/Income"
+        },
+        {
+          "name": "EmotionalState",
+          "query": "",
+          "id": 6,
+          "pathName": "pages/setBasicInfor/EmotionalState"
+        },
+        {
+          "name": "Relationship",
+          "query": "",
+          "id": 7,
+          "pathName": "pages/setBasicInfor/Relationship"
+        },
+        {
+          "name": "Smoking",
+          "query": "",
+          "id": 8,
+          "pathName": "pages/setBasicInfor/Smoking"
+        },
+        {
+          "name": "Drinking",
+          "query": "",
+          "id": 9,
+          "pathName": "pages/setBasicInfor/Drinking"
+        },
+        {
+          "name": "Child",
+          "query": "",
+          "id": 10,
+          "pathName": "pages/setBasicInfor/Child"
+        },
+        {
+          "name": "CertifiCationNotes",
+          "query": "",
+          "id": 11,
+          "pathName": "pages/setBasicInfor/CertifiCationNotes"
+        },
+        {
+          "name": "Feedback",
+          "query": "",
+          "id": 12,
+          "pathName": "pages/setBasicInfor/Feedback"
+        },
+        {
+          "name": "RetrievePassword",
+          "query": "",
+          "id": 13,
+          "pathName": "pages/login/RetrievePassword"
+        },
+        {
+          "name": "NickName",
+          "query": "",
+          "id": 14,
+          "pathName": "pages/setBasicInfor/NickName"
+        },
+        {
+          "name": "Home",
+          "query": "gender=male",
+          "id": 15,
+          "pathName": "pages/home/Home"
+        },
+        {
+          "name": "Mine",
+          "query": "",
+          "id": 16,
+          "pathName": "pages/mine/Mine"
+        },
+        {
+          "name": "Message",
+          "query": "",
+          "id": 17,
+          "pathName": "pages/message/Message"
+        },
+        {
+          "name": "DownloadApp",
+          "query": "",
+          "id": 18,
+          "pathName": "pages/mine/DownloadApp"
+        },
+        {
+          "name": "ChatRoom",
+          "query": "",
+          "id": 19,
+          "pathName": "pages/message/ChatRoom"
+        }
+      ]
+    }
+  }
+}

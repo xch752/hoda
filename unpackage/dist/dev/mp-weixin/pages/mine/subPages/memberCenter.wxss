@@ -1,0 +1,23 @@
+
+.full.data-v-103a0516{
+	background-color: #f9f9f9;
+}
+swiper.data-v-103a0516{
+	margin: 36rpx 22rpx;
+	border-radius: 30rpx;
+}
+swiper-item.data-v-103a0516{
+	border-radius: 30rpx;
+}
+.card-item.data-v-103a0516{
+	width: 330rpx;
+	height: 260rpx;
+	border: 4rpx solid #EEEEEE;
+	border-radius: 30rpx;
+	background-color: #FFFFFF;
+}
+.active.data-v-103a0516{
+	background-color: #FEF4E5;
+	border: 4rpx solid #F3C837;
+}
+

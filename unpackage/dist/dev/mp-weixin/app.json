@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/login/RetrievePassword",
+    "pages/setBasicInfor/Gender",
+    "pages/setBasicInfor/NickName",
+    "pages/setBasicInfor/Certification",
+    "pages/setBasicInfor/CertificationPay",
+    "pages/setBasicInfor/Height",
+    "pages/setBasicInfor/Figure",
+    "pages/setBasicInfor/Income",
+    "pages/setBasicInfor/EmotionalState",
+    "pages/setBasicInfor/Relationship",
+    "pages/setBasicInfor/Smoking",
+    "pages/setBasicInfor/Drinking",
+    "pages/setBasicInfor/Child",
+    "pages/setBasicInfor/CertifiCationNotes",
+    "pages/setBasicInfor/Feedback",
+    "pages/home/Home",
+    "pages/message/Message",
+    "pages/mine/Mine",
+    "pages/mine/subPages/whoLikeMe",
+    "pages/mine/subPages/memberCenter",
+    "pages/mine/subPages/ImproveData",
+    "pages/mine/subPages/tripartiteAccount",
+    "pages/mine/subPages/account/Account",
+    "pages/mine/subPages/systemSetting",
+    "pages/mine/DownloadApp",
+    "pages/message/ChatRoom"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#6A2BF8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "selectedColor": "#39cffc",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/message/Message",
+        "iconPath": "static/img/信息灰色@3x.png",
+        "selectedIconPath": "static/img/信息选中@3x.png"
+      },
+      {
+        "pagePath": "pages/home/Home",
+        "iconPath": "static/img/首页选中@3x.png",
+        "selectedIconPath": "static/img/首页选中@3x.png"
+      },
+      {
+        "pagePath": "pages/mine/Mine",
+        "iconPath": "static/img/我的灰色@3x.png",
+        "selectedIconPath": "static/img/我的选中@3x.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

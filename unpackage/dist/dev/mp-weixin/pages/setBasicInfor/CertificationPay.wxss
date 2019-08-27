@@ -1,0 +1,17 @@
+
+.radius.data-v-813f9246{
+	border-radius: 30rpx;
+}
+.justify-start.data-v-813f9246{
+	padding: 10rpx 100rpx 10rpx 100rpx;
+	line-height: 50rpx;
+}
+.cu-bar.data-v-813f9246{
+	height: 40rpx;
+}
+.text-left.data-v-813f9246{
+	padding-left: 50rpx;
+	padding-right: 50rpx;
+	line-height: 30rpx;
+}
+
