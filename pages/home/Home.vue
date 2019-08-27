@@ -40,7 +40,7 @@
 		</view>
 		<!-- 用户 -->
 		<view class="flex justify-center detailed" >
-			<scroll-view class="scroll-detailed" 
+			<scroll-view class="scroll-detailed bg-white" 
 			:scroll-top="scrollTop" 
 			scroll-y="true"  
 			@scroll="scroll" 
@@ -50,10 +50,19 @@
 			v-if="item.show"
 			:key="item.id"
 			>	
+				<!-- #ifdef H5 -->  
 				<!-- 图片 -->
 				<view class="scroll-view-item text-white" 
-				style="height: 100%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
-				:style="{ 'background-image': 'url(' + item.imgUrl + ')','background-repeat':'no-repeat','background-size':'cover' }">
+				style="font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
+				:style="{ 'background-image': 'url(' + item.imgUrl + ')','background-repeat':'no-repeat','background-size':'cover','height':screenHeight+'px' }">
+				<!-- #endif -->  
+				
+				<!-- #ifdef MP-WEIXIN -->
+				<!-- 图片 -->
+				<view class="scroll-view-item text-white" 
+				style="height:100%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
+				:style="{ 'background-image': 'url(' + item.imgUrl + ')','background-repeat':'no-repeat','background-size':'cover'}">
+				<!-- #endif --> 
 					<!-- 姓名，年龄，vip状态 -->
 					<view class="name" 
 					style="position: absolute;bottom: 0;margin:0 0 40upx 50upx;">
@@ -224,6 +233,7 @@
 	export default {
 		data() {
 			return {
+				screenHeight:'',
 				slideLimit:true,
 				scrollTop: 0,
 				old: {
@@ -421,6 +431,9 @@
 		},
 		onLoad() {
 			this.userIndex = this.userList.length-1;
+			// #ifdef H5
+			this.screenHeight=window.screen.height*0.88*0.91;
+			// #endif  
 		},
 		methods: {
 			scroll: function(e) {

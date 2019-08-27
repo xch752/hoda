@@ -327,10 +327,20 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      screenHeight: '',
       slideLimit: true,
       scrollTop: 0,
       old: {
@@ -528,6 +538,9 @@ var _default =
   },
   onLoad: function onLoad() {
     this.userIndex = this.userList.length - 1;
+
+
+
   },
   methods: {
     scroll: function scroll(e) {
