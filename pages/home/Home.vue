@@ -432,7 +432,7 @@
 		onLoad() {
 			this.userIndex = this.userList.length-1;
 			// #ifdef H5
-			this.screenHeight=window.screen.height*0.88*0.91;
+			this.screenHeight=window.screen.height*0.88*0.915;
 			// #endif  
 		},
 		methods: {
