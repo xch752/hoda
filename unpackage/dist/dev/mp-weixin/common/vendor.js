@@ -1693,6 +1693,23 @@ createPage(_CertifiCationNotes.default);
 /***/ }),
 
 /***/ 132:
+/*!******************************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2FsetBasicInfor%2FFeedback"} ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _Feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/setBasicInfor/Feedback.vue */ 133));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_Feedback.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 138:
 /*!*****************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fhome%2FHome"} ***!
   \*****************************************************************************/
@@ -1703,13 +1720,13 @@ createPage(_CertifiCationNotes.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _Home = _interopRequireDefault(__webpack_require__(/*! ./pages/home/Home.vue */ 133));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _Home = _interopRequireDefault(__webpack_require__(/*! ./pages/home/Home.vue */ 139));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_Home.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 140:
+/***/ 146:
 /*!***********************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FMessage"} ***!
   \***********************************************************************************/
@@ -1720,13 +1737,13 @@ createPage(_Home.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _Message = _interopRequireDefault(__webpack_require__(/*! ./pages/message/Message.vue */ 141));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _Message = _interopRequireDefault(__webpack_require__(/*! ./pages/message/Message.vue */ 147));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_Message.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 148:
+/***/ 154:
 /*!*****************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FMine"} ***!
   \*****************************************************************************/
@@ -1737,13 +1754,13 @@ createPage(_Message.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _Mine = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/Mine.vue */ 149));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _Mine = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/Mine.vue */ 155));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_Mine.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 156:
+/***/ 162:
 /*!*********************************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2FwhoLikeMe"} ***!
   \*********************************************************************************************/
@@ -1754,13 +1771,13 @@ createPage(_Mine.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _whoLikeMe = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/whoLikeMe.vue */ 157));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _whoLikeMe = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/whoLikeMe.vue */ 163));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_whoLikeMe.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 162:
+/***/ 168:
 /*!************************************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2FmemberCenter"} ***!
   \************************************************************************************************/
@@ -1771,13 +1788,13 @@ createPage(_whoLikeMe.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _memberCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/memberCenter.vue */ 163));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _memberCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/memberCenter.vue */ 169));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_memberCenter.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 170:
+/***/ 176:
 /*!***********************************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2FImproveData"} ***!
   \***********************************************************************************************/
@@ -1788,13 +1805,13 @@ createPage(_memberCenter.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _ImproveData = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/ImproveData.vue */ 171));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ImproveData = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/ImproveData.vue */ 177));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_ImproveData.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 176:
+/***/ 182:
 /*!*****************************************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2FtripartiteAccount"} ***!
   \*****************************************************************************************************/
@@ -1805,25 +1822,8 @@ createPage(_ImproveData.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _tripartiteAccount = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/tripartiteAccount.vue */ 177));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _tripartiteAccount = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/tripartiteAccount.vue */ 183));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_tripartiteAccount.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 184:
-/*!*************************************************************************************************!*\
-  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2FsystemSetting"} ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _systemSetting = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/systemSetting.vue */ 185));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_systemSetting.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -1845,10 +1845,10 @@ createPage(_RetrievePassword.default);
 
 /***/ }),
 
-/***/ 192:
-/*!************************************************************************************!*\
-  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FDownloadApp"} ***!
-  \************************************************************************************/
+/***/ 190:
+/*!*****************************************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2Faccount%2FAccount"} ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1856,16 +1856,16 @@ createPage(_RetrievePassword.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _DownloadApp = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/DownloadApp.vue */ 193));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_DownloadApp.default);
+var _Account = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/account/Account.vue */ 191));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_Account.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 198:
-/*!************************************************************************************!*\
-  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FChatRoom"} ***!
-  \************************************************************************************/
+/***/ 196:
+/*!*************************************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2FsystemSetting"} ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1873,8 +1873,8 @@ createPage(_DownloadApp.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _ChatRoom = _interopRequireDefault(__webpack_require__(/*! ./pages/message/ChatRoom.vue */ 199));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_ChatRoom.default);
+var _systemSetting = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/systemSetting.vue */ 197));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_systemSetting.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -7828,10 +7828,10 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 227:
-/*!*****************************************************************************************************!*\
-  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FsubPages%2Faccount%2FAccount"} ***!
-  \*****************************************************************************************************/
+/***/ 204:
+/*!************************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FDownloadApp"} ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7839,16 +7839,16 @@ internalMixin(Vue);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _Account = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/subPages/account/Account.vue */ 228));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_Account.default);
+var _DownloadApp = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/DownloadApp.vue */ 205));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_DownloadApp.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 235:
-/*!******************************************************************************************!*\
-  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2FsetBasicInfor%2FFeedback"} ***!
-  \******************************************************************************************/
+/***/ 210:
+/*!************************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FChatRoom"} ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7856,30 +7856,13 @@ createPage(_Account.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _Feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/setBasicInfor/Feedback.vue */ 236));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_Feedback.default);
+var _ChatRoom = _interopRequireDefault(__webpack_require__(/*! ./pages/message/ChatRoom.vue */ 211));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_ChatRoom.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 241:
-/*!********************************************************************************!*\
-  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FPair"} ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _Pair = _interopRequireDefault(__webpack_require__(/*! ./pages/message/Pair.vue */ 242));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_Pair.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 250:
+/***/ 218:
 /*!****************************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FChatRoomPair"} ***!
   \****************************************************************************************/
@@ -7890,8 +7873,25 @@ createPage(_Pair.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _ChatRoomPair = _interopRequireDefault(__webpack_require__(/*! ./pages/message/ChatRoomPair.vue */ 251));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ChatRoomPair = _interopRequireDefault(__webpack_require__(/*! ./pages/message/ChatRoomPair.vue */ 219));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_ChatRoomPair.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 226:
+/*!********************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FPair"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _Pair = _interopRequireDefault(__webpack_require__(/*! ./pages/message/Pair.vue */ 227));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_Pair.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),

@@ -1,1 +1,35 @@
-/* pages/mine/DownloadApp.wxss */
+
+.full.data-v-89c5a6d6{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	background: url(../../static/img/组172@3x.9961f94c.png) no-repeat;
+	background-size: 100%;
+}
+.btn-download.data-v-89c5a6d6{
+	position: fixed;
+	top:41.43%;
+	background: -webkit-gradient(linear, left top, right top, from(#9364FD), to(#545CF4));
+	background: -o-linear-gradient(left, #9364FD, #545CF4);
+	background: linear-gradient(90deg, #9364FD, #545CF4); /* 标准的语法 */
+	width: 340rpx;
+	height: 66rpx;
+	border-radius: 66rpx;
+	text-align: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	line-height: 66rpx;
+	font-size: 28rpx;
+}
+
