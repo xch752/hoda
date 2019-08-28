@@ -24,6 +24,11 @@
 				</view>
 			</view>
 			<scroll-view scroll-x="true" class="matchUser flex scroll-view" >
+				<view class="matchUserItem scroll-view-item">
+					<view class="matchUserItemContent">
+						<view style="width: 100%;height: 100%; border-radius: 50%;"></view>
+					</view>
+				</view>
 				<view class="matchUserItem scroll-view-item" v-for="item of matchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
 					<view class="matchUserItemContent">
 						<view style="width: 100%;height: 100%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
