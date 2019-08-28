@@ -46,7 +46,7 @@
 			</view>
 			<!-- 有聊天记录 -->
 			<view class="flex chatchoose" v-if="isChatRecord">
-				<scroll-view scroll-y="true" class="chatList flex scroll-view" >
+				<!-- <scroll-view scroll-y="true" class="chatList flex scroll-view" >
 					<view class="chatListItem scroll-view-item" v-for="item of chatList" :key="item.id" @click="toChatRoom(item.title)">
 						<view class="chatListItemDetail flex justify-start">
 							<image src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit"></image>
@@ -59,6 +59,32 @@
 							</view>
 						</view>
 					</view>
+				</scroll-view> -->
+				<scroll-view :scroll-y="modalName==null" class="page" :class="modalName!=null?'show':''">
+					<view class="cu-list menu-avatar">
+						<view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item,index) in chatList" :key="index"
+						 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
+						 v-if="item.show">
+							<view class="cu-avatar round lg" 
+							@click="toChatRoom(item.title)"
+							:style="{'background':'#FFFFFF', 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+							<view class="content" @click="toChatRoom(item.title)">
+								<view class="text-black text-bold">{{item.title}}</view>
+								<view class="text-gray text-sm">
+									<!-- <text class="cuIcon-infofill text-red  margin-right-xs"></text> -->
+									{{item.content}}
+								</view>
+							</view>
+							<view class="action" @click="toChatRoom(item.title)">
+								<view class="text-grey text-xs">22:20</view>
+								<view class="cu-tag round bg-grey sm">5</view>
+							</view>
+							<view class="move">
+								<!-- <view class="bg-grey">置顶</view> -->
+								<view class="bg-red" @click="deleteChatListItem(index)">删除</view>
+							</view>
+						</view>
+					</view>	
 				</scroll-view>
 			</view>
 		</view>
@@ -129,46 +155,94 @@
 				chatList:[
 					{
 						id:0,
-						url:'',
+						url:'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
 						title:'可可',
-						content:'你好！'
+						content:'你好！',
+						show:true,
 					},
 					{
 						id:1,
-						url:'',
+						url:'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
 						title:'星星',
-						content:'很高兴认识你'
+						content:'很高兴认识你',
+						show:true,
 					},
 					{
 						id:2,
-						url:'',
+						url:'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
 						title:'克克',
-						content:'你好，在吗'
-					},{
+						content:'你好，在吗',
+						show:true,
+					},
+					{
 						id:3,
-						url:'',
+						url:'https://static.mianyangjuan.com//Line_sm@3x.png',
 						title:'依依',
-						content:'hello'
+						content:'hello',
+						show:true,
 					},
 					{
 						id:4,
-						url:'',
+						url:'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
 						title:'欣欣',
-						content:'你好'
+						content:'你好',
+						show:true,
 					},
 					{
 						id:5,
-						url:'',
+						url:'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
 						title:'露露',
-						content:'在吗'
+						content:'在吗',
+						show:true,
 					},
 					{
 						id:6,
-						url:'',
-						title:'笑笑',
-						content:'233'
+						url:'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+						title:'可可',
+						content:'你好！',
+						show:true,
+					},
+					{
+						id:7,
+						url:'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
+						title:'星星',
+						content:'很高兴认识你',
+						show:true,
+					},
+					{
+						id:8,
+						url:'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
+						title:'克克',
+						content:'你好，在吗',
+						show:true,
+					},
+					{
+						id:9,
+						url:'https://static.mianyangjuan.com//Line_sm@3x.png',
+						title:'依依',
+						content:'hello',
+						show:true,
+					},
+					{
+						id:10,
+						url:'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+						title:'欣欣',
+						content:'你好',
+						show:true,
+					},
+					{
+						id:11,
+						url:'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+						title:'露露',
+						content:'在吗',
+						show:true,
 					}
+					
 				],
+				modalName: null,
+				listTouchStartX: 0,
+				listTouchStartY: 0,
+				listTouchDirection: null,
 			}
 		},
 		onLoad() {
@@ -206,6 +280,34 @@
 					}
 				})
 			},
+			// ListTouch触摸开始
+			ListTouchStart(e) {
+				this.listTouchStartX = e.touches[0].pageX;
+				this.listTouchStartY = e.touches[0].pageY;
+			},
+			
+			// ListTouch计算方向
+			ListTouchMove(e) {
+				if((e.touches[0].pageX - this.listTouchStartX) > 80 && Math.abs(e.touches[0].pageY - this.listTouchStartY) < 80){
+					this.listTouchDirection = 'right'
+				}
+				else if((e.touches[0].pageX - this.listTouchStartX) < -80 && Math.abs(e.touches[0].pageY - this.listTouchStartY) < 80){
+					this.listTouchDirection = 'left'
+				}
+				// this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left'
+			},	
+			// ListTouch计算滚动
+			ListTouchEnd(e) {
+				if (this.listTouchDirection == 'left') {
+					this.modalName = e.currentTarget.dataset.target
+				} else {
+					this.modalName = null
+				}
+				this.listTouchDirection = null
+			},
+			deleteChatListItem(index){
+				this.chatList[index].show=false;
+			}
 		}
 	}
 </script>

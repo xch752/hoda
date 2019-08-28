@@ -4,7 +4,7 @@
 			<view class="text-black text-bold text-xl">您的年收入是?</view>
 		</view>
 		
-		<view class="flex solid-bottom padding justify-between" v-for="incomeItem in incomeType" @click="incomeCheck(incomeItem.id)">
+		<view class="flex solid-bottom padding justify-between" v-for="(incomeItem,index) in incomeType" :key="index" @click="incomeCheck(incomeItem.id)">
 			<view class="text-lg">{{incomeItem.value}}</view>
 			<view v-if="incomeCheckValue==incomeItem.id"><image src="https://static.mianyangjuan.com//commit@3x.png" mode="aspectFit" style="width: 32upx;height: 23upx;"></image></view>
 		</view>

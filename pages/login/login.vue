@@ -53,7 +53,7 @@
 				<input placeholder="请再次输入密码" password="true" name="input" v-model="registerPasswordSecond"></input>
 			</view>
 			<button class="cu-btn round bg-mauve lg padding-xl margin-top-xl" style="width: 560upx;padding: 20upx 0 20upx 0;" @click="toGender">注册</button>
-			<view class="padding-top-sm"><text class="text-center text-grey">注册即表示你已阅读，并同意《用户注册协议》</text></view>
+			<view class="padding-top-sm padding-bottom-sm"><text class="text-center text-grey">注册即表示你已阅读，并同意《用户注册协议》</text></view>
 		</view>	
 	</view>
 	
@@ -208,4 +208,10 @@
 	.btn-radius{
 		border-radius: 50upx;
 	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		}
 </style>

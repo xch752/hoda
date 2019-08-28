@@ -120,17 +120,42 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      nickname: '星星' };
+      nickname: '星星',
+      gender: 'female',
+      msg: 'Hi，很高兴认识你。' };
 
   },
   onLoad: function onLoad() {
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    sendMsg: function sendMsg() {
+      console.log(this.msg);
+    } } };exports.default = _default;
 
 /***/ }),
 

@@ -190,6 +190,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -236,46 +262,94 @@ var _default =
       chatList: [
       {
         id: 0,
-        url: '',
+        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
         title: '可可',
-        content: '你好！' },
+        content: '你好！',
+        show: true },
 
       {
         id: 1,
-        url: '',
+        url: 'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
         title: '星星',
-        content: '很高兴认识你' },
+        content: '很高兴认识你',
+        show: true },
 
       {
         id: 2,
-        url: '',
+        url: 'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
         title: '克克',
-        content: '你好，在吗' },
+        content: '你好，在吗',
+        show: true },
+
       {
         id: 3,
-        url: '',
+        url: 'https://static.mianyangjuan.com//Line_sm@3x.png',
         title: '依依',
-        content: 'hello' },
+        content: 'hello',
+        show: true },
 
       {
         id: 4,
-        url: '',
+        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
         title: '欣欣',
-        content: '你好' },
+        content: '你好',
+        show: true },
 
       {
         id: 5,
-        url: '',
+        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
         title: '露露',
-        content: '在吗' },
+        content: '在吗',
+        show: true },
 
       {
         id: 6,
-        url: '',
-        title: '笑笑',
-        content: '233' }] };
+        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        title: '可可',
+        content: '你好！',
+        show: true },
+
+      {
+        id: 7,
+        url: 'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
+        title: '星星',
+        content: '很高兴认识你',
+        show: true },
+
+      {
+        id: 8,
+        url: 'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
+        title: '克克',
+        content: '你好，在吗',
+        show: true },
+
+      {
+        id: 9,
+        url: 'https://static.mianyangjuan.com//Line_sm@3x.png',
+        title: '依依',
+        content: 'hello',
+        show: true },
+
+      {
+        id: 10,
+        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+        title: '欣欣',
+        content: '你好',
+        show: true },
+
+      {
+        id: 11,
+        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+        title: '露露',
+        content: '在吗',
+        show: true }],
 
 
+
+      modalName: null,
+      listTouchStartX: 0,
+      listTouchStartY: 0,
+      listTouchDirection: null };
 
   },
   onLoad: function onLoad() {
@@ -312,6 +386,34 @@ var _default =
           console.log("fail toChatRoomPair");
         } });
 
+    },
+    // ListTouch触摸开始
+    ListTouchStart: function ListTouchStart(e) {
+      this.listTouchStartX = e.touches[0].pageX;
+      this.listTouchStartY = e.touches[0].pageY;
+    },
+
+    // ListTouch计算方向
+    ListTouchMove: function ListTouchMove(e) {
+      if (e.touches[0].pageX - this.listTouchStartX > 80 && Math.abs(e.touches[0].pageY - this.listTouchStartY) < 80) {
+        this.listTouchDirection = 'right';
+      } else
+      if (e.touches[0].pageX - this.listTouchStartX < -80 && Math.abs(e.touches[0].pageY - this.listTouchStartY) < 80) {
+        this.listTouchDirection = 'left';
+      }
+      // this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left'
+    },
+    // ListTouch计算滚动
+    ListTouchEnd: function ListTouchEnd(e) {
+      if (this.listTouchDirection == 'left') {
+        this.modalName = e.currentTarget.dataset.target;
+      } else {
+        this.modalName = null;
+      }
+      this.listTouchDirection = null;
+    },
+    deleteChatListItem: function deleteChatListItem(index) {
+      this.chatList[index].show = false;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

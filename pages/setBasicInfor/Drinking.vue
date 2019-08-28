@@ -4,7 +4,7 @@
 			<view class="text-black text-bold text-xl">您是否喝酒?</view>
 		</view>
 		
-		<view class="flex solid-bottom padding justify-between" v-for="drinkingItem in drinkingType" @click="drinkingCheck(drinkingItem.id)">
+		<view class="flex solid-bottom padding justify-between" v-for="(drinkingItem,index) in drinkingType" :key="index" @click="drinkingCheck(drinkingItem.id)">
 			<view class="text-lg">{{drinkingItem.value}}</view>
 			<view v-if="drinkingCheckValue==drinkingItem.id"><image src="https://static.mianyangjuan.com//commit@3x.png" mode="aspectFit" style="width: 32upx;height: 23upx;"></image></view>
 		</view>

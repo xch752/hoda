@@ -4,7 +4,7 @@
 			<view class="text-black text-bold text-xl">您的感情状态是?</view>
 		</view>
 		
-		<view class="flex solid-bottom padding justify-between" v-for="emotionalStateItem in emotionalStateType" @click="emotionalStateCheck(emotionalStateItem.id)">
+		<view class="flex solid-bottom padding justify-between" v-for="(emotionalStateItem,index) in emotionalStateType" :key="index" @click="emotionalStateCheck(emotionalStateItem.id)">
 			<view class="text-lg">{{emotionalStateItem.value}}</view>
 			<view v-if="emotionalStateCheckValue==emotionalStateItem.id"><image src="https://static.mianyangjuan.com//commit@3x.png" mode="aspectFit" style="width: 32upx;height: 23upx;"></image></view>
 		</view>

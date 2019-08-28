@@ -119,4 +119,10 @@
 	picker{
 		padding-right:0;
 	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 </style>

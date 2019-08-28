@@ -152,7 +152,13 @@ var _default =
       this.childCheckValue = id;
       setTimeout(function () {
         uni.reLaunch({
-          url: 'CertifiCationNotes' });
+          url: 'CertifiCationNotes',
+          success: function success() {
+            console.log(id);
+          },
+          fail: function fail(err) {
+            console.log(err);
+          } });
 
       }, 1000);
 

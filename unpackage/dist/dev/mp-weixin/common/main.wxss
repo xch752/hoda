@@ -1167,17 +1167,17 @@ to {
 	margin-top: 30rpx
 }
 .cu-list>.cu-item {
-	-webkit-transition: all .6s ease-in-out 0s;
-	-o-transition: all .6s ease-in-out 0s;
-	transition: all .6s ease-in-out 0s;
+	-webkit-transition: all .2s ease-in-out 0s;
+	-o-transition: all .2s ease-in-out 0s;
+	transition: all .2s ease-in-out 0s;
 	-webkit-transform: translateX(0rpx);
 	    -ms-transform: translateX(0rpx);
 	        transform: translateX(0rpx)
 }
 .cu-list>.cu-item.move-cur {
-	-webkit-transform: translateX(-260rpx);
-	    -ms-transform: translateX(-260rpx);
-	        transform: translateX(-260rpx)
+	-webkit-transform: translateX(-200rpx);
+	    -ms-transform: translateX(-200rpx);
+	        transform: translateX(-200rpx)
 }
 .cu-list>.cu-item .move {
 	position: absolute;
@@ -1186,7 +1186,7 @@ to {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	width: 260rpx;
+	width: 200rpx;
 	height: 100%;
 	-webkit-transform: translateX(100%);
 	    -ms-transform: translateX(100%);
@@ -4798,25 +4798,6 @@ scroll-view.cu-steps .cu-item {
 }
 .full{
 	background: #FFFFFF;
-}
-.content {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
 }
 .tip{
 		margin: 50rpx;

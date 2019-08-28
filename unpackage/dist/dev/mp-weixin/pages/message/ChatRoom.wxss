@@ -35,5 +35,6 @@ input.data-v-6ce13673{
 	background-color: #EEEEEE;
 	padding-left: 50rpx;
 	margin: 16rpx 0 16rpx 14rpx;
+	font-size: 30rpx;
 }
 

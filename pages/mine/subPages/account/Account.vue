@@ -39,4 +39,7 @@
 </script>
 
 <style scoped>
+	input{
+		font-size: 29upx;
+	}
 </style>

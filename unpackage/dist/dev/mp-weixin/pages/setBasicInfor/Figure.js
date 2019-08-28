@@ -158,9 +158,11 @@ var _default =
         uni.navigateTo({
           url: 'Income',
           success: function success() {
+            console.log(id);
             console.log("success toIncome");
           },
           fail: function fail() {
+            console.log(id);
             console.log("fail toIncome");
           } });
 

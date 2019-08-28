@@ -4,7 +4,7 @@
 			<view class="text-black text-bold text-xl">您是否抽烟?</view>
 		</view>
 		
-		<view class="flex solid-bottom padding justify-between" v-for="smokingItem in smokingType" @click="smokingCheck(smokingItem.id)">
+		<view class="flex solid-bottom padding justify-between" v-for="(smokingItem,index) in smokingType" :key="index" @click="smokingCheck(smokingItem.id)">
 			<view class="text-lg">{{smokingItem.value}}</view>
 			<view v-if="smokingCheckValue==smokingItem.id"><image src="https://static.mianyangjuan.com//commit@3x.png" mode="aspectFit" style="width: 32upx;height: 23upx;"></image></view>
 		</view>

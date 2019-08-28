@@ -40,5 +40,7 @@
 	padding-top: 40rpx;
 	padding-right: 50rpx;
 	padding-left: 50rpx;
+	height: 9%;/*百分比占高,为了适配Pad,若不适配Pad,可以使用单位upx,更加美观*/
+	width: 100%;
 }
 

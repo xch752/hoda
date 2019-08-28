@@ -4,7 +4,7 @@
 			<view class="text-black text-bold text-xl">您期待关系是?</view>
 		</view>
 		
-		<view class="flex solid-bottom padding justify-between" v-for="relationshipItem in relationshipType" @click="relationshipCheck(relationshipItem.id)">
+		<view class="flex solid-bottom padding justify-between" v-for="(relationshipItem,index) in relationshipType" :key="index" @click="relationshipCheck(relationshipItem.id)">
 			<view class="text-lg">{{relationshipItem.value}}</view>
 			<view v-if="relationshipCheckValue==relationshipItem.id"><image src="https://static.mianyangjuan.com//commit@3x.png" mode="aspectFit" style="width: 32upx;height: 23upx;"></image></view>
 		</view>

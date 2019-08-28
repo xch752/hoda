@@ -1,12 +1,6 @@
 .full{
 	background: #FFFFFF;
 	}
-.content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	}
 .tip{
 		margin: 50upx;
 		padding: 50upx;

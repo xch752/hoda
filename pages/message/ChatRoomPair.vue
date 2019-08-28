@@ -16,10 +16,10 @@
 		</view>
 		<view class="bottom" v-if="gender=='female'?true:false">
 			<view class="flex justify-start">
-				<image src="../../static/img/Voice@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
+				<image src="https://static.mianyangjuan.com//Voice@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
 				<input type="text" value="" placeholder="请输入内容..." placeholder-class="phClass"/>
-				<image src="../../static/img/Emoticon@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
-				<image src="../../static/img/send@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
+				<image src="https://static.mianyangjuan.com//Emoticon@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
+				<image src="https://static.mianyangjuan.com//send@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
 			</view>
 		</view>
 	</view>
@@ -87,7 +87,7 @@
 		background-color: #FFFFFF;
 		box-sizing: border-box;
 		border-radius: 50%;
-		padding: 7upx;
+		padding: 10upx;
 		background-image: linear-gradient(top, #0B47E1 0%, #6819EC 33%, #DB17AF 66%, #F02C64 100%);  
 	}
 	.avatarContent{
@@ -142,5 +142,6 @@
 		background-color: #EEEEEE;
 		padding-left: 50upx;
 		margin: 16upx 0 16upx 14upx;
+		font-size: 30upx;
 	}
 </style>

@@ -213,17 +213,17 @@
 		"list": [
 			{	
 				"pagePath": "pages/message/Message",
-				"iconPath": "static/img/信息灰色@3x.png",
-				"selectedIconPath": "static/img/信息选中@3x.png"            
+				"iconPath": "static/img/tabbar_msg.png",
+				"selectedIconPath": "static/img/tabbar_msg_check.png"           
 			},{
 				"pagePath": "pages/home/Home",
-				"iconPath": "static/img/首页选中@3x.png",
-				"selectedIconPath": "static/img/首页选中@3x.png"
+				"iconPath": "static/img/tabbar_home.png",
+				"selectedIconPath": "static/img/tabbar_home_check.png"    
 			},
 			{
 				"pagePath": "pages/mine/Mine",
-				"iconPath": "static/img/我的灰色@3x.png",
-				"selectedIconPath": "static/img/我的选中@3x.png"	 
+				"iconPath": "static/img/tabbar_mine.png",
+				"selectedIconPath": "static/img/tabbar_mine_check.png"    	 
 			}
 		]
 	},

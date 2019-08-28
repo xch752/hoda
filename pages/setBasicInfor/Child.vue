@@ -4,7 +4,7 @@
 			<view class="text-black text-bold text-xl">您是否有孩子?</view>
 		</view>
 		
-		<view class="flex solid-bottom padding justify-between" v-for="childItem in childType" @click="childCheck(childItem.id)">
+		<view class="flex solid-bottom padding justify-between" v-for="(childItem,index) in childType" :key="index" @click="childCheck(childItem.id)">
 			<view class="text-lg">{{childItem.value}}</view>
 			<view v-if="childCheckValue==childItem.id"><image src="https://static.mianyangjuan.com//commit@3x.png" mode="aspectFit" style="width: 32upx;height: 23upx;"></image></view>
 		</view>
@@ -45,7 +45,13 @@
 				this.childCheckValue=id;
 				setTimeout(function(){
 					uni.reLaunch({
-						url: 'CertifiCationNotes'
+						url: 'CertifiCationNotes',
+						success() {
+							console.log(id);
+						},
+						fail(err){
+							console.log(err)
+						}
 					});
 				},1000)
 				

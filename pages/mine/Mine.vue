@@ -197,5 +197,7 @@
 		padding-top: 40upx;
 		padding-right: 50upx;
 		padding-left: 50upx;
+		height: 9%;/*百分比占高,为了适配Pad,若不适配Pad,可以使用单位upx,更加美观*/
+		width: 100%;
 	}
 </style>

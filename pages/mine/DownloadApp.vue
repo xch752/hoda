@@ -29,8 +29,7 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		background: url(../../static/img/组172@3x.png) no-repeat;
-		background-size: 100%;
+		/* background: linear-gradient(90deg, #6A2BF8, #C90CFF); */
 	}
 	.btn-download{
 		position: fixed;
