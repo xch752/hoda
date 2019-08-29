@@ -83,6 +83,8 @@
 	border-radius: 20rpx;
 	padding: 7rpx;
 }
+
+/* 条件编译到微信小程序 */
 .scrollView.data-v-432f65d2{
 	top:128rpx;
 	right: 0;
@@ -101,4 +103,6 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
+
+
 

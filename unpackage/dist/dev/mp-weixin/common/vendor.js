@@ -7896,6 +7896,23 @@ createPage(_AllPair.default);
 
 /***/ }),
 
+/***/ 268:
+/*!********************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FPreview"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _Preview = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/Preview.vue */ 269));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_Preview.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
 /***/ 27:
 /*!****************************************************************************************!*\
   !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2FsetBasicInfor%2FGender"} ***!

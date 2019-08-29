@@ -1,41 +1,5 @@
 <template>
 	<view class="full">
-		<!-- hoda图标 -->
-		<view class="flex justify-center animation-reverse">
-			<image class="title" src="https://static.mianyangjuan.com//Hoda_purple_sm.png" mode="aspectFit"></image>
-		</view>
-		<!-- 操作按钮 -->
-		<view class="button-group" v-show="slideLimit">
-			<button class="margin-top-xl" 
-			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//withdraw@3x.png) no-repeat;background-size: 100% 100%"
-			@click="withdraw"
-			:disabled="btnDisabled">
-			</button>
-			<button class="margin-top-xl" 
-			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//like@3x.png) no-repeat;background-size: 100% 100%" 
-			@click="animationRight"
-			:disabled="btnDisabled">
-			</button>
-			<button class="margin-top-xl" 
-			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//Dislike@3x.png) no-repeat;background-size: 100% 100%"
-			 @click="animationLeft"
-			 :disabled="btnDisabled">
-			 </button>
-		</view>
-		<!-- 无法无限滑动 -->
-		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;" v-if="!slideLimit">
-			<view class="flex justify-center align-center margin-bottom-xl">
-				<image src="https://static.mianyangjuan.com//time@3x.png" mode="" style="width: 100upx;height: 100upx;"></image>
-			</view>
-			<view class="flex justify-center align-center margin-bottom-xl margin-top-xl">
-				<view class="text-white text-xl">休息8小时</view>
-			</view>
-			<view class="flex justify-center align-center margin-bottom-xl">
-				<view class="text-white text-df memberTip">您还不是会员,会员无限滑动,<span>立即成为会员</span></view>
-			</view>
-			
-		</view>
-		<!-- 用户 -->
 		<view class="flex justify-center detailed" >
 			<scroll-view class="scroll-detailed bg-white" 
 			:scroll-top="scrollTop" 
@@ -227,28 +191,16 @@
 </template>
 
 <script>
-	export default {
-		data() {
+	export default{
+		data(){
 			return {
-				screenHeight:'',
-				slideLimit:true,
-				scrollTop: 0,
-				old: {
-					scrollTop: 0
-				},
-				userIndex:0,
-				// animation:[
-				// 	'',
-				// 	''
-				// ],
-				btnDisabled:false,
 				userList:[
 					{	
 						id:0,
 						animation:'',
 						show:true,
-						imgUrl:'http://img.qqzhi.com/uploads/2018-12-05/095314426.jpg',
-						name:'Hannah',
+						imgUrl:'http://img0.imgtn.bdimg.com/it/u=937432971,1989139431&fm=26&gp=0.jpg',
+						name:'星星点灯',
 						age:23,
 						introduction:'Looking forward to dating Looking Looking forward to dating fo',
 						height:165,
@@ -263,270 +215,30 @@
 						constellation:'天枰座',
 						interest:['篮球'],
 						address:['中国','深圳']
-					},
-					{
-						id:1,
-						animation:'',
-						show:true,
-						imgUrl:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1017590850,3664578715&fm=26&gp=0.jpg',
-						name:'Bob',
-						age:20,
-						introduction:'Students seeking a Transfer Admission Guarantee ',
-						height:178,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['爬山','游泳'],
-						address:['中国','南京']
-					},
-					{
-						id:2,
-						animation:'',
-						show:true,
-						imgUrl:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
-						name:'Kathleen',
-						age:32,
-						introduction:'Android Open Source - UniApp D B Handler',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'摩羯座',
-						interest:['游戏','乒乓'],
-						address:['中国','北京']
-					},
-					{
-						id:3,
-						animation:'',
-						show:true,
-						imgUrl:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
-						name:'Catherine',
-						age:26,
-						introduction:'University of Alabama - The University of Alabama wants you to stay connected, even while on the go for ZTE Mercury Free App Download in Utilities',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'101-200w',
-						emotion:'在一段恋情中',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'稳定的私密关系',
-						constellation:'双鱼座',
-						interest:['瑜伽','游泳','攀岩'],
-						address:['中国','杭州']
-					},
-					{
-						id:4,
-						animation:'',
-						show:true,
-						imgUrl:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
-						name:'Emily',
-						age:22,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					{
-						id:5,
-						animation:'',
-						show:true,
-						imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
-						name:'Aily',
-						age:23,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:178,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					// {
-					// 	id:5,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:6,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:7,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:8,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:9,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:10,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:11,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:12,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:13,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:14,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:15,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:16,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:17,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:18,
-					// 	animation:'',
-					// 	show:true
-					// },
-					// {
-					// 	id:19,
-					// 	animation:'',
-					// 	show:true
-					// }
+					}
 				],
-			};
+				screenHeight:'',
+				scrollTop: 0,
+				old: {
+					scrollTop: 0
+				},
+			}
 		},
-		onLoad() {
-			this.userIndex = this.userList.length-1;
+		onLoad:function(){
 			// #ifdef H5
 			this.screenHeight=window.screen.height*0.88*0.915;
 			// #endif  
 		},
-		methods: {
+		methods:{
 			scroll: function(e) {
 				// console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
 			},
-			animationLeft() {
-				if(this.userIndex>0){
-					this.userList[this.userIndex].animation = 'animation-slide-left';
-					this.btnDisabled = true;
-					setTimeout(()=>{
-						this.userList[this.userIndex].show = false;
-						this.userList[this.userIndex].animation = '';
-						this.userIndex--;
-						this.btnDisabled = false;
-					}, 750)
-				}
-				else if(this.userIndex==0){
-					this.userList[this.userIndex].animation = 'animation-slide-left';
-					this.btnDisabled = true;
-					setTimeout(()=>{
-						this.userList[this.userIndex].show = false;
-						this.userList[this.userIndex].animation = '';
-						this.userIndex--;
-						this.btnDisabled = false;
-						this.slideLimit=false;
-					}, 750)
-				}
-			},
-			animationRight() {
-				if(this.userIndex>0){
-					this.userList[this.userIndex].animation = 'animation-slide-right';
-					this.btnDisabled = true;
-					setTimeout(()=>{
-						this.userList[this.userIndex].show = false;
-						this.userList[this.userIndex].animation = '';
-						this.userIndex--;
-						this.btnDisabled = false;
-					}, 750)
-				}
-				else if(this.userIndex==0){
-					this.userList[this.userIndex].animation = 'animation-slide-right';
-					this.btnDisabled = true;
-					setTimeout(()=>{
-						this.userList[this.userIndex].show = false;
-						this.userList[this.userIndex].animation = '';
-						this.userIndex--;
-						this.btnDisabled = false;
-						this.slideLimit=false;
-					}, 750)
-				}
-			},
-			withdraw(){
-				if(this.userIndex<this.userList.length-1){
-					this.userIndex++
-					this.userList[this.userIndex].animation = '';
-					setTimeout(()=>{
-						this.userList[this.userIndex].show = true;
-						this.userList[this.userIndex].animation = 'animation-fade';
-					}, 0)
-				}	
-			},
-			// showTrue(){
-			// 	console.log("showtrue")
-			// 	for(var item of this.userList){
-			// 		item.show=true;
-			// 	}
-			// 	this.userIndex = this.userList.length-1;
-			// }
 		}
 	}
 </script>
 
 <style scoped>
-	/* @import "../../colorui/animation.css"; */
 	.full{
 		position: fixed;
 		height: 100%;
@@ -560,7 +272,7 @@
 	
 	/* #ifdef MP-WEIXIN*/ /* 条件编译到微信小程序 */
 	.detailed{
-		top:144upx;
+		top:20upx;
 		right: 25upx;
 		left: 25upx;
 		bottom: 25upx;
@@ -590,7 +302,7 @@
 	
 	/* #ifdef MP-WEIXIN*/ /* 条件编译到H5 */
 	.scroll-detailed{
-		top:144upx;
+		top:50upx;
 		right: 25upx;
 		left: 25upx;
 		bottom: 25upx;
@@ -634,50 +346,5 @@
 	}
 	.memberTip span{
 		text-decoration:underline;
-	}
-	/* 动画 */
-	[class*=animation-] {
-	    animation-duration: .5s;
-	    animation-timing-function: ease-out;
-	    animation-fill-mode: both
-	}
-	.animation-slide-left {
-	    animation-name: slide-left
-	}
-	@keyframes slide-left {
-	    0% {
-	        opacity: 1;
-			transform: translateX(0) translateY(0) rotate(0deg)
-	    }
-	    100% {
-	        opacity: 0;
-			transform: translateX(-100%) translateY(20%) rotate(-40deg)
-	    }
-	}
-	.animation-slide-right {
-	    animation-name: slide-right
-	}
-	@keyframes slide-right {
-	    0% {
-	        opacity: 1;
-			transform: translateX(0) translateY(0) rotate(0deg)
-	    }
-	    100% {
-	        opacity: 0;
-			transform: translateX(100%) translateY(20%) rotate(40deg)
-	    }
-	}
-	.animation-fade {
-	    animation-name: fade
-	}
-	@keyframes fade {
-	    0% {
-	        opacity: 0;
-	        transform: translateX(-100%) translateY(20%) rotate(-40deg)
-	    }
-	    100% {
-			opacity: 1;
-			transform: translateX(0) translateY(0) rotate(0deg)
-	    }
 	}
 </style>

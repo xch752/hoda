@@ -134,6 +134,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/Preview",//我的中心 预览
+			"style": {
+				"navigationBarTitleText": "预览"
+			}
+		},
+		{
 			"path": "pages/mine/subPages/memberCenter",//我的中心 子页面2 会员充值
 			"style": {
 				"navigationBarTitleText": "会员充值"

@@ -436,7 +436,7 @@ var _default =
 
         {
           id: 2,
-          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
           show: true },
 
         {
@@ -457,7 +457,7 @@ var _default =
 
         {
           id: 1,
-          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
           show: true }] },
 
 
@@ -479,7 +479,7 @@ var _default =
         data: [
         {
           id: 0,
-          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
           show: true },
 
         {

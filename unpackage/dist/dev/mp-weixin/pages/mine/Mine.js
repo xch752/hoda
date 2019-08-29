@@ -181,13 +181,24 @@ var _default =
 {
   data: function data() {
     return {
-      avatarUrl: '' };
+      avatarUrl: 'http://img0.imgtn.bdimg.com/it/u=937432971,1989139431&fm=26&gp=0.jpg' };
 
   },
   onLoad: function onLoad() {
 
   },
   methods: {
+    toPreview: function toPreview() {
+      uni.navigateTo({
+        url: 'Preview',
+        success: function success() {
+          console.log("success toPreview");
+        },
+        fail: function fail() {
+          console.log("fail toPreview");
+        } });
+
+    },
     toWhoLikeMe: function toWhoLikeMe() {
       uni.switchTab({
         url: '../message/Message',

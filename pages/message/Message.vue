@@ -1,7 +1,7 @@
 <template>
 	<view class="full">
 		<!-- 消息 -->
-		<view v-if="checkValue=='message'?true:false">
+		<view v-show="checkValue=='message'?true:false">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-white text-center" style="font-size: 40upx;margin-right:40upx">消息</view>
@@ -106,7 +106,7 @@
 			</view>
 		</view>
 		<!-- 喜欢 -->
-		<view v-if="checkValue=='message'?false:true">
+		<view v-show="checkValue=='message'?false:true">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-gray text-center" style="line-height: 60upx;font-size: 30upx;margin-right: 50upx;" @click="checkValueChange()">消息</view>
@@ -329,7 +329,7 @@
 							},
 							{
 								id:2,
-								url:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+								url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
 								show:true,
 							},
 							{
@@ -350,7 +350,7 @@
 							},
 							{
 								id:1,
-								url:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+								url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
 								show:true,
 							}
 						]
@@ -372,7 +372,7 @@
 						data:[
 							{
 								id:0,
-								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+								url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
 								show:true,
 							},
 							{
@@ -578,6 +578,7 @@
 		border-radius: 20upx;
 		padding: 7upx;
 	}
+	/* #ifdef MP-WEIXIN*/ /* 条件编译到微信小程序 */
 	.scrollView{
 		top:128upx;
 		right: 0;
@@ -589,4 +590,18 @@
 		display: flex;
 		flex-direction: column;
 	}
+	/* #endif */
+	/* #ifdef H5*/ /* 条件编译到H5 */
+	.scrollView{
+		top:128upx;
+		right: 0;
+		left: 0;
+		bottom: 25upx;
+		position: fixed;
+		height: 85%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	/* #endif */
 </style>

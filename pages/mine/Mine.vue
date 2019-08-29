@@ -2,12 +2,12 @@
 	<view class="full">
 		<view class="header">
 			<view class="flex margin-top-xl" style="margin-top: 60upx;">
-				<view class="flex-twice"><view class="text-white text-df margin-top-sm suggestion">预览</view></view>
+				<view class="flex-twice"><view class="text-white text-df margin-top-sm suggestion" @click="toPreview()">预览</view></view>
 				<view class="flex-treble"><view class="text-white text-xl text-center">我的中心</view></view>
 				<view class="flex-twice"></view>
 			</view>
 			<view class="flex margin-top-xl margin-left-xl align-center">
-				<image class="avatar" src="https://static.mianyangjuan.com//Ellipse3@3x.png" mode="aspectFill"></image>
+				<image class="avatar" :src="avatarUrl" mode="aspectFill"></image>
 				<view class="margin-left-xl text-center text-white text-xl text-bold">星星点灯</view>
 				<image class="vipStatus margin-left-sm" src="https://static.mianyangjuan.com//vip@3x.png" mode="aspectFill"></image>
 				<image class="cerStatus margin-left-sm" src="https://static.mianyangjuan.com//Certification@3x.png" mode="aspectFill"></image>
@@ -74,13 +74,24 @@
 	export default{
 		data(){
 			return{
-				avatarUrl:'',
+				avatarUrl:'http://img0.imgtn.bdimg.com/it/u=937432971,1989139431&fm=26&gp=0.jpg',
 			}
 		},
 		onLoad(){
 			
 		},
 		methods:{
+			toPreview(){
+				uni.navigateTo({
+					url:'Preview',
+					success() {
+						console.log("success toPreview");
+					},
+					fail(){
+						console.log("fail toPreview");
+					}
+				})
+			},
 			toWhoLikeMe(){
 				uni.switchTab({
 					url:'../message/Message',

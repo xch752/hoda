@@ -453,6 +453,27 @@ var _default =
         relation: '长期关系',
         constellation: '金牛座',
         interest: ['游戏', '游泳'],
+        address: ['中国', '上海'] },
+
+      {
+        id: 5,
+        animation: '',
+        show: true,
+        imgUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
+        name: 'Aily',
+        age: 23,
+        introduction: 'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
+        height: 178,
+        figure: '丰满',
+        job: '艺人',
+        income: '51-100w',
+        emotion: '单身',
+        smoking: '保密',
+        drinking: '保密',
+        child: '没有',
+        relation: '长期关系',
+        constellation: '金牛座',
+        interest: ['游戏', '游泳'],
         address: ['中国', '上海'] }] };
 
 
