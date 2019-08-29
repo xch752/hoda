@@ -234,6 +234,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -403,7 +418,85 @@ var _default =
       listTouchStartX: 0,
       listTouchStartY: 0,
       listTouchDirection: null,
-      showScrollbar: true };
+      showScrollbar: true,
+      likeUserList: [
+      {
+        day: '27',
+        mounth: '08',
+        data: [
+        {
+          id: 0,
+          url: 'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
+          show: true },
+
+        {
+          id: 1,
+          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          show: true },
+
+        {
+          id: 2,
+          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          show: true },
+
+        {
+          id: 3,
+          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          show: true }] },
+
+
+
+      {
+        day: '20',
+        mounth: '08',
+        data: [
+        {
+          id: 0,
+          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          show: true },
+
+        {
+          id: 1,
+          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          show: true }] },
+
+
+
+      {
+        day: '27',
+        mounth: '07',
+        data: [
+        {
+          id: 1,
+          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          show: true }] },
+
+
+
+      {
+        day: '15',
+        mounth: '07',
+        data: [
+        {
+          id: 0,
+          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          show: true },
+
+        {
+          id: 1,
+          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          show: true },
+
+        {
+          id: 2,
+          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          show: true }] }] };
+
+
+
+
+
+
 
   },
   onLoad: function onLoad(option) {
@@ -427,13 +520,13 @@ var _default =
       } });
 
   },
-  onHide: function onHide() {
-    uni.setStorage({
-      key: "messageCheckValue",
-      data: "message" });
-
-    console.log("onHide ".concat(this.checkValue));
-  },
+  // onHide:function(){
+  // 	uni.setStorage({
+  // 		key:"messageCheckValue",
+  // 		data:"message"
+  // 	});
+  // 	console.log(`onHide ${this.checkValue}`)
+  // },
   methods: {
     toAllPair: function toAllPair() {
       uni.navigateTo({

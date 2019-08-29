@@ -65,4 +65,40 @@
 .chatListItemDetail .chat-content.data-v-432f65d2{
 	margin-left: 30rpx;
 }
+.likeUser.data-v-432f65d2{
+	width: 100%;
+	height: 350rpx;
+	background-color: #FFFFFF;
+}
+.likeUserItem.data-v-432f65d2{
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	height: 300rpx;
+	width: 200rpx;
+	margin: 0rpx 25rpx 0rpx 25rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box; 
+	border-radius: 20rpx;
+	padding: 7rpx;
+}
+.scrollView.data-v-432f65d2{
+	top:128rpx;
+	right: 0;
+	left: 0;
+	bottom: 25rpx;
+	position: fixed;
+	height: 90%;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
 

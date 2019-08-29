@@ -1,7 +1,7 @@
 <template>
 	<view class="full">
 		<!-- 消息 -->
-		<view v-show="checkValue=='message'?true:false">
+		<view v-if="checkValue=='message'?true:false">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-white text-center" style="font-size: 40upx;margin-right:40upx">消息</view>
@@ -106,7 +106,7 @@
 			</view>
 		</view>
 		<!-- 喜欢 -->
-		<view v-show="checkValue=='message'?false:true">
+		<view v-if="checkValue=='message'?false:true">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-gray text-center" style="line-height: 60upx;font-size: 30upx;margin-right: 50upx;" @click="checkValueChange()">消息</view>
@@ -121,7 +121,22 @@
 					v-show="checkValue=='like'?true:false"></view>
 				</view>
 			</view>
-			
+			<view>
+				<scroll-view scroll-y="true" class="scrollView">
+					<view v-for="likeItem of likeUserList" :key="likeItem.date" >
+						<view class="flex justify-start">
+							<view class="margin-sm"><text class="text-bold text-lg">{{likeItem.day}}</text>/{{likeItem.mounth}}月</view>
+						</view>
+						<scroll-view scroll-x="true" class="likeUser flex scroll-view" style="width: 100%;">
+							<view class="likeUserItem scroll-view-item" 
+							v-for="item of likeItem.data" :key="item.id"
+							:style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover'}">
+								
+							</view>
+						</scroll-view>
+					</view>
+				</scroll-view>
+			</view>	
 		</view>
 		
 	</view>
@@ -297,7 +312,85 @@
 				listTouchStartY: 0,
 				listTouchDirection: null,
 				showScrollbar:true,
-			}
+				likeUserList:[
+					{
+						day:'27',
+						mounth:'08',
+						data:[
+							{
+								id:0,
+								url:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
+								show:true,
+							},
+							{
+								id:1,
+								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+								show:true,
+							},
+							{
+								id:2,
+								url:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+								show:true,
+							},
+							{
+								id:3,
+								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+								show:true,
+							}
+						]
+					},
+					{
+						day:'20',
+						mounth:'08',
+						data:[
+							{
+								id:0,
+								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+								show:true,
+							},
+							{
+								id:1,
+								url:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+								show:true,
+							}
+						]
+					},
+					{
+						day:'27',
+						mounth:'07',
+						data:[
+							{
+								id:1,
+								url:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+								show:true,
+							}
+						]
+					},
+					{
+						day:'15',
+						mounth:'07',
+						data:[
+							{
+								id:0,
+								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+								show:true,
+							},
+							{
+								id:1,
+								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+								show:true,
+							},
+							{
+								id:2,
+								url:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+								show:true,
+							}
+							
+						]
+					},
+						
+				],
+			}	
 		},
 		onLoad:function(option){
 			this.checkValue = 'message';
@@ -320,13 +413,13 @@
 				}
 			})
 		},
-		onHide:function(){
-			uni.setStorage({
-				key:"messageCheckValue",
-				data:"message"
-			});
-			console.log(`onHide ${this.checkValue}`)
-		},
+		// onHide:function(){
+		// 	uni.setStorage({
+		// 		key:"messageCheckValue",
+		// 		data:"message"
+		// 	});
+		// 	console.log(`onHide ${this.checkValue}`)
+		// },
 		methods:{
 			toAllPair(){
 				uni.navigateTo({
@@ -419,7 +512,7 @@
 			/* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
 			white-space: nowrap;
 			width: 100%;
-		}
+	}
 	.matchUser{
 		width: 100%;
 		height: 184upx;
@@ -470,5 +563,30 @@
 	}
 	.chatListItemDetail .chat-content{
 		margin-left: 30upx;
+	}
+	.likeUser{
+		width: 100%;
+		height: 350upx;
+		background-color: #FFFFFF;
+	}
+	.likeUserItem{
+		display: inline-flex;
+		height: 300upx;
+		width: 200upx;
+		margin: 0upx 25upx 0upx 25upx;
+		box-sizing: border-box; 
+		border-radius: 20upx;
+		padding: 7upx;
+	}
+	.scrollView{
+		top:128upx;
+		right: 0;
+		left: 0;
+		bottom: 25upx;
+		position: fixed;
+		height: 90%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 </style>
