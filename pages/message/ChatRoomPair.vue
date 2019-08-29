@@ -4,15 +4,18 @@
 			<text class="text-black text-xxl text-bold">你们互相喜欢对方</text>
 		</view>
 		<view class="avatar">
-			<view class="avatarContent">
-				<view style="width: 100%;height: 100%; border-radius: 50%;" :style="{ 'background-image': 'url(' + url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+			<view class="avatarContent flex justify-center align-center">
+				<view style="width: 96%;height: 96%; border-radius: 50%;" :style="{ 'background-image': 'url(' + url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
 			</view>
 		</view>
 		<view class="tipsone">
 			还剩{{number}}小时
 		</view>
-		<view class="tipstwo">
+		<view class="tipstwo" v-if="gender=='female'?true:false">
 			你们的配对将在{{number}}小时后失效，马上开始聊天吧。
+		</view>
+		<view class="tipstwo" v-if="gender=='male'?true:false">
+			你们的配对将在{{number}}小时后失效，等待她开启聊天。
 		</view>
 		<view class="bottom" v-if="gender=='female'?true:false">
 			<view class="flex justify-start">
@@ -30,7 +33,7 @@
 		data(){
 			return {
 				title:'',
-				gender:'female',
+				gender:'male',
 				number:12,
 				url:'',
 			}

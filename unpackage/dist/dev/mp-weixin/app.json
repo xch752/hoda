@@ -19,7 +19,6 @@
     "pages/home/Home",
     "pages/message/Message",
     "pages/mine/Mine",
-    "pages/mine/subPages/whoLikeMe",
     "pages/mine/subPages/memberCenter",
     "pages/mine/subPages/ImproveData",
     "pages/mine/subPages/tripartiteAccount",
@@ -28,7 +27,8 @@
     "pages/mine/DownloadApp",
     "pages/message/ChatRoom",
     "pages/message/ChatRoomPair",
-    "pages/message/Pair"
+    "pages/message/Pair",
+    "pages/message/AllPair"
   ],
   "subPackages": [],
   "window": {
@@ -60,5 +60,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

@@ -82,13 +82,21 @@
 		},
 		methods:{
 			toWhoLikeMe(){
-				uni.navigateTo({
-					url:'subPages/whoLikeMe',
+				uni.switchTab({
+					url:'../message/Message',
 					sucess(){
-						console.log("sucess toWhoLikeMe");
+						console.log("sucess Message");
 					},
-					fail(){
-						console.log("fail toWhoLikeMe");
+					fail(err){
+						console.log("fail Message");
+						console.log(err);
+					},
+					complete(){
+						uni.setStorage({
+							key:"messageCheckValue",
+							data:"like"
+						});
+						console.log("complete")
 					}
 				})
 			},

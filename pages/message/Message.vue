@@ -1,7 +1,7 @@
 <template>
 	<view class="full">
 		<!-- 消息 -->
-		<view v-if="checkValue=='message'?true:false">
+		<view v-show="checkValue=='message'?true:false">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-white text-center" style="font-size: 40upx;margin-right:40upx">消息</view>
@@ -10,10 +10,10 @@
 				<view class="flex justify-center">
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-right: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='message'?true:false"></view>
+					v-show="checkValue=='message'?true:false"></view>
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-left: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='like'?true:false"></view>
+					v-show="checkValue=='like'?true:false"></view>
 				</view>
 			</view>
 			<!-- 配对用户 -->
@@ -23,18 +23,30 @@
 					配对用户({{matchUserList.length}})
 				</view>
 			</view>
-			<scroll-view scroll-x="true" class="matchUser flex scroll-view" >
-				<view class="matchUserItem scroll-view-item">
-					<view class="matchUserItemContent">
+			<view class="flex justify-start">
+				<!-- <view class="matchUserItem" style="height: 120upx;width: 120upx;">
+					<view  style="height: 113upx;width: 113upx;padding: 0;background-color: #FFFFFF;">
 						<view style="width: 100%;height: 100%; border-radius: 50%;"></view>
 					</view>
-				</view>
-				<view class="matchUserItem scroll-view-item" v-for="item of matchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
-					<view class="matchUserItemContent">
-						<view style="width: 100%;height: 100%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+				</view> -->
+				<scroll-view scroll-x="true" class="matchUser flex scroll-view" >
+				<view class="matchUserItem scroll-view-item" style="margin: 32upx" @click="toAllPair()">
+					<view class="matchUserItemContent flex align-center justify-center">
+						<view class="flex justify-center align-center" style="width: 94%;height: 94%; border-radius: 50%;background-color: #FFFFFF;">
+							<view class="text-bold text-xl" 
+							style="background: linear-gradient(to bottom,blue,red);-webkit-text-fill-color: transparent;-webkit-background-clip: text;font-style: italic"><text>ALL</text></view>
+						</view>
 					</view>
 				</view>
-			</scroll-view>
+				</scroll-view>
+				<scroll-view scroll-x="true" class="matchUser flex scroll-view" style="width: 566upx;">
+					<view class="matchUserItem scroll-view-item" v-for="item of matchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
+						<view class="matchUserItemContent flex align-center justify-center">
+							<view style="width: 94%;height: 94%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
 			<!-- 消息 -->
 			<view>
 				<view class="flex justify-start padding-top padding-left-lg text-bold text-df solid-bottom"
@@ -94,7 +106,7 @@
 			</view>
 		</view>
 		<!-- 喜欢 -->
-		<view v-if="checkValue=='message'?false:true">
+		<view v-show="checkValue=='message'?false:true">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-gray text-center" style="line-height: 60upx;font-size: 30upx;margin-right: 50upx;" @click="checkValueChange()">消息</view>
@@ -103,12 +115,13 @@
 				<view class="flex justify-center">
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-right: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='message'?true:false"></view>
+					v-show="checkValue=='message'?true:false"></view>
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-left: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='like'?true:false"></view>
+					v-show="checkValue=='like'?true:false"></view>
 				</view>
 			</view>
+			
 		</view>
 		
 	</view>
@@ -123,37 +136,72 @@
 					{
 						id:0,
 						url:'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
-						title:'星星'
+						title:'星星',
+						day:6,
+						hour:9
 					},
 					{
 						id:1,
 						url:'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
-						title:'可可'
+						title:'可可',
+						day:5,
+						hour:4
 					},
 					{
 						id:2,
 						url:'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
-						title:'露露'
+						title:'露露',
+						day:6,
+						hour:9
 					},
 					{
 						id:3,
 						url:'https://static.mianyangjuan.com//Line_sm@3x.png',
-						title:'西西'
+						title:'西西',
+						day:6,
+						hour:14
 					},
 					{
 						id:4,
 						url:'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
-						title:'兮兮'
+						title:'兮兮',
+						day:5,
+						hour:21
 					},
 					{
 						id:5,
 						url:'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
-						title:'依依'
+						title:'依依',
+						day:6,
+						hour:5
 					},
 					{
 						id:6,
 						url:'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
-						title:'克克'
+						title:'克克',
+						day:6,
+						hour:9
+					},
+					{
+						id:7,
+						url:'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+						title:'兮兮',
+						day:3,
+						hour:9
+					},
+					{
+						id:8,
+						url:'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+						title:'依依',
+						day:2,
+						hour:9
+					},
+					{
+						id:9,
+						url:'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+						title:'克克',
+						day:4,
+						hour:12
 					}
 				],
 				isChatRecord:true,
@@ -248,12 +296,49 @@
 				listTouchStartX: 0,
 				listTouchStartY: 0,
 				listTouchDirection: null,
+				showScrollbar:true,
 			}
 		},
-		onLoad() {
-			
+		onLoad:function(option){
+			this.checkValue = 'message';
+			console.log(`onLoad ${this.checkValue}`)
+		},
+		onUnload:function(){
+			uni.setStorage({
+				key:"messageCheckValue",
+				data:"message"
+			});
+			console.log(`onUnload ${this.checkValue}`)
+		},
+		onShow:function(option){
+			var THAT = this;
+			uni.getStorage({
+				key:"messageCheckValue",
+				success(e){
+					THAT.checkValue=e.data;
+					console.log(`onShow ${THAT.checkValue}`)
+				}
+			})
+		},
+		onHide:function(){
+			uni.setStorage({
+				key:"messageCheckValue",
+				data:"message"
+			});
+			console.log(`onHide ${this.checkValue}`)
 		},
 		methods:{
+			toAllPair(){
+				uni.navigateTo({
+					url:'AllPair',
+					success() {
+						console.log("success toAllPair");
+					},
+					fail(){
+						console.log("fail toAllPair");
+					}
+				})
+			},
 			toChatRoom(title){
 				uni.navigateTo({
 					url:'ChatRoom?title='+title,
@@ -267,9 +352,17 @@
 			},
 			checkValueChange(){
 				if(this.checkValue==='message'){
+					uni.setStorage({
+						key:"messageCheckValue",
+						data:"like"
+					});
 					this.checkValue='like';
 				}
 				else if(this.checkValue==='like'){
+					uni.setStorage({
+						key:"messageCheckValue",
+						data:"message"
+					});
 					this.checkValue='message';
 				}
 				
@@ -328,6 +421,7 @@
 			width: 100%;
 		}
 	.matchUser{
+		width: 100%;
 		height: 184upx;
 		background-color: #F6F6F6;
 	}
@@ -335,7 +429,7 @@
 		display: inline-flex;
 		height: 120upx;
 		width: 120upx;
-		margin: 32upx 0upx 32upx 32upx;
+		margin: 32upx 32upx 32upx 0upx;
 		box-sizing: border-box; 
 		border-radius: 50%;
 		padding: 7upx;

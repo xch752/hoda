@@ -159,6 +159,12 @@
 					"query": "",
 					"id": 21,
 					"pathName": "pages/message/Pair"
+				},
+				{
+					"name": "AllPair",
+					"query": "",
+					"id": 22,
+					"pathName": "pages/message/AllPair"
 				}
 			]
 		}

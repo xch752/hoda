@@ -5,24 +5,21 @@
 			<image class="title" src="https://static.mianyangjuan.com//Hoda_purple_sm.png" mode="aspectFit"></image>
 		</view>
 		<!-- 操作按钮 -->
-		<view class="button-group">
+		<view class="button-group" v-show="slideLimit">
 			<button class="margin-top-xl" 
 			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//withdraw@3x.png) no-repeat;background-size: 100% 100%"
 			@click="withdraw"
-			:disabled="btnDisabled"
-			v-if="slideLimit"
-			></button>
+			:disabled="btnDisabled">
+			</button>
 			<button class="margin-top-xl" 
 			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//like@3x.png) no-repeat;background-size: 100% 100%" 
 			@click="animationRight"
-			:disabled="btnDisabled"
-			v-if="slideLimit">
+			:disabled="btnDisabled">
 			</button>
 			<button class="margin-top-xl" 
 			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//Dislike@3x.png) no-repeat;background-size: 100% 100%"
 			 @click="animationLeft"
-			 :disabled="btnDisabled"
-			 v-if="slideLimit">
+			 :disabled="btnDisabled">
 			 </button>
 		</view>
 		<!-- 无法无限滑动 -->
@@ -101,13 +98,13 @@
 						</view>
 						<view class="text-center" v-if="item.figure"
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.figure}}
 						</view>
 						<view class="text-center" v-if="item.job"
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.job}}
 						</view>
@@ -115,19 +112,19 @@
 					<view class="flex justify-start">
 						<view class="text-center" v-if="item.income"
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.income}}
 						</view>
 						<view class="text-center" v-if="item.emotion"
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.emotion}}
 						</view>
 						<view class="text-center" v-if="item.smoking"
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.smoking}}
 						</view>
@@ -135,19 +132,19 @@
 					<view class="flex justify-start">
 						<view class="text-center" v-if="item.drinking"
 						 style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.drinking}}
 						</view>
 						<view class="text-center" v-if="item.child"
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.child}}
 						</view>
 						<view class="text-center" v-if="item.relation" 
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.relation}}
 						</view>
@@ -155,7 +152,7 @@
 					<view class="flex justify-start">
 						<view class="text-center" v-if="item.constellation"
 						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="../../static/img/no_Chat_@3x.png" mode="aspectFit">
+							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
 							</image>
 							{{item.constellation}}
 						</view>

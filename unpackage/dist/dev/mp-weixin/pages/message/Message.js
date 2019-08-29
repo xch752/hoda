@@ -221,6 +221,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -230,37 +243,72 @@ var _default =
       {
         id: 0,
         url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
-        title: '星星' },
+        title: '星星',
+        day: 6,
+        hour: 9 },
 
       {
         id: 1,
         url: 'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
-        title: '可可' },
+        title: '可可',
+        day: 5,
+        hour: 4 },
 
       {
         id: 2,
         url: 'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
-        title: '露露' },
+        title: '露露',
+        day: 6,
+        hour: 9 },
 
       {
         id: 3,
         url: 'https://static.mianyangjuan.com//Line_sm@3x.png',
-        title: '西西' },
+        title: '西西',
+        day: 6,
+        hour: 14 },
 
       {
         id: 4,
         url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
-        title: '兮兮' },
+        title: '兮兮',
+        day: 5,
+        hour: 21 },
 
       {
         id: 5,
         url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
-        title: '依依' },
+        title: '依依',
+        day: 6,
+        hour: 5 },
 
       {
         id: 6,
         url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
-        title: '克克' }],
+        title: '克克',
+        day: 6,
+        hour: 9 },
+
+      {
+        id: 7,
+        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+        title: '兮兮',
+        day: 3,
+        hour: 9 },
+
+      {
+        id: 8,
+        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+        title: '依依',
+        day: 2,
+        hour: 9 },
+
+      {
+        id: 9,
+        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        title: '克克',
+        day: 4,
+        hour: 12 }],
 
 
       isChatRecord: true,
@@ -354,13 +402,50 @@ var _default =
       modalName: null,
       listTouchStartX: 0,
       listTouchStartY: 0,
-      listTouchDirection: null };
+      listTouchDirection: null,
+      showScrollbar: true };
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad(option) {
+    this.checkValue = 'message';
+    console.log("onLoad ".concat(this.checkValue));
+  },
+  onUnload: function onUnload() {
+    uni.setStorage({
+      key: "messageCheckValue",
+      data: "message" });
 
+    console.log("onUnload ".concat(this.checkValue));
+  },
+  onShow: function onShow(option) {
+    var THAT = this;
+    uni.getStorage({
+      key: "messageCheckValue",
+      success: function success(e) {
+        THAT.checkValue = e.data;
+        console.log("onShow ".concat(THAT.checkValue));
+      } });
+
+  },
+  onHide: function onHide() {
+    uni.setStorage({
+      key: "messageCheckValue",
+      data: "message" });
+
+    console.log("onHide ".concat(this.checkValue));
   },
   methods: {
+    toAllPair: function toAllPair() {
+      uni.navigateTo({
+        url: 'AllPair',
+        success: function success() {
+          console.log("success toAllPair");
+        },
+        fail: function fail() {
+          console.log("fail toAllPair");
+        } });
+
+    },
     toChatRoom: function toChatRoom(title) {
       uni.navigateTo({
         url: 'ChatRoom?title=' + title,
@@ -374,9 +459,17 @@ var _default =
     },
     checkValueChange: function checkValueChange() {
       if (this.checkValue === 'message') {
+        uni.setStorage({
+          key: "messageCheckValue",
+          data: "like" });
+
         this.checkValue = 'like';
       } else
       if (this.checkValue === 'like') {
+        uni.setStorage({
+          key: "messageCheckValue",
+          data: "message" });
+
         this.checkValue = 'message';
       }
 

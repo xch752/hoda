@@ -10,6 +10,7 @@ swiper-item.data-v-103a0516{
 	border-radius: 30rpx;
 }
 .card-item.data-v-103a0516{
+	position:relative;
 	width: 330rpx;
 	height: 260rpx;
 	border: 4rpx solid #EEEEEE;
@@ -19,5 +20,74 @@ swiper-item.data-v-103a0516{
 .active.data-v-103a0516{
 	background-color: #FEF4E5;
 	border: 4rpx solid #F3C837;
+}
+.active-color.data-v-103a0516{
+	color: #FE8402;
+}
+.member-title.data-v-103a0516{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: -20rpx;
+	margin: 0 auto;
+	font-size: 23rpx;
+	line-height: 40rpx;
+	background-color: #F4CE4E;
+	border-radius: 999rpx;
+	width: 98rpx;
+	height: 40rpx;
+	color: #FFFFFF;
+}
+.member-discount.data-v-103a0516{
+	position: absolute;
+	text-align: center;
+	overflow: hidden;
+	left:0;
+	right: 0;
+	top: 0;
+	font-size: 17rpx;
+	line-height: 35rpx;
+	color: #FFFFFF;
+	background-color: #F8DE87;
+	border-radius: 26rpx 0 26rpx 0;
+	width: 81rpx;
+	height: 35rpx;
+}
+.member-time.data-v-103a0516{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: 47rpx;
+	margin: 0 auto;
+	font-size: 33rpx;
+	line-height: 33rpx;
+}
+.member-price.data-v-103a0516{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: 103rpx;
+	margin: 0 auto;
+	font-size: 55rpx;
+	line-height: 55rpx;
+	font-weight: 600;
+}
+.member-price text.data-v-103a0516{
+	font-size: 30rpx;
+	line-height: 30rpx;
+}
+.member-priceall.data-v-103a0516{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: 188rpx;
+	margin: 0 auto;
+	font-size: 24rpx;
+	line-height: 24rpx;
+	color: #737373;
 }
 

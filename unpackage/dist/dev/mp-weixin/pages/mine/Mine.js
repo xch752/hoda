@@ -189,13 +189,21 @@ var _default =
   },
   methods: {
     toWhoLikeMe: function toWhoLikeMe() {
-      uni.navigateTo({
-        url: 'subPages/whoLikeMe',
+      uni.switchTab({
+        url: '../message/Message',
         sucess: function sucess() {
-          console.log("sucess toWhoLikeMe");
+          console.log("sucess Message");
         },
-        fail: function fail() {
-          console.log("fail toWhoLikeMe");
+        fail: function fail(err) {
+          console.log("fail Message");
+          console.log(err);
+        },
+        complete: function complete() {
+          uni.setStorage({
+            key: "messageCheckValue",
+            data: "like" });
+
+          console.log("complete");
         } });
 
     },
