@@ -113,17 +113,35 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
-
+    return {
+      url: 'https://uniapp.dcloud.io/' };
 
   },
   onLoad: function onLoad() {
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    toDownloadUrl: function toDownloadUrl() {
+
+
+
+      // app跳转
+      // plus.runtime.openURL(this.url, function(res){
+      // 	uni.showToast({
+      // 		title:'跳转失败'
+      // 	})
+      // });  
+    } } };exports.default = _default;
 
 /***/ }),
 

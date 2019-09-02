@@ -119,6 +119,17 @@
 					title:'提示',
 					content:'下载APP成为会员',
 					showCancel:false,
+					success:function(){
+						uni.navigateTo({
+							url:'../DownloadApp',
+							success() {
+								console.log("sucess toDownloadApp")
+							},
+							fail() {
+								console.log("fail toDownloadApp")
+							},
+						})
+					}
 				})
 			}
 		}

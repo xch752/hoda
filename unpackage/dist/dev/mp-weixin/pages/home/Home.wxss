@@ -526,6 +526,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /* @import "../../colorui/animation.css"; */
 .full.data-v-2de45767{
 	position: fixed;
@@ -553,7 +564,7 @@
 	position: fixed;
 	right: 60rpx;
 	bottom: 200rpx;
-	z-index: 999;
+	z-index: 99999;
 }
 
 
@@ -577,6 +588,7 @@
 	-webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	        flex-direction: column;
+	border: #FFFFFF solid 1rpx;
 }
 
 
@@ -601,8 +613,8 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 	overflow: hidden;
-	-webkit-box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2);
-	        box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2);
+	border: #EEEEEE solid 3rpx;
+	/* box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2); */
 }
 
 

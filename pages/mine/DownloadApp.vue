@@ -1,8 +1,15 @@
 <template>
 	<view class="full">
-		<view class="flex justify-center align-center">
-			<button class="text-white btn-download" type="primary">立即下载</button>
+		<view class="bg-top flex justify-center text-white" style="background: url(https://static.mianyangjuan.com//download-top.png);background-repeat:no-repeat;background-size: 100% 100%;width: 750upx;height: 627upx;">
+			<text class="conduct-text">享受完整APP功能体验马上下载</text>
+			<view class="flex justify-center align-center">
+				<button @click="toDownloadUrl()" class="text-white btn-download" type="primary">立即下载</button>
+			</view>
 		</view>
+		
+		<view class="bg-bottom" style="background: url(https://static.mianyangjuan.com//download-bottom.png);background-repeat:no-repeat;background-size: 80% 100%;width: 750upx;height: 564upx;"></view>
+		
+		
 	</view>
 </template>
 
@@ -10,31 +17,33 @@
 	export default{
 		data(){
 			return{
-				
+				url: 'https://uniapp.dcloud.io/'  
 			}
 		},
 		onLoad() {
 			
 		},
 		methods:{
-
+			toDownloadUrl(){
+				// #ifdef H5 
+				window.location.href = this.url;
+				// #endif  
+				// app跳转
+				// plus.runtime.openURL(this.url, function(res){
+				// 	uni.showToast({
+				// 		title:'跳转失败'
+				// 	})
+				// });  
+			}
 		}
 	}
 </script>
 
 <style scoped>
-	.full{
-		position: fixed;
-		height: 100%;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		/* background: linear-gradient(90deg, #6A2BF8, #C90CFF); */
-	}
 	.btn-download{
 		position: fixed;
-		top:41.43%;
-		background: linear-gradient(90deg, #9364FD, #545CF4); /* 标准的语法 */
+		top:449upx;
+		background: linear-gradient(90deg, #9364FD, #545CF4); 
 		width: 340upx;
 		height: 66upx;
 		border-radius: 66upx;
@@ -42,5 +51,20 @@
 		align-items: center;
 		line-height: 66upx;
 		font-size: 28upx;
+	}
+	.bg-top{
+		position: fixed;
+		top:0;
+	}
+	.conduct-text{
+		position: fixed;
+		top:384upx;
+	}
+	.bg-bottom{
+		position:fixed;
+		bottom: 0;
+		left: 75upx;
+		right: 0;
+		margin: 0 auto;
 	}
 </style>

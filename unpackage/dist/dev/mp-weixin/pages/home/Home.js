@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -459,11 +459,11 @@ var _default =
         id: 5,
         animation: '',
         show: true,
-        imgUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
-        name: 'Aily',
-        age: 23,
+        imgUrl: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2744267305,3823782124&fm=26&gp=0.jpg',
+        name: 'Emily',
+        age: 22,
         introduction: 'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-        height: 178,
+        height: 156,
         figure: '丰满',
         job: '艺人',
         income: '51-100w',
@@ -611,7 +611,7 @@ var _default =
         }, 750);
       }
     },
-    withdraw: function withdraw() {var _this3 = this;
+    withdraw: function withdraw() {var _this3 = this; //撤回
       if (this.userIndex < this.userList.length - 1) {
         this.userIndex++;
         this.userList[this.userIndex].animation = '';
@@ -620,7 +620,27 @@ var _default =
           _this3.userList[_this3.userIndex].animation = 'animation-fade';
         }, 0);
       }
-    } } };exports.default = _default;
+    },
+    toMemberCenter: function toMemberCenter() {
+      uni.navigateTo({
+        url: '../mine/subPages/memberCenter',
+        success: function success() {
+          console.log("success toMemberCenter");
+        },
+        fail: function fail() {
+          console.log("fail toMemberCenter");
+        } });
+
+    }
+    // showTrue(){
+    // 	console.log("showtrue")
+    // 	for(var item of this.userList){
+    // 		item.show=true;
+    // 	}
+    // 	this.userIndex = this.userList.length-1;
+    // }
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

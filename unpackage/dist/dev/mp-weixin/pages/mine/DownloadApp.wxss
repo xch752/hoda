@@ -1,25 +1,10 @@
 
-.full.data-v-89c5a6d6{
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
-	/* background: linear-gradient(90deg, #6A2BF8, #C90CFF); */
-}
 .btn-download.data-v-89c5a6d6{
 	position: fixed;
-	top:41.43%;
+	top:449rpx;
 	background: -webkit-gradient(linear, left top, right top, from(#9364FD), to(#545CF4));
 	background: -o-linear-gradient(left, #9364FD, #545CF4);
-	background: linear-gradient(90deg, #9364FD, #545CF4); /* 标准的语法 */
+	background: linear-gradient(90deg, #9364FD, #545CF4); 
 	width: 340rpx;
 	height: 66rpx;
 	border-radius: 66rpx;
@@ -30,5 +15,20 @@
 	        align-items: center;
 	line-height: 66rpx;
 	font-size: 28rpx;
+}
+.bg-top.data-v-89c5a6d6{
+	position: fixed;
+	top:0;
+}
+.conduct-text.data-v-89c5a6d6{
+	position: fixed;
+	top:384rpx;
+}
+.bg-bottom.data-v-89c5a6d6{
+	position:fixed;
+	bottom: 0;
+	left: 75rpx;
+	right: 0;
+	margin: 0 auto;
 }
 

@@ -34,7 +34,7 @@
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
 		</view>
 		
-		<view class="item flex padding justify-between align-center" @click="toImproveData()">
+		<view class="item flex padding justify-between align-center" @click="toDownloadApp()">
 			<view class="flex justify-start">
 				<image src="https://static.mianyangjuan.com//personal_data@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
 				<view class="text-black text-lg text-bold padding-left-lg">
@@ -54,11 +54,11 @@
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
 		</view>
 		
-		<view class="item flex padding justify-between align-center" @click="toLogin()">
+		<view class="item flex padding justify-between align-center" @click="toFeedback()">
 			<view class="flex justify-start">
-				<image src="https://static.mianyangjuan.com//setting@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
+				<image src="https://static.mianyangjuan.com//feedback@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
 				<view class="text-black text-lg text-bold padding-left-lg">
-					退出登陆
+					意见反馈
 				</view>
 			</view>
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
@@ -122,17 +122,17 @@
 					}
 				})
 			},
-			toImproveData(){
-				uni.navigateTo({
-					url:'subPages/ImproveData',
-					success() {
-						console.log("success toImproveData");
-					},
-					fail(){
-						console.log("fail toImproveData");
-					}
-				})
-			},
+			// toImproveData(){
+			// 	uni.navigateTo({
+			// 		url:'DownloadApp',
+			// 		success() {
+			// 			console.log("success toDownloadApp");
+			// 		},
+			// 		fail(){
+			// 			console.log("fail toDownloadApp");
+			// 		}
+			// 	})
+			// },
 			toTripartiteAccount(){
 				uni.navigateTo({
 					url:'subPages/tripartiteAccount',
@@ -174,6 +174,17 @@
 					},
 					fail(){
 						console.log("fail toDownloadAPP");
+					}
+				})
+			},
+			toFeedback(){
+				uni.navigateTo({
+					url:'../setBasicInfor/Feedback',
+					sucess(){
+							console.log("sucess toFeedback");
+					},
+					fail(){
+							console.log("fail toFeedback");
 					}
 				})
 			}

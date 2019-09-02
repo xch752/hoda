@@ -31,12 +31,12 @@
 				<view class="text-white text-xl">休息8小时</view>
 			</view>
 			<view class="flex justify-center align-center margin-bottom-xl">
-				<view class="text-white text-df memberTip">您还不是会员,会员无限滑动,<span>立即成为会员</span></view>
+				<view class="text-white text-df memberTip">您还不是会员,会员无限滑动,<span @click="toMemberCenter()" >立即成为会员</span></view>
 			</view>
 			
 		</view>
 		<!-- 用户 -->
-		<view class="flex justify-center detailed" >
+		<!-- <view class="flex justify-center detailed" > -->
 			<scroll-view class="scroll-detailed bg-white" 
 			:scroll-top="scrollTop" 
 			scroll-y="true"  
@@ -90,71 +90,71 @@
 						基本资料
 					</text>
 					<view class="flex justify-start">
-						<view class="text-center" v-if="item.height"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//Height@3x.png" mode="aspectFit">
+						<view class="text-center flex align-center" v-if="item.height"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Height@3x.png" mode="aspectFit">
 							</image>
-							{{item.height}}cm
+							<text>{{item.height}}<text>cm</text></text>
 						</view>
-						<view class="text-center" v-if="item.figure"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
+						<view class="text-center flex align-center" v-if="item.figure"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Figure@3x.png" mode="aspectFit">
 							</image>
-							{{item.figure}}
+							<text>{{item.figure}}<text></text></text>
 						</view>
-						<view class="text-center" v-if="item.job"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
+						<view class="text-center flex align-center" v-if="item.job"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//profession@3x.png" mode="aspectFit">
 							</image>
-							{{item.job}}
-						</view>
-					</view>
-					<view class="flex justify-start">
-						<view class="text-center" v-if="item.income"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
-							</image>
-							{{item.income}}
-						</view>
-						<view class="text-center" v-if="item.emotion"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
-							</image>
-							{{item.emotion}}
-						</view>
-						<view class="text-center" v-if="item.smoking"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
-							</image>
-							{{item.smoking}}
+							<text>{{item.job}}<text></text></text>
 						</view>
 					</view>
 					<view class="flex justify-start">
-						<view class="text-center" v-if="item.drinking"
-						 style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
+						<view class="text-center flex align-center" v-if="item.income"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Income@3x.png" mode="aspectFit">
 							</image>
-							{{item.drinking}}
+							<text>{{item.income}}<text></text></text>
 						</view>
-						<view class="text-center" v-if="item.child"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
+						<view class="text-center flex align-center" v-if="item.emotion"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Emotional_state_@3x.png" mode="aspectFit">
 							</image>
-							{{item.child}}
+							<text>{{item.emotion}}<text></text></text>
 						</view>
-						<view class="text-center" v-if="item.relation" 
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;margin-left: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
+						<view class="text-center flex align-center" v-if="item.smoking"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//smoking@3x.png" mode="aspectFit">
 							</image>
-							{{item.relation}}
+							<text>{{item.smoking}}<text></text></text>
 						</view>
 					</view>
 					<view class="flex justify-start">
-						<view class="text-center" v-if="item.constellation"
-						style="padding: 0 15upx 0 15upx;background:#EAD2FE;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin-top: 20upx;">
-							<image style="width: 25upx;height: 25upx;" src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit">
+						<view class="text-center flex align-center" v-if="item.drinking"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//drink@3x.png" mode="aspectFit">
 							</image>
-							{{item.constellation}}
+							<text>{{item.drinking}}<text></text></text>
+						</view>
+						<view class="text-center flex align-center" v-if="item.child"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//child@3x.png" mode="aspectFit">
+							</image>
+							<text>{{item.child}}<text></text></text>
+						</view>
+						<view class="text-center flex align-center" v-if="item.relation"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Expectation_relationship@3x.png" mode="aspectFit">
+							</image>
+							<text>{{item.relation}}<text></text></text>
+						</view>
+					</view>
+					<view class="flex justify-start">
+						<view class="text-center flex align-center" v-if="item.constellation"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//constellation@3x.png" mode="aspectFit">
+							</image>
+							<text>{{item.constellation}}<text></text></text>
 						</view>
 					</view>	
 				</view>
@@ -222,7 +222,7 @@
 					</view>
 				</view>
 			</scroll-view>
-		</view>
+		<!-- </view> -->
 	</view>
 </template>
 
@@ -352,11 +352,11 @@
 						id:5,
 						animation:'',
 						show:true,
-						imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
-						name:'Aily',
-						age:23,
+						imgUrl:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2744267305,3823782124&fm=26&gp=0.jpg',
+						name:'Emily',
+						age:22,
 						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:178,
+						height:156,
 						figure:'丰满',
 						job:'艺人',
 						income:'51-100w',
@@ -504,7 +504,7 @@
 					}, 750)
 				}
 			},
-			withdraw(){
+			withdraw(){//撤回
 				if(this.userIndex<this.userList.length-1){
 					this.userIndex++
 					this.userList[this.userIndex].animation = '';
@@ -514,6 +514,17 @@
 					}, 0)
 				}	
 			},
+			toMemberCenter(){
+				uni.navigateTo({
+					url:'../mine/subPages/memberCenter',
+					success() {
+						console.log("success toMemberCenter")
+					},
+					fail() {
+						console.log("fail toMemberCenter")
+					}
+				})
+			}
 			// showTrue(){
 			// 	console.log("showtrue")
 			// 	for(var item of this.userList){
@@ -545,7 +556,7 @@
 		position: fixed;
 		right: 60upx;
 		bottom: 200upx;
-		z-index: 999;
+		z-index: 99999;
 	}
 	/* #endif */
 	
@@ -554,7 +565,7 @@
 		position: fixed;
 		right: 60upx;
 		bottom: 300upx;
-		z-index: 999;
+		z-index: 99999;
 	}
 	/* #endif */
 	
@@ -570,6 +581,7 @@
 		width: 93%;
 		display: flex;
 		flex-direction: column;
+		border: #FFFFFF solid 1upx;
 	}
 	/* #endif */
 	
@@ -585,6 +597,7 @@
 		width: 93%;
 		display: flex;
 		flex-direction: column;
+		border: #FFFFFF solid 1upx;
 	}
 	/* #endif */
 	
@@ -601,7 +614,8 @@
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
-		box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2);
+		border: #EEEEEE solid 3upx;
+		/* box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2); */
 	}
 	/* #endif */
 	
@@ -618,7 +632,8 @@
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
-		box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2);
+		border: #EEEEEE solid 3upx;
+		/* box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2); */
 	}
 	/* #endif */
 	.vipStatus{

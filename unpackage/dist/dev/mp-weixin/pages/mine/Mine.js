@@ -229,17 +229,17 @@ var _default =
         } });
 
     },
-    toImproveData: function toImproveData() {
-      uni.navigateTo({
-        url: 'subPages/ImproveData',
-        success: function success() {
-          console.log("success toImproveData");
-        },
-        fail: function fail() {
-          console.log("fail toImproveData");
-        } });
-
-    },
+    // toImproveData(){
+    // 	uni.navigateTo({
+    // 		url:'DownloadApp',
+    // 		success() {
+    // 			console.log("success toDownloadApp");
+    // 		},
+    // 		fail(){
+    // 			console.log("fail toDownloadApp");
+    // 		}
+    // 	})
+    // },
     toTripartiteAccount: function toTripartiteAccount() {
       uni.navigateTo({
         url: 'subPages/tripartiteAccount',
@@ -281,6 +281,17 @@ var _default =
         },
         fail: function fail() {
           console.log("fail toDownloadAPP");
+        } });
+
+    },
+    toFeedback: function toFeedback() {
+      uni.navigateTo({
+        url: '../setBasicInfor/Feedback',
+        sucess: function sucess() {
+          console.log("sucess toFeedback");
+        },
+        fail: function fail() {
+          console.log("fail toFeedback");
         } });
 
     } } };exports.default = _default;

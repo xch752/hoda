@@ -225,7 +225,18 @@ var _default =
       uni.showModal({
         title: '提示',
         content: '下载APP成为会员',
-        showCancel: false });
+        showCancel: false,
+        success: function success() {
+          uni.navigateTo({
+            url: '../DownloadApp',
+            success: function success() {
+              console.log("sucess toDownloadApp");
+            },
+            fail: function fail() {
+              console.log("fail toDownloadApp");
+            } });
+
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
