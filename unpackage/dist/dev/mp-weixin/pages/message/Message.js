@@ -249,6 +249,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -257,21 +258,21 @@ var _default =
       matchUserList: [
       {
         id: 0,
-        url: 'http://img.qqzhi.com/uploads/2018-12-05/095314426.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
         title: '星星',
         day: 6,
         hour: 9 },
 
       {
         id: 1,
-        url: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1017590850,3664578715&fm=26&gp=0.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
         title: '可可',
         day: 5,
         hour: 4 },
 
       {
         id: 2,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
         title: '露露',
         day: 6,
         hour: 9 },
@@ -292,35 +293,35 @@ var _default =
 
       {
         id: 5,
-        url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2744267305,3823782124&fm=26&gp=0.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
         title: '依依',
         day: 6,
         hour: 5 },
 
       {
         id: 6,
-        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
         title: '克克',
         day: 6,
         hour: 9 },
 
       {
         id: 7,
-        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
         title: '兮兮',
         day: 3,
         hour: 9 },
 
       {
         id: 8,
-        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
         title: '依依',
         day: 2,
         hour: 9 },
 
       {
         id: 9,
-        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
         title: '克克',
         day: 4,
         hour: 12 }],
@@ -330,84 +331,84 @@ var _default =
       chatList: [
       {
         id: 0,
-        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
         title: '可可',
         content: '你好！',
         show: true },
 
       {
         id: 1,
-        url: 'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
         title: '星星',
         content: '很高兴认识你',
         show: true },
 
       {
         id: 2,
-        url: 'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
-        title: '克克',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
+        title: '露露',
         content: '你好，在吗',
         show: true },
 
       {
         id: 3,
-        url: 'https://static.mianyangjuan.com//Line_sm@3x.png',
-        title: '依依',
+        url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+        title: '西西',
         content: 'hello',
         show: true },
 
       {
         id: 4,
-        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
-        title: '欣欣',
+        url: 'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
+        title: '兮兮',
         content: '你好',
         show: true },
 
       {
         id: 5,
-        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
-        title: '露露',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
+        title: '依依',
         content: '在吗',
         show: true },
 
       {
         id: 6,
-        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
-        title: '可可',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
+        title: '克克',
         content: '你好！',
         show: true },
 
       {
         id: 7,
-        url: 'https://static.mianyangjuan.com//Twitter_lg_@3x.png',
-        title: '星星',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
+        title: '兮兮',
         content: '很高兴认识你',
         show: true },
 
       {
         id: 8,
-        url: 'https://static.mianyangjuan.com//Instagram_lg_@3x.png',
-        title: '克克',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
+        title: '依依',
         content: '你好，在吗',
         show: true },
 
       {
         id: 9,
-        url: 'https://static.mianyangjuan.com//Line_sm@3x.png',
-        title: '依依',
+        url: 'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
+        title: '克克',
         content: 'hello',
         show: true },
 
       {
         id: 10,
-        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+        url: 'http://pic.qqtn.com/up/2017-12/15133953058033827.jpg',
         title: '欣欣',
         content: '你好',
         show: true },
 
       {
         id: 11,
-        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201908/17/20190817211439_ZUnkU.jpeg',
         title: '露露',
         content: '在吗',
         show: true }],
@@ -431,7 +432,7 @@ var _default =
 
         {
           id: 1,
-          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          url: 'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
           show: true },
 
         {
@@ -452,12 +453,12 @@ var _default =
         data: [
         {
           id: 0,
-          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
           show: true },
 
         {
           id: 1,
-          url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
+          url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
           show: true }] },
 
 
@@ -479,17 +480,17 @@ var _default =
         data: [
         {
           id: 0,
-          url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
+          url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
           show: true },
 
         {
           id: 1,
-          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
+          url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
           show: true },
 
         {
           id: 2,
-          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
           show: true }] }] };
 
 
@@ -606,6 +607,17 @@ var _default =
     },
     deleteChatListItem: function deleteChatListItem(index) {
       this.chatList[index].show = false;
+    },
+    toCheckPeople: function toCheckPeople() {
+      uni.navigateTo({
+        url: 'CheckPeople',
+        success: function success() {
+          console.log("success toCheckPeople");
+        },
+        fail: function fail(err) {
+          console.log(err);
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

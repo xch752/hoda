@@ -7930,6 +7930,40 @@ createPage(_Gender.default);
 
 /***/ }),
 
+/***/ 277:
+/*!********************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmine%2FWebView"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _WebView = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/WebView.vue */ 278));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_WebView.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 283:
+/*!***************************************************************************************!*\
+  !*** C:/Users/xch752/Downloads/hoda/main.js?{"page":"pages%2Fmessage%2FCheckPeople"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _CheckPeople = _interopRequireDefault(__webpack_require__(/*! ./pages/message/CheckPeople.vue */ 284));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_CheckPeople.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
 /***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!

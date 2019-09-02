@@ -105,7 +105,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
 //
 //
 //
@@ -124,13 +125,27 @@ var _default =
 {
   data: function data() {
     return {
-      url: 'https://uniapp.dcloud.io/' };
+      url: 'https://uniapp.dcloud.io/',
+      system: '' };
 
   },
   onLoad: function onLoad() {
-
+    this.determiningSystem();
   },
   methods: {
+    determiningSystem: function determiningSystem() {
+      var THAT = this;
+      uni.getSystemInfo({
+        success: function success(res) {
+          if (res.system.includes("iOS")) {
+            THAT.system = "iOS";
+          } else
+          {
+            THAT.system = "Android";
+          }
+        } });
+
+    },
     toDownloadUrl: function toDownloadUrl() {
 
 
@@ -141,7 +156,34 @@ var _default =
       // 		title:'跳转失败'
       // 	})
       // });  
+
+      uni.navigateTo({
+        url: 'WebView?system=' + this.system,
+        success: function success() {
+          console.log("success");
+        },
+        fail: function fail(err) {
+          console.log(err);
+        } });
+
+
+    },
+    //右上角分享功能
+    onShareAppMessage: function onShareAppMessage(res) {
+      var that = this;
+      return {
+        title: '',
+        path: '/pages/home/Home',
+        imageUrl: "",
+        success: function success(res) {
+          console.log(res);
+        },
+        fail: function fail(res) {
+          console.log(res);
+        } };
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

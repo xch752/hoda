@@ -26,10 +26,12 @@
     "pages/mine/subPages/account/Account",
     "pages/mine/subPages/systemSetting",
     "pages/mine/DownloadApp",
+    "pages/mine/WebView",
     "pages/message/ChatRoom",
     "pages/message/ChatRoomPair",
     "pages/message/Pair",
-    "pages/message/AllPair"
+    "pages/message/AllPair",
+    "pages/message/CheckPeople"
   ],
   "subPackages": [],
   "window": {

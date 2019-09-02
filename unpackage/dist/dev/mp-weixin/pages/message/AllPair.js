@@ -128,21 +128,21 @@ var _default =
       allMatchUserList: [
       {
         id: 0,
-        url: 'http://img.qqzhi.com/uploads/2018-12-05/095314426.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
         title: '星星',
         day: 6,
         hour: 9 },
 
       {
         id: 1,
-        url: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1017590850,3664578715&fm=26&gp=0.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
         title: '可可',
         day: 5,
         hour: 4 },
 
       {
         id: 2,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
         title: '露露',
         day: 6,
         hour: 9 },
@@ -163,35 +163,35 @@ var _default =
 
       {
         id: 5,
-        url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2744267305,3823782124&fm=26&gp=0.jpg',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
         title: '依依',
         day: 6,
         hour: 5 },
 
       {
         id: 6,
-        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
         title: '克克',
         day: 6,
         hour: 9 },
 
       {
         id: 7,
-        url: 'https://static.mianyangjuan.com//WeChat_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
         title: '兮兮',
         day: 3,
         hour: 9 },
 
       {
         id: 8,
-        url: 'https://static.mianyangjuan.com//Telephone_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
         title: '依依',
         day: 2,
         hour: 9 },
 
       {
         id: 9,
-        url: 'https://static.mianyangjuan.com//Facebook_lg_@3x.png',
+        url: 'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
         title: '克克',
         day: 4,
         hour: 12 }] };

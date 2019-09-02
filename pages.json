@@ -177,6 +177,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/WebView",//APP推广页面 webview
+			"style": {
+				"navigationBarTitleText": "下载APP"
+			}
+		},
+		{
 			"path": "pages/message/ChatRoom",//消息 聊天详情页面
 			"style": {
 				"navigationBarTitleText": "聊天"
@@ -201,6 +207,12 @@
 			"path": "pages/message/AllPair",//消息 聊天详情页面
 			"style": {
 				"navigationBarTitleText": "全部配对"
+			}
+		},
+		{
+			"path": "pages/message/CheckPeople",//消息 聊天详情页面
+			"style": {
+				"navigationBarTitleText": "查看"
 			}
 		}
     ],

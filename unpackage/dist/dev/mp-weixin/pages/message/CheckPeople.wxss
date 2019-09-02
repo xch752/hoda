@@ -1,0 +1,95 @@
+
+.full.data-v-375856c7{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	background: #FFFFFF;
+}
+.title.data-v-375856c7{
+	width: 115rpx;
+	height: 46rpx;
+	margin-top: 60rpx;
+}
+
+/* 条件编译到微信小程序 */
+.button-group.data-v-375856c7{
+	position: fixed;
+	right: 60rpx;
+	bottom: 200rpx;
+	z-index: 999;
+}
+
+
+
+/* 条件编译到微信小程序 */
+.detailed.data-v-375856c7{
+	top:20rpx;
+	right: 25rpx;
+	left: 25rpx;
+	bottom: 25rpx;
+	border-radius: 30rpx;
+	position: fixed;
+	height: 88%;
+	width: 93%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+
+
+
+/* 条件编译到H5 */
+.scroll-detailed.data-v-375856c7{
+	top:50rpx;
+	right: 25rpx;
+	left: 25rpx;
+	bottom: 25rpx;
+	border-radius: 30rpx;
+	position: fixed;
+	height: 88%;
+	width: 93%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	overflow: hidden;
+	-webkit-box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2);
+	        box-shadow:0px 2px 9px 0px rgba(10,0,32,0.2);
+}
+
+
+.vipStatus.data-v-375856c7{
+	width:30rpx;
+	height: 30rpx;
+}
+.cerStatus.data-v-375856c7{
+	width:30rpx;
+	height: 30rpx;
+}
+.memberTip.data-v-375856c7{
+	letter-spacing: 5rpx;
+}
+.memberTip ._span.data-v-375856c7{
+	text-decoration:underline;
+}
+
