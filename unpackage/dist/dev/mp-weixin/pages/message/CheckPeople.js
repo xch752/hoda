@@ -343,7 +343,8 @@ var _default =
 
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad(option) {
+    this.userList[0].imgUrl = option.url;
 
 
 

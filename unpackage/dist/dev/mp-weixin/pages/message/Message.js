@@ -437,7 +437,7 @@ var _default =
 
         {
           id: 2,
-          url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567674597&di=dce782555bed0bbd66c5e9223e5d0a14&imgtype=jpg&er=1&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F07%2F20180207212343_XB3Te.jpeg',
+          url: 'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
           show: true },
 
         {
@@ -469,7 +469,7 @@ var _default =
         data: [
         {
           id: 1,
-          url: 'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
+          url: 'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
           show: true }] },
 
 
@@ -608,9 +608,10 @@ var _default =
     deleteChatListItem: function deleteChatListItem(index) {
       this.chatList[index].show = false;
     },
-    toCheckPeople: function toCheckPeople() {
+    toCheckPeople: function toCheckPeople(url) {
+      console.log(url);
       uni.navigateTo({
-        url: 'CheckPeople',
+        url: 'CheckPeople?url=' + url,
         success: function success() {
           console.log("success toCheckPeople");
         },

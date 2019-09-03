@@ -236,7 +236,8 @@
 				},
 			}
 		},
-		onLoad:function(){
+		onLoad:function(option){
+			this.userList[0].imgUrl=option.url;
 			// #ifdef H5
 			this.screenHeight=window.screen.height*0.88*0.915;
 			// #endif  
