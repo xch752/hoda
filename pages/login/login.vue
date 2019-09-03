@@ -76,7 +76,11 @@
 			}
 		},
 		onLoad() {
-			this.getLoginStorage();//取本地账号密码
+			let THAT = this;
+			THAT.getLoginStorage();//取本地账号密码
+		},
+		onShow() {
+			console.log("onShow")
 		},
 		methods: {
 			chooseLogin(){
@@ -136,26 +140,32 @@
 				
 			},
 			toHome(){
-				//登陆条件判断
-				var That = this;
-				console.log(`账号:${this.logUserName} 密码:${this.logPassword}`);
-				uni.setStorage({//本地缓存账号
-					key:"UserName",
-					data:That.logUserName
-				});
-				uni.setStorage({//本地缓存密码
-					key:"Password",
-					data:That.logPassword
-				});
-				uni.reLaunch({
-					url: '../home/Home',
-					success() {
-						console.log("success toHome");
-					},
-					fail(){
-						console.log("fail toHome");
-					}
-				});
+				if(true){//登陆条件判断
+					var That = this;
+					console.log(`账号:${this.logUserName} 密码:${this.logPassword}`);
+					uni.setStorage({//本地缓存账号
+						key:"UserName",
+						data:That.logUserName
+					});
+					uni.setStorage({//本地缓存密码
+						key:"Password",
+						data:That.logPassword
+					});
+					uni.reLaunch({
+						url: '../home/Home',
+						success() {
+							console.log("success toHome");
+						},
+						fail(){
+							console.log("fail toHome");
+						}
+					});
+				}else{
+					uni.showToast({
+						title:"用户名或密码错误",
+						icon:"none"
+					})
+				}		
 			},
 			verificationCode(){//验证码函数
 				var THAT = this;
@@ -191,12 +201,14 @@
 					key:"UserName",
 					success(e){
 						That.logUserName=e.data;
+						console.log(That.logUserName);
 					}
 				})
 				uni.getStorage({
 					key:"Password",
 					success(e){
 						That.logPassword=e.data;
+						console.log(That.logPassword);
 					}
 				})
 			},

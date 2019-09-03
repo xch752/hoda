@@ -190,7 +190,11 @@ var _default =
     };
   },
   onLoad: function onLoad() {
-    this.getLoginStorage(); //取本地账号密码
+    var THAT = this;
+    THAT.getLoginStorage(); //取本地账号密码
+  },
+  onShow: function onShow() {
+    console.log("onShow");
   },
   methods: {
     chooseLogin: function chooseLogin() {
@@ -250,26 +254,27 @@ var _default =
 
     },
     toHome: function toHome() {
-      //登陆条件判断
-      var That = this;
-      console.log("\u8D26\u53F7:".concat(this.logUserName, " \u5BC6\u7801:").concat(this.logPassword));
-      uni.setStorage({ //本地缓存账号
-        key: "UserName",
-        data: That.logUserName });
+      if (true) {//登陆条件判断
+        var That = this;
+        console.log("\u8D26\u53F7:".concat(this.logUserName, " \u5BC6\u7801:").concat(this.logPassword));
+        uni.setStorage({ //本地缓存账号
+          key: "UserName",
+          data: That.logUserName });
 
-      uni.setStorage({ //本地缓存密码
-        key: "Password",
-        data: That.logPassword });
+        uni.setStorage({ //本地缓存密码
+          key: "Password",
+          data: That.logPassword });
 
-      uni.reLaunch({
-        url: '../home/Home',
-        success: function success() {
-          console.log("success toHome");
-        },
-        fail: function fail() {
-          console.log("fail toHome");
-        } });
+        uni.reLaunch({
+          url: '../home/Home',
+          success: function success() {
+            console.log("success toHome");
+          },
+          fail: function fail() {
+            console.log("fail toHome");
+          } });
 
+      } else {}
     },
     verificationCode: function verificationCode() {//验证码函数
       var THAT = this;
@@ -305,12 +310,14 @@ var _default =
         key: "UserName",
         success: function success(e) {
           That.logUserName = e.data;
+          console.log(That.logUserName);
         } });
 
       uni.getStorage({
         key: "Password",
         success: function success(e) {
           That.logPassword = e.data;
+          console.log(That.logPassword);
         } });
 
     },

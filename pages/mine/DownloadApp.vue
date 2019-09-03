@@ -18,7 +18,7 @@
 	export default{
 		data(){
 			return{
-				url: 'https://uniapp.dcloud.io/',
+				url: 'https://a.app.qq.com/o/simple.jsp?pkgname=com.honey.jiaoyou',
 				system:''
 			}
 		},

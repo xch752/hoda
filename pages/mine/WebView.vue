@@ -12,8 +12,10 @@
 		onLoad:function(option){
 			if(option.system=='iOS'){
 				this.url="https://apps.apple.com/cn/app/hoda-在最真实的小世界里追ta/id1459514761"
+				// this.url="https://a.app.qq.com/o/simple.jsp?pkgname=com.honey.jiaoyou"
 			}
 			else{
+				// this.url="https://apps.apple.com/cn/app/hoda-在最真实的小世界里追ta/id1459514761"
 				this.url="https://a.app.qq.com/o/simple.jsp?pkgname=com.honey.jiaoyou"
 			}
 			console.log(this.url)

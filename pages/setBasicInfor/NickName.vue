@@ -41,22 +41,28 @@
 
 <script>
 	import common from '../../common/globalVariable.js'
+	import {genUpToken} from '../../util/qiniuToken.js'
+	import qiniuUploader from '../../util/qiniuUploader.js'
 	export default {
 		data(){
 			return{
 				nickName:'',//昵称
 				date: '',//年龄 出生日期
 				// gender:''
-				uploadAvatarUrl:'https://static.mianyangjuan.com//Upload_Avatar@3x.png'
+				uploadAvatarUrl:'https://static.mianyangjuan.com//Upload_Avatar@3x.png',
+				QiniuData:{
+					key:'',
+					token:''
+				}
 			}
 		},
 		onLoad: function (options){
 			// this.gender=options.gender;
 			// console.log(this.gender);
+			this.initQiniu();
 		},
 		onHide:function(){
 			common.uploadAvatar=this.uploadAvatarUrl
-
 		},
 		methods:{
 			toCertiFication(){
@@ -98,10 +104,57 @@
 				uni.chooseImage({
 				    count: 1, //默认9
 				    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-				    sourceType: ['album'], //拍照
+				    sourceType: ['album'], //相册
 				    success: function (res) {
-						THAT.uploadAvatarUrl=res.tempFilePaths[0],
-						console.log(THAT.uploadAvatarUrl);
+						// 本地路径设置
+						// THAT.uploadAvatarUrl=res.tempFilePaths[0], 
+						// console.log(THAT.uploadAvatarUrl);
+						
+						//上传七牛
+						var _THAT = THAT;
+						var filePath = res.tempFilePaths[0];
+						// 交给七牛上传
+						qiniuUploader.upload(filePath, (res) => {
+						  // 每个文件上传成功后,处理相关的事情
+						  // 其中 info 是文件上传成功后，服务端返回的json，形式如
+						  // {
+						  //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
+						  //    "key": "gogopher.jpg"
+						  //  }
+						  // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
+							_THAT.uploadAvatarUrl=res.fileUrl;
+							console.log('file url is: ' + res.fileUrl);
+						}, (error) => {
+							console.log('error: ' + error);
+						}, {
+						  region: 'SCN',
+						  domain: 'https://static.mianyangjuan.com/', // // bucket 域名，下载资源时用到。如果设置，会在 success callback 的 res 参数加上可以直接使用的 ImageURL 字段。否则需要自己拼接
+						  key: '', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+						  // 以下方法三选一即可，优先级为：uptoken > uptokenURL > uptokenFunc
+						  uptoken: _THAT.QiniuData.token, // 由其他程序生成七牛 uptoken
+						}, (res) => {
+							console.log(res);
+							if(res.progress!==100){
+								uni.showToast({
+									title:`上传中，已上传${res.progress}`,
+									icon:'loading'
+								})
+							}else if(res.progress===100){
+								uni.showToast({
+									title:`上传完成`,
+									icon:'success'
+								})
+							}
+							// console.log('上传进度', res.progress)
+							// console.log('已经上传的数据长度', res.totalBytesSent)
+							// console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+						}, () => {
+						  // 取消上传
+						}, () => {
+						  // `before` 上传前执行的操作
+						}, (err) => {
+						  // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
+						});
 				    },
 					fail: function(err){
 						console.log(JSON.stringify(err));
@@ -111,6 +164,18 @@
 			DateChange(e) {
 				this.date = e.detail.value
 			},
+			initQiniu(){
+				var token;
+				var policy = {};
+				var bucketName = 'bkd-res';
+				var AK ='wvew-LTcMBA2tG94lAngLOwayBpNFF4lwkDrX1iM';
+				var SK = 'KQ4vURi-c-LmWaOjPsrkF6Sdeds-SiLvAUenfu2N';
+				var deadline = Math.round(new Date().getTime()/1000) + 3600;
+				policy.scope = bucketName;
+				policy.deadline = deadline;
+				token=genUpToken(AK,SK,policy);
+				this.QiniuData.token=token;
+			}
 		},
 	}
 </script>

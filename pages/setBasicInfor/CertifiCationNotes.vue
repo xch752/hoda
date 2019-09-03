@@ -10,11 +10,19 @@
 				<image class="certificationNotes" src="https://static.mianyangjuan.com//Certification_note@3x.png" mode="aspectFill"></image>
 			</view>
 			<view class="avatarsAuditNote flex justify-center solid align-center">
-				<image class="avatarsAudit" :src="uploadAvatar" mode="aspectFill"></image>
+				<view class="avatarsAudit flex justify-center align-end" 
+				@click="reSubmitAva()"
+				:style="{'background':'#FFFFFF', 'background-image': 'url(' + uploadAvatar + ')','background-repeat':'no-repeat','background-size':'cover' }">
+					<text class="text-white text-center" style="width: 100%;background:rgba(0,0,0,1);opacity:0.5;">审核中</text>
+				</view>
 				<view class="avatarsTip text-sm text-gray text-center flex align-center justify-center"><text>上传本人真实清晰\n的照片作为形象照</text></view>
 			</view>
 			<view class="avatarsAuditNote flex justify-center solid align-center">
-				<image class="avatarsAudit" :src="uploadCertification" mode="aspectFill"></image>
+				<view class="avatarsAudit flex justify-center align-end"
+				@click="reSubmitCer()"
+				:style="{'background':'#FFFFFF', 'background-image': 'url(' + uploadCertification + ')','background-repeat':'no-repeat','background-size':'cover' }">
+					<text class="text-white text-center" style="width: 100%;background:rgba(0,0,0,1);opacity:0.5;">审核不通过</text>
+				</view>
 				<view class="avatarsTip text-sm text-gray text-center flex align-center justify-center"><text>上传本人真实清晰\n的照片作为认证照</text></view>
 			</view>
 			<view class="avatarsAuditNote">
@@ -30,16 +38,25 @@
 
 <script>
 	import common from '../../common/globalVariable.js'
+	import {genUpToken} from '../../util/qiniuToken.js'
+	import qiniuUploader from '../../util/qiniuUploader.js'
 	export default{
 		data(){
 			return {
-				uploadAvatar:'',
-				uploadCertification:''
+				QiniuData:{
+					key:'',
+					token:''
+				},
+				uploadAvatar:'https://static.mianyangjuan.com/tmp/wxc80dfbc2926371ac.o6zAJs1ibWiOutd7ivachCLskOGo.6Z1PEDb9ETMY251ead86cae8ade05f11f241c20ac388.jpg',
+				uploadCertification:'https://static.mianyangjuan.com/tmp/wxc80dfbc2926371ac.o6zAJs1ibWiOutd7ivachCLskOGo.EyzQpPPReefM6d9d413a81d16018b43ff413a02e389b.jpg'
 			}
 		},
 		onLoad: function (options){
+			this.initQiniu();
 			this.uploadAvatar=common.uploadAvatar;
 			this.uploadCertification=common.uploadCertification;
+			// console.log(this.uploadAvatar)
+			// console.log(this.uploadCertification)
 		},
 		methods:{
 			toHeight(){
@@ -61,8 +78,124 @@
 					},
 					fail(){
 						console.log("fail toFeedback");
-					}
+					},
 				})
+			},
+			initQiniu(){
+				var token;
+				var policy = {};
+				var bucketName = 'bkd-res';
+				var AK ='wvew-LTcMBA2tG94lAngLOwayBpNFF4lwkDrX1iM';
+				var SK = 'KQ4vURi-c-LmWaOjPsrkF6Sdeds-SiLvAUenfu2N';
+				var deadline = Math.round(new Date().getTime()/1000) + 3600;
+				policy.scope = bucketName;
+				policy.deadline = deadline;
+				token=genUpToken(AK,SK,policy);
+				this.QiniuData.token=token;
+			},
+			reSubmitAva(){//头像重新提交
+				var THAT=this;
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				    sourceType: ['album'], //相册
+				    success: function (res) {
+						// 本地路径设置
+						// THAT.uploadAvatarUrl=res.tempFilePaths[0], 
+						// console.log(THAT.uploadAvatarUrl);
+						
+						//上传七牛
+						var _THAT = THAT;
+						var filePath = res.tempFilePaths[0];
+						// 交给七牛上传
+						qiniuUploader.upload(filePath, (res) => {
+						  // 每个文件上传成功后,处理相关的事情
+						  // 其中 info 是文件上传成功后，服务端返回的json，形式如
+						  // {
+						  //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
+						  //    "key": "gogopher.jpg"
+						  //  }
+						  // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
+							_THAT.uploadAvatar=res.fileUrl;
+							common.uploadAvatar=res.fileUrl;
+							console.log('file url is: ' + res.fileUrl);
+						}, (error) => {
+							console.log('error: ' + error);
+						}, {
+						  region: 'SCN',
+						  domain: 'https://static.mianyangjuan.com/', // // bucket 域名，下载资源时用到。如果设置，会在 success callback 的 res 参数加上可以直接使用的 ImageURL 字段。否则需要自己拼接
+						  key: '', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+						  // 以下方法三选一即可，优先级为：uptoken > uptokenURL > uptokenFunc
+						  uptoken: _THAT.QiniuData.token, // 由其他程序生成七牛 uptoken
+						}, (res) => {
+							console.log(res);
+							// console.log('上传进度', res.progress)
+							// console.log('已经上传的数据长度', res.totalBytesSent)
+							// console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+						}, () => {
+						  // 取消上传
+						}, () => {
+						  // `before` 上传前执行的操作
+						}, (err) => {
+						  // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
+						});
+				    },
+					fail: function(err){
+						console.log(JSON.stringify(err));
+					}
+				});
+			},
+			reSubmitCer(){//真人认证重新提交
+				var THAT=this;
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				    sourceType: ['camera'], //拍照
+				    success: function (res) {
+						// 本地路径设置
+						// THAT.uploadAvatarUrl=res.tempFilePaths[0], 
+						// console.log(THAT.uploadAvatarUrl);
+						
+						//上传七牛
+						var _THAT = THAT;
+						var filePath = res.tempFilePaths[0];
+						// 交给七牛上传
+						qiniuUploader.upload(filePath, (res) => {
+						  // 每个文件上传成功后,处理相关的事情
+						  // 其中 info 是文件上传成功后，服务端返回的json，形式如
+						  // {
+						  //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
+						  //    "key": "gogopher.jpg"
+						  //  }
+						  // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
+							_THAT.uploadCertification=res.fileUrl;
+							common.uploadCertification=res.fileUrl;
+							console.log('file url is: ' + res.fileUrl);
+						}, (error) => {
+							console.log('error: ' + error);
+						}, {
+						  region: 'SCN',
+						  domain: 'https://static.mianyangjuan.com/', // // bucket 域名，下载资源时用到。如果设置，会在 success callback 的 res 参数加上可以直接使用的 ImageURL 字段。否则需要自己拼接
+						  key: '', // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
+						  // 以下方法三选一即可，优先级为：uptoken > uptokenURL > uptokenFunc
+						  uptoken: _THAT.QiniuData.token, // 由其他程序生成七牛 uptoken
+						}, (res) => {
+							console.log(res);
+							// console.log('上传进度', res.progress)
+							// console.log('已经上传的数据长度', res.totalBytesSent)
+							// console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+						}, () => {
+						  // 取消上传
+						}, () => {
+						  // `before` 上传前执行的操作
+						}, (err) => {
+						  // `complete` 上传接受后执行的操作(无论成功还是失败都执行)
+						});
+				    },
+					fail: function(err){
+						console.log(JSON.stringify(err));
+					}
+				});
 			}
 		}
 	}
