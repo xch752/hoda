@@ -879,6 +879,21 @@ var _default =
           console.log("fail toMemberCenter");
         } });
 
+    },
+    //右上角分享功能
+    onShareAppMessage: function onShareAppMessage(res) {
+      var that = this;
+      return {
+        title: '',
+        path: '/pages/home/Home',
+        imageUrl: "",
+        success: function success(res) {
+          console.log(res);
+        },
+        fail: function fail(res) {
+          console.log(res);
+        } };
+
     }
     // showTrue(){
     // 	console.log("showtrue")

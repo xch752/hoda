@@ -179,7 +179,8 @@
 		{
 			"path": "pages/mine/WebView",//APP推广页面 webview
 			"style": {
-				"navigationBarTitleText": "下载APP"
+				"navigationBarTitleText": "下载APP",
+				"navigationStyle":"custom"
 			}
 		},
 		{

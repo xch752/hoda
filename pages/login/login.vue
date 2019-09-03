@@ -199,7 +199,22 @@
 						That.logPassword=e.data;
 					}
 				})
-			}
+			},
+			//右上角分享功能
+			onShareAppMessage: function (res) {
+				var that = this;
+				return {
+					title: '',
+					path: '/pages/home/Home',
+					imageUrl: "",
+					success: function (res) {
+						console.log(res);
+					},
+					fail: function (res) {
+						console.log(res);
+					}
+				}
+			},
 		}
 	}
 </script>

@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "下载APP",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

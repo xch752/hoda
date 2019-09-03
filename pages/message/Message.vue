@@ -30,7 +30,7 @@
 					</view>
 				</view> -->
 				<scroll-view scroll-x="true" class="matchUser flex scroll-view" >
-				<view class="matchUserItem scroll-view-item" style="margin: 32upx" @click="toAllPair()">
+				<view class="matchUserItem scroll-view-item" @click="toAllPair()">
 					<view class="matchUserItemContent flex align-center justify-center">
 						<view class="flex justify-center align-center" style="width: 94%;height: 94%; border-radius: 50%;background-color: #FFFFFF;">
 							<view class="text-bold text-xl" 
@@ -40,7 +40,9 @@
 				</view>
 				</scroll-view>
 				<scroll-view scroll-x="true" class="matchUser flex scroll-view" style="width: 566upx;">
-					<view class="matchUserItem scroll-view-item" v-for="item of matchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
+					<view class="scroll-view-item" 
+					:class="item.overdue?`matchUserItemGray`:'matchUserItem'"
+					v-for="item of matchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
 						<view class="matchUserItemContent flex align-center justify-center">
 							<view style="width: 94%;height: 94%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
 						</view>
@@ -153,71 +155,81 @@
 						id:0,
 						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
 						title:'星星',
-						day:6,
-						hour:9
+						day:0,
+						hour:0,
+						overdue:true,
 					},
 					{
 						id:1,
 						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
 						title:'可可',
 						day:5,
-						hour:4
+						hour:4,
+						overdue:false,
 					},
 					{
 						id:2,
 						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
 						title:'露露',
 						day:6,
-						hour:9
+						hour:9,
+						overdue:false,
 					},
 					{
 						id:3,
 						url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
 						title:'西西',
 						day:6,
-						hour:14
+						hour:14,
+						overdue:false,
 					},
 					{
 						id:4,
 						url:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
 						title:'兮兮',
 						day:5,
-						hour:21
+						hour:21,
+						overdue:false,
 					},
 					{
 						id:5,
 						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
 						title:'依依',
-						day:6,
-						hour:5
+						day:0,
+						hour:0,
+						overdue:true,
 					},
 					{
 						id:6,
 						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
 						title:'克克',
 						day:6,
-						hour:9
+						hour:9,
+						overdue:false,
 					},
 					{
 						id:7,
 						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
 						title:'兮兮',
 						day:3,
-						hour:9
+						hour:9,
+						overdue:false,
 					},
 					{
 						id:8,
 						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
 						title:'依依',
 						day:2,
-						hour:9
+						hour:9,
+						overdue:false,
 					},
 					{
 						id:9,
 						url:'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
 						title:'克克',
 						day:4,
-						hour:12
+						hour:12,
+						overdue:false,
 					}
 				],
 				isChatRecord:true,
@@ -536,11 +548,21 @@
 		display: inline-flex;
 		height: 120upx;
 		width: 120upx;
-		margin: 32upx 32upx 32upx 0upx;
 		box-sizing: border-box; 
 		border-radius: 50%;
 		padding: 7upx;
-		background-image: linear-gradient(top, #0B47E1 0%, #6819EC 33%, #DB17AF 66%, #F02C64 100%);  
+		margin: 32upx;
+		background-image: linear-gradient(top, #0B47E1 0%, #6819EC 33%, #DB17AF 66%, #F02C64 100%);
+	}
+	.matchUserItemGray{
+		display: inline-flex;
+		height: 120upx;
+		width: 120upx;
+		box-sizing: border-box; 
+		border-radius: 50%;
+		padding: 7upx;
+		margin: 32upx;
+		background-image: linear-gradient(top, #DDDDDD 0%, #DDDDDD 33%, #DDDDDD 66%, #DDDDDD 100%);
 	}
 	.matchUserItemContent{
 		width:100%; 

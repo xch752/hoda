@@ -313,6 +313,21 @@ var _default =
           That.logPassword = e.data;
         } });
 
+    },
+    //右上角分享功能
+    onShareAppMessage: function onShareAppMessage(res) {
+      var that = this;
+      return {
+        title: '',
+        path: '/pages/home/Home',
+        imageUrl: "",
+        success: function success(res) {
+          console.log(res);
+        },
+        fail: function fail(res) {
+          console.log(res);
+        } };
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

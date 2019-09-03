@@ -20,14 +20,30 @@
 	display: inline-flex;
 	height: 120rpx;
 	width: 120rpx;
-	margin: 32rpx 32rpx 32rpx 0rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box; 
 	border-radius: 50%;
 	padding: 7rpx;
+	margin: 32rpx;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#0B47E1), color-stop(33%, #6819EC), color-stop(66%, #DB17AF), to(#F02C64));
 	background-image: -o-linear-gradient(top, #0B47E1 0%, #6819EC 33%, #DB17AF 66%, #F02C64 100%);
 	background-image: linear-gradient(top, #0B47E1 0%, #6819EC 33%, #DB17AF 66%, #F02C64 100%);
+}
+.matchUserItemGray.data-v-432f65d2{
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	height: 120rpx;
+	width: 120rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box; 
+	border-radius: 50%;
+	padding: 7rpx;
+	margin: 32rpx;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#DDDDDD), color-stop(33%, #DDDDDD), color-stop(66%, #DDDDDD), to(#DDDDDD));
+	background-image: -o-linear-gradient(top, #DDDDDD 0%, #DDDDDD 33%, #DDDDDD 66%, #DDDDDD 100%);
+	background-image: linear-gradient(top, #DDDDDD 0%, #DDDDDD 33%, #DDDDDD 66%, #DDDDDD 100%);
 }
 .matchUserItemContent.data-v-432f65d2{
 	width:100%; 

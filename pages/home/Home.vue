@@ -772,7 +772,22 @@
 						console.log("fail toMemberCenter")
 					}
 				})
-			}
+			},
+			//右上角分享功能
+			onShareAppMessage: function (res) {
+				var that = this;
+				return {
+					title: '',
+					path: '/pages/home/Home',
+					imageUrl: "",
+					success: function (res) {
+						console.log(res);
+					},
+					fail: function (res) {
+						console.log(res);
+					}
+				}
+			},
 			// showTrue(){
 			// 	console.log("showtrue")
 			// 	for(var item of this.userList){
