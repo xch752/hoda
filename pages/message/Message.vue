@@ -1,7 +1,7 @@
 <template>
 	<view class="full">
 		<!-- 消息 -->
-		<view v-show="checkValue=='message'?true:false">
+		<view v-if="checkValue=='message'?true:false">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-white text-center" style="font-size: 40upx;margin-right:40upx">消息</view>
@@ -10,10 +10,10 @@
 				<view class="flex justify-center">
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-right: 150upx;border-radius: 2upx;"
-					v-show="checkValue=='message'?true:false"></view>
+					v-if="checkValue=='message'?true:false"></view>
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-left: 150upx;border-radius: 2upx;"
-					v-show="checkValue=='like'?true:false"></view>
+					v-if="checkValue=='like'?true:false"></view>
 				</view>
 			</view>
 			<!-- 配对用户 -->
@@ -29,7 +29,7 @@
 						<view style="width: 100%;height: 100%; border-radius: 50%;"></view>
 					</view>
 				</view> -->
-				<scroll-view scroll-x="true" class="matchUser flex scroll-view" >
+				<!-- <scroll-view scroll-x="true" class="matchUser flex scroll-view" @scroll="" style="width:150upx">
 				<view class="matchUserItem scroll-view-item" @click="toAllPair()">
 					<view class="matchUserItemContent flex align-center justify-center">
 						<view class="flex justify-center align-center" style="width: 94%;height: 94%; border-radius: 50%;background-color: #FFFFFF;">
@@ -38,13 +38,24 @@
 						</view>
 					</view>
 				</view>
-				</scroll-view>
-				<scroll-view scroll-x="true" class="matchUser flex scroll-view" style="width: 566upx;">
-					<view class="scroll-view-item" 
-					:class="item.overdue?`matchUserItemGray`:'matchUserItem'"
-					v-for="item of matchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
+				</scroll-view> -->
+				<scroll-view scroll-x="true" class="matchUser flex scroll-view">
+					<view class="matchUserItem scroll-view-item flex align-center justify-start" style="margin-right: 0;" @click="toAllPair()" >
 						<view class="matchUserItemContent flex align-center justify-center">
-							<view style="width: 94%;height: 94%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+							<view class="matchUserItemContent flex align-center justify-center">
+								<view style="width: 94%;height: 94%; border-radius: 50%;background-repeat: no-repeat;background-size: cover;background-image: url(https://static.mianyangjuan.com/pairList.png);"></view>
+							</view>
+							
+							<!-- <view class="flex justify-center align-center" style="width: 94%;height: 94%; border-radius: 50%;background-color: #FFFFFF;">
+								<view class="text-bold text-xl" 
+								style="background: linear-gradient(to bottom,blue,red);-webkit-text-fill-color: transparent;-webkit-background-clip: text;font-style: italic"><text>ALL</text></view>
+							</view> -->
+						</view>
+					</view>
+					<view class="scroll-view-item matchUserItem flex align-center justify-start" style="margin-right: 0;"
+					v-for="(item,index) of matchUserList" :key="index" @click="toChatRoom(item.userName,item.likeUid,item.icon,item.second)">
+						<view class="matchUserItemContent flex align-center justify-center">
+							<view style="width: 94%;height: 94%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
 						</view>
 					</view>
 				</scroll-view>
@@ -83,23 +94,21 @@
 					<view class="cu-list menu-avatar">
 						<view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item,index) in chatList" :key="index"
 						 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
-						 v-if="item.show">
+						 @click="toChatRoom(item.nick,item.to,item.avatar)">
 							<view class="cu-avatar round lg" 
-							@click="toChatRoom(item.title)"
-							:style="{'background':'#FFFFFF', 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
-							<view class="content" @click="toChatRoom(item.title)">
-								<view class="text-black text-bold">{{item.title}}</view>
-								<view class="text-gray text-sm">
-									<!-- <text class="cuIcon-infofill text-red  margin-right-xs"></text> -->
-									{{item.content}}
+							:style="{'backlground':'#FFFFFF', 'background-image': 'url(' + item.avatar + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+							<view class="content">
+								<!-- 昵称，头像走接口获取 -->
+								<view class="text-black text-bold">{{item.nick}}</view>
+								<view class="text-gray text-sm" style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+									{{item.lastMsg.text}}
 								</view>
 							</view>
-							<view class="action" @click="toChatRoom(item.title)">
-								<view class="text-grey text-xs">22:20</view>
-								<view class="cu-tag round bg-grey sm">5</view>
+							<view class="action">
+								<view class="text-grey text-xs">{{item.updateTime}}</view>
+								<view v-if="item.unread" class="cu-tag round bg-red sm">{{item.unread}}</view>
 							</view>
 							<view class="move">
-								<!-- <view class="bg-grey">置顶</view> -->
 								<view class="bg-red" @click="deleteChatListItem(index)">删除</view>
 							</view>
 						</view>
@@ -108,7 +117,7 @@
 			</view>
 		</view>
 		<!-- 喜欢 -->
-		<view v-show="checkValue=='message'?false:true">
+		<view v-if="checkValue=='message'?false:true">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-gray text-center" style="line-height: 60upx;font-size: 30upx;margin-right: 50upx;" @click="checkValueChange()">消息</view>
@@ -117,24 +126,29 @@
 				<view class="flex justify-center">
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-right: 150upx;border-radius: 2upx;"
-					v-show="checkValue=='message'?true:false"></view>
+					v-if="checkValue=='message'?true:false"></view>
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-left: 150upx;border-radius: 2upx;"
-					v-show="checkValue=='like'?true:false"></view>
+					v-if="checkValue=='like'?true:false"></view>
 				</view>
 			</view>
 			<view>
 				<scroll-view scroll-y="true" class="scrollView">
-					<view v-for="(likeItem,index) of likeUserList" :key="index">
+					<view v-for="(likeItem,index) of likeUserList" :key="index" >
 						<view class="flex justify-start">
-							<view class="margin-sm"><text class="text-bold text-lg">{{likeItem.day}}</text>/{{likeItem.mounth}}月</view>
+							<view class="margin-sm"><text class="text-bold text-lg">{{likeItem[0].createTime[2]}}</text><text class="text-gray">/ {{likeItem[0].createTime[1]}}月</text></view>
 						</view>
-						<scroll-view scroll-x="true" class="likeUser flex scroll-view" style="width: 100%;">
-							<view class="likeUserItem scroll-view-item" 
-							v-for="Item of likeItem.data" :key="Item.id" 
-							@tap="toCheckPeople(Item.url)" 
-							:style="{ 'background-image': 'url(' + Item.url + ')','background-repeat':'no-repeat','background-size':'cover'}">
-								
+						<scroll-view scroll-x="true" class="likeUser flex scroll-view" style="width: 100%;overflow: hidden;">
+							<view v-if="isMember==0?true:false" class="likeUserItemPar" v-for="Item of likeItem" :key="Item.likeUid">
+								<image class="likeUserItem scroll-view-item filter" 
+								:src="Item.icon" mode="aspectFill" 
+								@tap="toMemberCenter()"
+								></image>
+							</view>
+							<view v-if="isMember==1?true:false" class="likeUserItemPar" v-for="Item of likeItem" :key="Item.likeUid">
+								<image class="likeUserItem scroll-view-item" 
+								:src="Item.icon" mode="aspectFill" 
+								@tap="toCheckPeople(Item.likeUid)" ></image>
 							</view>
 						</scroll-view>
 					</view>
@@ -146,268 +160,74 @@
 </template>
 
 <script>
+	import Request from '../../util/luch-request/request.js'
+	// import IMController from '../../common/im.js'
+	// import NIM from '../../util/NIM_Web_NIM_weixin_v6.8.0.js'
+	import common from '../../common/globalVariable.js'
 	export default{
 		data(){
 			return{
+				flag:'',
+				userList:[],
+				msgs:[],
+				chatFlag:false,
+				isMember:'',
 				checkValue:'message',
-				matchUserList:[
-					{
-						id:0,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
-						title:'星星',
-						day:0,
-						hour:0,
-						overdue:true,
-					},
-					{
-						id:1,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
-						title:'可可',
-						day:5,
-						hour:4,
-						overdue:false,
-					},
-					{
-						id:2,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
-						title:'露露',
-						day:6,
-						hour:9,
-						overdue:false,
-					},
-					{
-						id:3,
-						url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
-						title:'西西',
-						day:6,
-						hour:14,
-						overdue:false,
-					},
-					{
-						id:4,
-						url:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
-						title:'兮兮',
-						day:5,
-						hour:21,
-						overdue:false,
-					},
-					{
-						id:5,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
-						title:'依依',
-						day:0,
-						hour:0,
-						overdue:true,
-					},
-					{
-						id:6,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
-						title:'克克',
-						day:6,
-						hour:9,
-						overdue:false,
-					},
-					{
-						id:7,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
-						title:'兮兮',
-						day:3,
-						hour:9,
-						overdue:false,
-					},
-					{
-						id:8,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
-						title:'依依',
-						day:2,
-						hour:9,
-						overdue:false,
-					},
-					{
-						id:9,
-						url:'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
-						title:'克克',
-						day:4,
-						hour:12,
-						overdue:false,
-					}
-				],
+				matchUserList:[],
 				isChatRecord:true,
-				chatList:[
-					{
-						id:0,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
-						title:'可可',
-						content:'你好！',
-						show:true,
-					},
-					{
-						id:1,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
-						title:'星星',
-						content:'很高兴认识你',
-						show:true,
-					},
-					{
-						id:2,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
-						title:'露露',
-						content:'你好，在吗',
-						show:true,
-					},
-					{
-						id:3,
-						url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
-						title:'西西',
-						content:'hello',
-						show:true,
-					},
-					{
-						id:4,
-						url:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
-						title:'兮兮',
-						content:'你好',
-						show:true,
-					},
-					{
-						id:5,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
-						title:'依依',
-						content:'在吗',
-						show:true,
-					},
-					{
-						id:6,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
-						title:'克克',
-						content:'你好！',
-						show:true,
-					},
-					{
-						id:7,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
-						title:'兮兮',
-						content:'很高兴认识你',
-						show:true,
-					},
-					{
-						id:8,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
-						title:'依依',
-						content:'你好，在吗',
-						show:true,
-					},
-					{
-						id:9,
-						url:'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
-						title:'克克',
-						content:'hello',
-						show:true,
-					},
-					{
-						id:10,
-						url:'http://pic.qqtn.com/up/2017-12/15133953058033827.jpg',
-						title:'欣欣',
-						content:'你好',
-						show:true,
-					},
-					{
-						id:11,
-						url:'https://c-ssl.duitang.com/uploads/item/201908/17/20190817211439_ZUnkU.jpeg',
-						title:'露露',
-						content:'在吗',
-						show:true,
-					}
-					
-				],
+				chatList:[{}],
 				modalName: null,
 				listTouchStartX: 0,
 				listTouchStartY: 0,
 				listTouchDirection: null,
 				showScrollbar:true,
-				likeUserList:[
-					{
-						day:'27',
-						mounth:'08',
-						data:[
-							{
-								id:0,
-								url:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
-								show:true,
-							},
-							{
-								id:1,
-								url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
-								show:true,
-							},
-							{
-								id:2,
-								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
-								show:true,
-							},
-							{
-								id:3,
-								url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
-								show:true,
-							}
-						]
-					},
-					{
-						day:'20',
-						mounth:'08',
-						data:[
-							{
-								id:0,
-								url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
-								show:true,
-							},
-							{
-								id:1,
-								url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
-								show:true,
-							}
-						]
-					},
-					{
-						day:'27',
-						mounth:'07',
-						data:[
-							{
-								id:1,
-								url:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
-								show:true,
-							}
-						]
-					},
-					{
-						day:'15',
-						mounth:'07',
-						data:[
-							{
-								id:0,
-								url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
-								show:true,
-							},
-							{
-								id:1,
-								url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
-								show:true,
-							},
-							{
-								id:2,
-								url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
-								show:true,
-							}
-							
-						]
-					},
-						
-				],
+				likeUserList:[]
 			}	
 		},
 		onLoad:function(option){
+			var THAT = this;
 			this.checkValue = 'message';
 			console.log(`onLoad ${this.checkValue}`)
+			this.isMember = common.isMember;
+			// common.chatList.map((cur,index)=>{
+			// 	common.nim.getUser({
+			// 		account:cur.id.substr(4),
+			// 		done:(error, user)=>{
+			// 			console.log(user);
+			// 			common.chatList[index].avatar = JSON.parse(JSON.stringify(user.avatar));
+			// 			common.chatList[index].nick = JSON.parse(JSON.stringify(user.nick));
+			// 		}
+			// 	})
+			// })
+			// setTimeout(()=>{
+			// 	this.chatList = common.chatList;
+			// 	// this.chatList = [].concat(JSON.parse(JSON.stringify(common.chatList)));
+			// }, 200);
+			// this.flag = setInterval(()=>{
+			// 	common.chatList.map((cur,index)=>{
+			// 		common.nim.getUser({
+			// 			account:cur.id.substr(4),
+			// 			done:(error, user)=>{
+			// 				// console.log(user);
+			// 				common.chatList[index].avatar = JSON.parse(JSON.stringify(user.avatar));
+			// 				common.chatList[index].nick = JSON.parse(JSON.stringify(user.nick));
+			// 			}
+			// 		})
+			// 	})
+			// 	setTimeout(()=>{
+			// 		this.chatList = common.chatList;
+			// 		// this.chatList = [].concat(JSON.parse(JSON.stringify(common.chatList)));
+			// 	}, 200);
+			// },2000)
+			// console.log(this.timeStamp(150000)); 
+			// console.log(common.nim);
+		},
+		updated:function () {
+			// console.log('updated',common.chatList)
+			// console.log('updated',this.chatList)
+		},
+		onReady:function(){
+			console.log(`onReady`)
 		},
 		onUnload:function(){
 			uni.setStorage({
@@ -415,9 +235,12 @@
 				data:"message"
 			});
 			console.log(`onUnload ${this.checkValue}`)
+			clearInterval(this.flag);
 		},
 		onShow:function(option){
 			var THAT = this;
+			this.getPairList();
+			this.getLikeList();
 			uni.getStorage({
 				key:"messageCheckValue",
 				success(e){
@@ -425,14 +248,63 @@
 					console.log(`onShow ${THAT.checkValue}`)
 				}
 			})
+			common.chatList.map((cur,index)=>{
+				common.nim.getUser({
+					account:cur.id.substr(4),
+					done:(error, user)=>{
+						console.log(user);
+						common.chatList[index].avatar = JSON.parse(JSON.stringify(user.avatar));
+						common.chatList[index].nick = JSON.parse(JSON.stringify(user.nick));
+					}
+				})
+			})
+			setTimeout(()=>{
+				if(THAT.chatList!=common.chatList){
+					THAT.chatList = [].concat(JSON.parse(JSON.stringify(common.chatList)));
+				}
+				// this.chatList = common.chatList;
+			}, 200);
+			THAT.flag = setInterval(()=>{
+				common.chatList.map((cur,index)=>{
+					common.nim.getUser({
+						account:cur.id.substr(4),
+						done:(error, user)=>{
+							// console.log(user);
+							common.chatList[index].avatar = JSON.parse(JSON.stringify(user.avatar));
+							common.chatList[index].nick = JSON.parse(JSON.stringify(user.nick));
+						}
+					})
+				})
+				if(common.chatList.length==0){
+					THAT.isChatRecord = false;
+				}else{
+					THAT.isChatRecord = true;
+				}
+				setTimeout(()=>{
+					if(THAT.chatList!=common.chatList){
+						THAT.chatList = [].concat(JSON.parse(JSON.stringify(common.chatList)));
+					}
+				}, 200);
+			},10000)
+			// this.chatList=common.chatList
+			// setInterval(()=>{
+			// 	// if(THAT.chatList!=common.chatList){
+			// 	// 	THAT.chatList=common.chatList
+			// 	// 	console.log('this.chatList',THAT.chatList)
+			// 	// 	console.log('common.chatList',common.chatList)
+			// 	// }else if (THAT.chatList ==common.chatList){
+			// 	// 	console.log(THAT.chatList)
+			// 	// 	console.log(common.chatList)
+			// 	// 	console.log('sample')
+			// 	// }
+			// 	THAT.chatList=common.chatList
+			// 	console.log('this.chatList',THAT.chatList)
+			// 	console.log('common.chatList',common.chatList)
+			// }, 5000);
 		},
-		// onHide:function(){
-		// 	uni.setStorage({
-		// 		key:"messageCheckValue",
-		// 		data:"message"
-		// 	});
-		// 	console.log(`onHide ${this.checkValue}`)
-		// },
+		onHide:function(){
+			clearInterval(this.flag);
+		},
 		methods:{
 			toAllPair(){
 				uni.navigateTo({
@@ -445,9 +317,15 @@
 					}
 				})
 			},
-			toChatRoom(title){
+			toChatRoom(fromNick,userId,avatar,second){
+				common.chatList.map((cur,index)=>{
+					if(cur.to==userId){
+						cur.unread=0;
+					}
+				})
 				uni.navigateTo({
-					url:'ChatRoom?title='+title,
+					url:`ChatRoom?second=${second}&fromNick=${fromNick}&userId=${userId}&avatar=${avatar}`,
+					// url:'ChatRoomPair?title='+title+'&url='+url,
 					success() {
 						console.log("success toChatRoom");
 					},
@@ -473,9 +351,9 @@
 				}
 				
 			},
-			toChatRoomPair(title,url){
+			toChatRoomPair(userId,second){
 				uni.navigateTo({
-					url:`ChatRoomPair?title=${title}&url=${url}`,
+					url:`ChatRoomPair?userId=${userId}&second=${second}`,
 					// url:'ChatRoomPair?title='+title+'&url='+url,
 					success() {
 						console.log("success toChatRoomPair");
@@ -513,15 +391,102 @@
 			deleteChatListItem(index){
 				this.chatList[index].show=false;
 			},
-			toCheckPeople(url){
-				console.log(url);
+			toCheckPeople(id){
 				uni.navigateTo({
-					url:'CheckPeople?url='+url,
+					url:'CheckPeople?id='+id,
 					success() {
 						console.log("success toCheckPeople");
 					},
 					fail(err) {
 						console.log(err);
+					}
+				})
+			},
+			getPairList(){
+				var THAT = this;
+				const http = new Request();
+				let params={
+					params:{
+						likeUid:common.userId,
+						pageNum:1,
+						pageSize:20
+					}
+				}
+				http.get('/pairList', params).then(res => {
+					console.log(params);
+					console.log(res);
+					THAT.matchUserList = res.data.result.list;
+				}).catch(err => {
+					console.log(err);
+				})
+			},
+			timeStamp( second_time ){  
+				var time = parseInt(second_time) + "秒";  
+				if( parseInt(second_time )> 60){  
+					var second = parseInt(second_time) % 60;  
+					var min = parseInt(second_time / 60);  
+					time = min + "分" + second + "秒";  
+					if( min > 60 ){  
+						min = parseInt(second_time / 60) % 60;  
+						var hour = parseInt( parseInt(second_time / 60) /60 );  
+						time = hour + "小时" + min + "分" + second + "秒";  
+						if( hour > 24 ){  
+							hour = parseInt( parseInt(second_time / 60) /60 ) % 24;  
+							var day = parseInt( parseInt( parseInt(second_time / 60) /60 ) / 24 );  
+							time = day + "天" + hour + "小时" + min + "分" + second + "秒";  
+						}  
+					}  
+				}  
+				return time;          
+			},
+			getLikeList(){
+				var THAT =this;
+				const http = new Request();
+				let params={
+					params:{
+						id:common.userId,
+						pageNum:1,
+						pageSize:20
+					}
+				}
+				http.get('/likeList', params).then(res => {
+					console.log(res);
+					// var timestamp = 1527521052;时间戳转换日期
+					// var newDate = new Date();
+					// newDate.setTime(timestamp * 1000);
+					// newDate.toLocaleDateString() 
+					let newDate = new Date();
+					var nameContainer = {}; // 针对键code进行归类的容器
+					res.data.result.map((cur,index)=>{
+						newDate.setTime(cur.createTime*1000);
+						cur.createTime = newDate.toLocaleDateString();
+						nameContainer[cur.createTime] = nameContainer[cur.createTime] || [];
+						nameContainer[cur.createTime].push(cur);
+					})
+					
+					let arrWrap = [];
+					Object.keys(nameContainer).map(key=>{
+					  arrWrap.push(nameContainer[key])
+					})
+					arrWrap.map((cur,index)=>{
+						cur.map((item,ind)=>{
+							item.createTime = item.createTime.split('/');
+						})
+					})
+					console.log(arrWrap);
+					THAT.likeUserList = arrWrap;
+				}).catch(err => {
+					console.log(err);
+				})
+			},
+			toMemberCenter(){
+				uni.navigateTo({
+					url:'../../pagesB/subPages/memberCenter',
+					success: (res) => {
+						console.log('success to memberCenter',res);
+					},
+					fail: (err) => {
+						console.log('fail to memberCenter',err);
 					}
 				})
 			}
@@ -604,15 +569,27 @@
 		width: 100%;
 		height: 350upx;
 		background-color: #FFFFFF;
+		overflow: hidden;
+	}
+	.likeUserItemPar{
+		display: inline-flex;
+		height: 320upx;
+		width: 210upx;
+		margin: 0upx 20upx 0upx 20upx;
+		box-sizing: border-box; 
+		border-radius: 20upx;
+		/* padding: 7upx; */
+		overflow: hidden;
 	}
 	.likeUserItem{
 		display: inline-flex;
-		height: 300upx;
-		width: 200upx;
-		margin: 0upx 25upx 0upx 25upx;
+		height: 320upx;
+		width: 210upx;
+		/* margin: 0upx 20upx 0upx 20upx; */
 		box-sizing: border-box; 
 		border-radius: 20upx;
-		padding: 7upx;
+		/* padding: 7upx; */
+		overflow: hidden;
 	}
 	/* #ifdef MP-WEIXIN*/ /* 条件编译到微信小程序 */
 	.scrollView{
@@ -640,4 +617,7 @@
 		flex-direction: column;
 	}
 	/* #endif */
+	.filter{
+		filter: blur(5px);
+	}
 </style>

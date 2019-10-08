@@ -1,39 +1,50 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/login/RetrievePassword",
-    "pages/setBasicInfor/Gender",
-    "pages/setBasicInfor/NickName",
-    "pages/setBasicInfor/Certification",
-    "pages/setBasicInfor/CertificationPay",
-    "pages/setBasicInfor/Height",
-    "pages/setBasicInfor/Figure",
-    "pages/setBasicInfor/Income",
-    "pages/setBasicInfor/EmotionalState",
-    "pages/setBasicInfor/Relationship",
-    "pages/setBasicInfor/Smoking",
-    "pages/setBasicInfor/Drinking",
-    "pages/setBasicInfor/Child",
-    "pages/setBasicInfor/CertifiCationNotes",
-    "pages/setBasicInfor/Feedback",
     "pages/home/Home",
     "pages/message/Message",
     "pages/mine/Mine",
-    "pages/mine/Preview",
-    "pages/mine/subPages/memberCenter",
-    "pages/mine/subPages/ImproveData",
-    "pages/mine/subPages/tripartiteAccount",
-    "pages/mine/subPages/account/Account",
-    "pages/mine/subPages/systemSetting",
-    "pages/mine/DownloadApp",
-    "pages/mine/WebView",
     "pages/message/ChatRoom",
     "pages/message/ChatRoomPair",
     "pages/message/Pair",
     "pages/message/AllPair",
     "pages/message/CheckPeople"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "pagesA",
+      "pages": [
+        "RetrievePassword/RetrievePassword",
+        "setBasicInfor/Gender",
+        "setBasicInfor/NickName",
+        "setBasicInfor/Certification",
+        "setBasicInfor/CertificationPay",
+        "setBasicInfor/Height",
+        "setBasicInfor/Figure",
+        "setBasicInfor/Income",
+        "setBasicInfor/EmotionalState",
+        "setBasicInfor/Relationship",
+        "setBasicInfor/Smoking",
+        "setBasicInfor/Drinking",
+        "setBasicInfor/Child",
+        "setBasicInfor/CertifiCationNotes",
+        "setBasicInfor/Feedback"
+      ]
+    },
+    {
+      "root": "pagesB",
+      "pages": [
+        "Preview",
+        "subPages/memberCenter",
+        "subPages/ImproveData",
+        "subPages/tripartiteAccount",
+        "subPages/account/Account",
+        "subPages/systemSetting",
+        "DownloadApp",
+        "WebView"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",
@@ -63,6 +74,146 @@
       }
     ]
   },
+  "preloadRule": {
+    "pagesA/RetrievePassword/RetrievePassword": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Gender": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/NickName": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Certification": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/CertificationPay": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Height": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Figure": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Income": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/EmotionalState": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Relationship": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Smoking": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Drinking": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Child": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/CertifiCationNotes": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesA/setBasicInfor/Feedback": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    },
+    "pagesB/Preview": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    },
+    "pagesB/subPages/memberCenter": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    },
+    "pagesB/subPages/ImproveData": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    },
+    "pagesB/subPages/tripartiteAccount": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    },
+    "pagesB/subPages/account/Account": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    },
+    "pagesB/subPages/systemSetting": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    },
+    "pagesB/DownloadApp": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    },
+    "pagesB/WebView": {
+      "network": "all",
+      "packages": [
+        "pagesB"
+      ]
+    }
+  },
   "usingComponents": {},
-  "sitemapLocation": "sitemap11.json"
+  "sitemapLocation": "sitemap54.json"
 }

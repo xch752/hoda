@@ -1,0 +1,19 @@
+
+.text-bold.data-v-4599bb5a{
+	margin-top: 80rpx;
+	margin-bottom: 70rpx;
+}
+.heightValue.data-v-4599bb5a{
+	width:500rpx;
+	border-radius: 30rpx;
+}
+.uni-list.data-v-4599bb5a{
+	color: #000000;
+}
+.uni-list-cell.data-v-4599bb5a{
+	color: #000000;
+}
+.uni-list-cell-db.data-v-4599bb5a{
+	color: #000000;
+}
+

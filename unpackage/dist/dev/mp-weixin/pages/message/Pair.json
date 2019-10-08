@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "配对",
   "navigationStyle": "custom",
+  "animationType": "fade-in",
+  "animationDuration": 300,
   "usingComponents": {}
 }

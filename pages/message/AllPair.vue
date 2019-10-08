@@ -1,12 +1,12 @@
 <template>
 	<view class="full">
-		<scroll-view scroll-y="true" class="chatList flex scroll-view" >
-			<view class="chatListItem scroll-view-item" v-for="item of allMatchUserList" :key="item.id" @click="toChatRoomPair(item.title,item.url)">
+		<scroll-view scroll-y="true" class="chatList flex scroll-view">
+			<view class="chatListItem scroll-view-item" v-for="item of allMatchUserList" :key="item.likeUid" @click="toChatRoom(item.userName,item.likeUid,item.icon,item.second)">
 				<view class="chatListItemDetail flex justify-start">
-					<image :src="item.url" :lazy-load="true"></image>
+					<image :src="item.icon" :lazy-load="true" mode="aspectFill"></image>
 					<view>
-						<view class="chat-title text-black text-lg text-bold">{{item.title}}</view>
-						<view class="chat-content text-gray text-sm margin-top-xs">配对时间剩余{{item.day}}天{{item.hour}}小时</view>
+						<view class="chat-title text-black text-lg text-bold">{{item.userName}}</view>
+						<view class="chat-content text-gray text-sm margin-top-xs">配对时间剩余{{timeStamp(item.second)}}</view>
 					</view>
 				</view>
 			</view>
@@ -15,98 +15,71 @@
 </template>
 
 <script>
+	import common from '../../common/globalVariable.js'
+	import Request from '../../util/luch-request/request.js'
 	export default{
 		data(){
 			return {
-				allMatchUserList:[
-					{
-						id:0,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
-						title:'星星',
-						day:6,
-						hour:9
-					},
-					{
-						id:1,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
-						title:'可可',
-						day:5,
-						hour:4
-					},
-					{
-						id:2,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
-						title:'露露',
-						day:6,
-						hour:9
-					},
-					{
-						id:3,
-						url:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
-						title:'西西',
-						day:6,
-						hour:14
-					},
-					{
-						id:4,
-						url:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
-						title:'兮兮',
-						day:5,
-						hour:21
-					},
-					{
-						id:5,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
-						title:'依依',
-						day:6,
-						hour:5
-					},
-					{
-						id:6,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
-						title:'克克',
-						day:6,
-						hour:9
-					},
-					{
-						id:7,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
-						title:'兮兮',
-						day:3,
-						hour:9
-					},
-					{
-						id:8,
-						url:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
-						title:'依依',
-						day:2,
-						hour:9
-					},
-					{
-						id:9,
-						url:'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
-						title:'克克',
-						day:4,
-						hour:12
-					}
-				],
+				allMatchUserList:[]
 			}
 		},
 		onLoad:function(){
-			
+			this.getPairList();
 		},
 		methods:{
-			toChatRoomPair(title,url){
+			toChatRoom(fromNick,userId,avatar,second){
 				uni.navigateTo({
-					url:`ChatRoomPair?title=${title}&url=${url}`,
+					url:`ChatRoom?second=${second}&fromNick=${fromNick}&userId=${userId}&avatar=${avatar}`,
+					// url:'ChatRoomPair?title='+title+'&url='+url,
 					success() {
-						console.log("success toChatRoomPair");
+						console.log("success toChatRoom");
 					},
 					fail(){
-						console.log("fail toChatRoomPair");
+						console.log("fail toChatRoom");
 					}
 				})
-			}
+			},
+			getPairList(){
+				var THAT = this;
+				const http = new Request();
+				let params={
+					params:{
+						likeUid:common.userId,
+						pageNum:1,
+						pageSize:50
+					}
+				}
+				http.get('/pairList', params).then(res => {
+					console.log(params);
+					console.log(res);
+					// res.data.result.list.map((cur,index)=>{
+					// 	cur.second = THAT.timeStamp(cur.second)
+					// })
+					THAT.allMatchUserList = [].concat(JSON.parse(JSON.stringify(res.data.result.list)));
+					console.log(THAT.allMatchUserList)
+				}).catch(err => {
+					console.log(err);
+				})
+			},
+			timeStamp( second_time ){
+				var time = parseInt(second_time) + "秒";  
+				if( parseInt(second_time )> 60){  
+					var second = parseInt(second_time) % 60;  
+					var min = parseInt(second_time / 60);  
+					time = min + "分" + second + "秒";  
+					if( min > 60 ){  
+						min = parseInt(second_time / 60) % 60;  
+						var hour = parseInt( parseInt(second_time / 60) /60 );  
+						time = hour + "小时" + min + "分" + second + "秒";  
+						if( hour > 24 ){  
+							hour = parseInt( parseInt(second_time / 60) /60 ) % 24;  
+							var day = parseInt( parseInt( parseInt(second_time / 60) /60 ) / 24 );  
+							time = day + "天" + hour + "小时" + min + "分" + second + "秒";  
+						}  
+					}  
+				}  
+				return time;          
+			},
 		}
 	}
 </script>

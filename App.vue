@@ -1,5 +1,8 @@
 <script>
 	export default {
+		globalData: {  
+			netcallController:null 
+		},
 		onLaunch: function() {
 			console.log('App Launch')
 		},

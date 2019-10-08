@@ -3,6 +3,7 @@
 		<view class="text-center bg-mauve" 
 		style="height:448upx;background: url(https://static.mianyangjuan.com//background_lg_@3x.png);background-repeat:no-repeat;background-size: 100% 100%;opacity: 0.90;">
 			<view>
+				<!-- {{nickname}} -->
 				<image src="https://static.mianyangjuan.com//Hoda_white_lg.png" mode="aspectFit" style="width: 231upx;height: 93upx;margin-top: 177upx;"></image>
 			</view>
 			<view class="flex  p-xs mb-sm padding-top-xl flex-sub">
@@ -20,7 +21,7 @@
 		<view class="content" v-if="typeCheck==0">
 			<view class="cu-form-group" style="padding:30upx 0 30upx 0;">
 				<view class="title">手机号</view>
-				<input placeholder="请输入中国大陆手机号码" name="input" type="number" v-model="logUserName" maxlength="11"></input>
+				<input placeholder="请输入中国大陆手机号码" name="input" type="number" v-model="logUserName" maxlength="12"></input>
 			</view>
 			<view class="cu-form-group solid-bottom" style="padding: 30upx 0 30upx 0;">
 				<view class="title">密&nbsp&nbsp&nbsp&nbsp码</view>
@@ -60,9 +61,16 @@
 </template>
 
 <script>
+	import Request from '../../util/luch-request/request.js'
+	import common from '../../common/globalVariable.js'
+	import IMController from '../../common/im.js'
+	// import {mapState,mapMutations} from 'vuex';
 	export default {
 		data() {
 			return {
+				account:'',
+				IMtoken:'',
+				channel:'',
 				typeCheck:0,//0登录 1注册
 				cooldownTime:'获取验证码',
 				btnDisable:false,
@@ -75,9 +83,55 @@
 				verificationCodeValue:''//验证码
 			}
 		},
+		// computed:{
+		// 	...mapState(['nickname'])
+		// },
 		onLoad() {
 			let THAT = this;
 			THAT.getLoginStorage();//取本地账号密码
+			
+			//获取手机信息
+			uni.getSystemInfo({
+				success: (res) => {
+					console.log(res)
+					if(res.system.includes("iOS")){
+						console.log('IOS')
+						THAT.channel = 'IOS';
+					}
+					else{
+						console.log('Android')
+						THAT.channel = 'Android';
+					}
+				}
+			})
+			
+			// uni.request({
+			// 	url:'/userList',
+			// 	data:{
+			// 		id:'',
+			// 		phone:'',
+			// 		userName:'',
+			// 		sex:'',
+			// 		beginDate:'',
+			// 		endDate:'',
+			// 		status:'',
+			// 		pageNo:1,
+			// 		isMember:'',
+			// 		channel:'',
+			// 		userType:'',
+			// 		approvalStatus:'',
+			// 		phoneType:'',
+			// 		certificationStatus:''
+			// 	},
+			// 	success:function(res){
+			// 		console.log(res);
+			// 	},
+			// 	fail:function(err){
+			// 		console.log(err);
+			// 	}
+			// })
+			
+			
 		},
 		onShow() {
 			console.log("onShow")
@@ -91,7 +145,7 @@
 			},
 			toRetrievePassword(){
 				uni.navigateTo({
-					url:'RetrievePassword',
+					url:'../../pagesA/RetrievePassword/RetrievePassword',
 					success() {
 						console.log("success toRetrievePassword");
 					},
@@ -126,67 +180,145 @@
 				// 	})
 				// }
 				else{
-					console.log(`账号:${this.registerUserName} 密码:${this.registerPassword} 密码重复:${this.registerPasswordSecond} 验证码:${this.verificationCodeValue}`)
-					uni.navigateTo({//跳转Gender
-						url:'../setBasicInfor/Gender',
-						success() {
-							console.log("success toGender");
+					const http = new Request();
+					let params={
+						//+号转义字符 %2B
+						phone: '+'+'86'+this.registerUserName,
+						password:this.registerPassword,
+						channel:this.channel,
+						code:this.verificationCodeValue,
+						type:1
+					}
+					http.post('/register', {},{
+						params:params,
+						header: {
+						  'Content-Type': 'application/json;charset=UTF-8'
 						},
-						fail(){
-							console.log("fail toGender");
+						dataType: 'json',
+						responseType: 'text'
+					}).then(res => {
+						console.log(params);
+						console.log(res)
+						common.userId = res.data.result.userId;
+						console.log('common.userId',common.userId)
+						if(res.data.ret==1){
+							uni.navigateTo({//跳转Gender
+								url:'../../pagesA/setBasicInfor/Gender',
+								success() {
+									uni.showToast({
+										title:'注册成功'
+									})
+									console.log("success toGender");
+								},
+								fail(){
+									console.log("fail toGender");
+								}
+							})
 						}
+						else{
+							uni.showToast({
+								icon:'none',
+								title:'注册失败'
+							})
+						}
+					}).catch(err =>{
+						console.log(err);
 					})
+					
+					console.log(`账号:${this.registerUserName} 密码:${this.registerPassword} 密码重复:${this.registerPasswordSecond} 验证码:${this.verificationCodeValue}`)
 				}
 				
 			},
 			toHome(){
-				if(true){//登陆条件判断
-					var That = this;
-					console.log(`账号:${this.logUserName} 密码:${this.logPassword}`);
-					uni.setStorage({//本地缓存账号
-						key:"UserName",
-						data:That.logUserName
-					});
-					uni.setStorage({//本地缓存密码
-						key:"Password",
-						data:That.logPassword
-					});
-					uni.reLaunch({
-						url: '../home/Home',
-						success() {
-							console.log("success toHome");
-						},
-						fail(){
-							console.log("fail toHome");
-						}
-					});
-				}else{
-					uni.showToast({
-						title:"用户名或密码错误",
-						icon:"none"
-					})
-				}		
+				//登陆接口
+				var THAT = this;
+				const http = new Request();
+				let params={
+					params:{
+						//转义字符%2B
+						phone:'+'+'86'+THAT.logUserName,
+						password:THAT.logPassword,
+						channel:THAT.channel
+					}
+				}
+				http.get('/login', params).then(res => {
+					console.log(params);
+					console.log(res);
+					if(res.data.ret==1){
+						common.userId = res.data.result.userId;
+						console.log('common.userId',common.userId)
+						console.log(`账号:${this.logUserName} 密码:${this.logPassword}`);
+						common.sex = res.data.result.userMsg.sex;
+						console.log('common.sex',common.sex);
+						uni.setStorage({//本地缓存账号
+							key:"UserName",
+							data:this.logUserName
+						});
+						uni.setStorage({//本地缓存密码
+							key:"Password",
+							data:this.logPassword
+						});
+						uni.reLaunch({
+							url: '../home/Home',
+							success() {
+								new IMController({
+									token:res.data.result.imtoken,
+									account: res.data.result.userId
+								})
+								console.log(common.nim);
+								console.log("success toHome");
+							},
+							fail(){
+								console.log("fail toHome");
+							}
+						});
+					}else{
+						uni.showToast({
+							title:res.data.msg,
+							icon:"none"
+						})
+					}
+				}).catch(err => {
+					console.log(err);
+				})
 			},
 			verificationCode(){//验证码函数
 				var THAT = this;
 				if(this.registerUserName){
-					//这里写发送验证码函数
-					uni.showToast({
-						title:"验证码已发送"
+					const http = new Request();
+					let params={
+						//+号转义字符 %2B
+						phone:'%2B'+'86'+THAT.registerUserName,
+					}
+					http.post('/sms/send', {},{
+						params:params,
+						header: {
+						  'Content-Type': 'application/json;charset=UTF-8'
+						},
+						dataType: 'json',
+						responseType: 'text'
+					}).then(res => {
+						console.log(params);
+						console.log(res);
+						uni.showToast({
+							title:"验证码已发送"
+						})
+						//倒计时函数
+						this.second = 's';
+						this.cooldownTime = 60;
+						this.btnDisable = true;
+						var verTime = setInterval(function(){
+							THAT.cooldownTime = THAT.cooldownTime - 1;
+							if(THAT.cooldownTime==-1){
+								THAT.btnDisable = false;
+								THAT.cooldownTime='获取验证码';
+								THAT.second='';
+								clearInterval(verTime);
+							}
+						},1000)
+					}).catch(err => {
+						console.log(err);
 					})
-					//倒计时函数
-					this.second = 's';
-					this.cooldownTime = 60;
-					this.btnDisable = true;
-					var verTime = setInterval(function(){
-						THAT.cooldownTime = THAT.cooldownTime - 1;
-						if(THAT.cooldownTime==-1){
-							THAT.btnDisable = false;
-							THAT.cooldownTime='获取验证码';
-							THAT.second='';
-							clearInterval(verTime);
-						}
-					},1000)
 				}
 				else{
 					uni.showToast({

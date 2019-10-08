@@ -1,0 +1,93 @@
+
+.full.data-v-ea52be54{
+	background-color: #f9f9f9;
+}
+swiper.data-v-ea52be54{
+	margin: 36rpx 22rpx;
+	border-radius: 30rpx;
+}
+swiper-item.data-v-ea52be54{
+	border-radius: 30rpx;
+}
+.card-item.data-v-ea52be54{
+	position:relative;
+	width: 330rpx;
+	height: 260rpx;
+	border: 4rpx solid #EEEEEE;
+	border-radius: 30rpx;
+	background-color: #FFFFFF;
+}
+.active.data-v-ea52be54{
+	background-color: #FEF4E5;
+	border: 4rpx solid #F3C837;
+}
+.active-color.data-v-ea52be54{
+	color: #FE8402;
+}
+.member-title.data-v-ea52be54{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: -20rpx;
+	margin: 0 auto;
+	font-size: 23rpx;
+	line-height: 40rpx;
+	background-color: #F4CE4E;
+	border-radius: 999rpx;
+	width: 98rpx;
+	height: 40rpx;
+	color: #FFFFFF;
+}
+.member-discount.data-v-ea52be54{
+	position: absolute;
+	text-align: center;
+	overflow: hidden;
+	left:0;
+	right: 0;
+	top: 0;
+	font-size: 17rpx;
+	line-height: 35rpx;
+	color: #FFFFFF;
+	background-color: #F8DE87;
+	border-radius: 26rpx 0 26rpx 0;
+	width: 81rpx;
+	height: 35rpx;
+}
+.member-time.data-v-ea52be54{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: 47rpx;
+	margin: 0 auto;
+	font-size: 33rpx;
+	line-height: 33rpx;
+}
+.member-price.data-v-ea52be54{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: 103rpx;
+	margin: 0 auto;
+	font-size: 55rpx;
+	line-height: 55rpx;
+	font-weight: 600;
+}
+.member-price text.data-v-ea52be54{
+	font-size: 30rpx;
+	line-height: 30rpx;
+}
+.member-priceall.data-v-ea52be54{
+	position: absolute;
+	text-align: center;
+	left:0;
+	right: 0;
+	top: 188rpx;
+	margin: 0 auto;
+	font-size: 24rpx;
+	line-height: 24rpx;
+	color: #737373;
+}
+

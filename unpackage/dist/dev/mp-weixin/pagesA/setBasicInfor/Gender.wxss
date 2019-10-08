@@ -1,0 +1,44 @@
+
+#genderSelector.data-v-4c6226ed{
+	margin: 100rpx 50rpx 0 50rpx;
+}
+.grayMale.data-v-4c6226ed{
+	background: url(https://static.mianyangjuan.com//male_nocheck@3x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.grayFemale.data-v-4c6226ed{
+	background: url(https://static.mianyangjuan.com//female_nocheck@3x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.colorMale.data-v-4c6226ed{
+	background: url(https://static.mianyangjuan.com//male_check@3x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.colorFemale.data-v-4c6226ed{
+	background: url(https://static.mianyangjuan.com//female_check@3x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.content.data-v-4c6226ed {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+

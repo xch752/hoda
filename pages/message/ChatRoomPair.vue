@@ -5,19 +5,19 @@
 		</view>
 		<view class="avatar">
 			<view class="avatarContent flex justify-center align-center">
-				<view style="width: 96%;height: 96%; border-radius: 50%;" :style="{ 'background-image': 'url(' + url + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+				<view style="width: 96%;height: 96%; border-radius: 50%;" :style="{ 'background-image': 'url(' + icon + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
 			</view>
 		</view>
 		<view class="tipsone">
-			还剩{{number}}小时
+			还剩{{second}}
 		</view>
-		<view class="tipstwo" v-if="gender=='female'?true:false">
-			你们的配对将在{{number}}小时后失效，马上开始聊天吧。
+		<view class="tipstwo" v-if="sex==1?true:false">
+			你们的配对将在{{second}}后失效，马上开始聊天吧
 		</view>
-		<view class="tipstwo" v-if="gender=='male'?true:false">
-			你们的配对将在{{number}}小时后失效，等待她开启聊天。
+		<view class="tipstwo" v-if="sex==2?true:false">
+			你们的配对将在{{second}}后失效，等待她开启聊天
 		</view>
-		<view class="bottom" v-if="gender=='female'?true:false">
+		<view class="bottom" v-if="sex==1?true:false">
 			<view class="flex justify-start">
 				<image src="https://static.mianyangjuan.com//Voice@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
 				<input type="text" value="" placeholder="请输入内容..." placeholder-class="phClass"/>
@@ -29,21 +29,25 @@
 </template>
 
 <script>
+	import Request from '../../util/luch-request/request.js'
+	import common from '../../common/globalVariable.js'
 	export default{
 		data(){
 			return {
-				title:'',
-				gender:'male',
-				number:12,
-				url:'',
+				userId:'',
+				fromNick:'',
+				icon:'',
+				sex:'',
+				second:''
 			}
 		},
 		onLoad: function (option) {
-			this.title=option.title;
-			this.url=option.url;
-			uni.setNavigationBarTitle({
-				 title: this.title
-			})
+			var THAT = this;
+			console.log(option);
+			this.sex = common.sex;
+			this.userId=option.userId;
+			this.second=this.timeStamp(option.second);
+			this.getUser();
 		},
 		methods:{
 			closePage(){
@@ -51,6 +55,45 @@
 				    delta: 1
 				});
 			},
+			timeStamp( second_time ){
+			var time = parseInt(second_time) + "秒";  
+			if( parseInt(second_time )> 60){  
+			    var second = parseInt(second_time) % 60;  
+			    var min = parseInt(second_time / 60);  
+			    time = min + "分" + second + "秒";  
+			    if( min > 60 ){  
+			        min = parseInt(second_time / 60) % 60;  
+			        var hour = parseInt( parseInt(second_time / 60) /60 );  
+			        // time = hour + "小时" + min + "分" + second + "秒";  
+					time = hour + "小时" + min + "分";
+			        if( hour > 24 ){  
+			            hour = parseInt( parseInt(second_time / 60) /60 ) % 24;  
+			            var day = parseInt( parseInt( parseInt(second_time / 60) /60 ) / 24 );  
+			            // time = day + "天" + hour + "小时" + min + "分" + second + "秒"; 
+						time = day + "天" + hour + "小时";
+			        }  
+			    }  
+			}  
+			return time;          
+			},
+			getUser(){
+				var THAT = this;
+				const http = new Request();
+				let params={
+					params:{
+						id:THAT.userId,
+						cerStatus:''
+					}
+				}
+				http.get('/user', params).then(res => {
+					console.log(res);
+					THAT.fromNick = res.data.result.user.userName;
+					THAT.icon = res.data.result.user.icon;
+					uni.setNavigationBarTitle({
+						 title: THAT.fromNick
+					})
+				})
+			}
 		}
 	}
 </script>
@@ -62,7 +105,7 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		background-color: #EEEEEE; 
+		background-color: #FFFFFF; 
 	}
 	.tips{
 		position: fixed;

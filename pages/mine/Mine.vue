@@ -8,9 +8,9 @@
 			</view>
 			<view class="flex margin-top-xl margin-left-xl align-center">
 				<image class="avatar" :src="avatarUrl" mode="aspectFill"></image>
-				<view class="margin-left-xl text-center text-white text-xl text-bold">星星点灯</view>
-				<image class="vipStatus margin-left-sm" src="https://static.mianyangjuan.com//vip@3x.png" mode="aspectFill"></image>
-				<image class="cerStatus margin-left-sm" src="https://static.mianyangjuan.com//Certification@3x.png" mode="aspectFill"></image>
+				<view class="margin-left-xl text-center text-white text-xl text-bold">{{userName}}</view>
+				<image v-if="isMember" class="vipStatus margin-left-sm" src="https://static.mianyangjuan.com//vip@3x.png" mode="aspectFill"></image>
+				<image v-if="certificationStatus" class="cerStatus margin-left-sm" src="https://static.mianyangjuan.com//Certification@3x.png" mode="aspectFill"></image>
 			</view>
 		</view>
 
@@ -71,19 +71,47 @@
 </template>
 
 <script>
+	import Request from '../../util/luch-request/request.js'
+	import common from '../../common/globalVariable.js'
 	export default{
 		data(){
 			return{
-				avatarUrl:'http://img0.imgtn.bdimg.com/it/u=937432971,1989139431&fm=26&gp=0.jpg',
+				certificationStatus:'',
+				isMember:'',
+				userId:'',
+				userName:'',
+				avatarUrl:'',
 			}
 		},
 		onLoad(){
+			this.userId = common.userId;
+			console.log(this.userId);
 			
+			var THAT = this;
+			const http = new Request();
+			let params={
+				params:{
+					id:THAT.userId,
+					cerStatus:''
+				}
+			}
+			http.get('/user', params).then(res => {
+				console.log(params);
+				console.log(res);
+			 	THAT.userName = res.data.result.user.userName;
+				THAT.avatarUrl = res.data.result.user.icon;
+				THAT.certificationStatus = res.data.result.user.certificationStatus==5?true:
+				res.data.result.user.certificationStatus==2?true:false;
+				THAT.isMember = res.data.result.user.isMember==1?true:false;
+				console.log('THAT.certificationStatus',THAT.certificationStatus,'THAT.isMember',THAT.isMember)
+			}).catch(err => {
+				console.log(err);
+			})
 		},
 		methods:{
 			toPreview(){
 				uni.navigateTo({
-					url:'Preview',
+					url:'../../pagesB/Preview',
 					success() {
 						console.log("success toPreview");
 					},
@@ -113,7 +141,7 @@
 			},
 			toMemberCenter(){
 				uni.navigateTo({
-					url:'subPages/memberCenter',
+					url:'../../pagesB/subPages/memberCenter',
 					success() {
 						console.log("success toMemberCenter");
 					},
@@ -135,7 +163,7 @@
 			// },
 			toTripartiteAccount(){
 				uni.navigateTo({
-					url:'subPages/tripartiteAccount',
+					url:'../../pagesB/subPages/tripartiteAccount',
 					success() {
 						console.log("success toTripartiteAccount");
 					},
@@ -168,7 +196,7 @@
 			},
 			toDownloadApp(){
 				uni.navigateTo({
-					url:'DownloadApp',
+					url:'../../pagesB/DownloadApp',
 					sucess(){
 						console.log("sucess toDownloadAPP");
 					},
@@ -179,7 +207,7 @@
 			},
 			toFeedback(){
 				uni.navigateTo({
-					url:'../setBasicInfor/Feedback',
+					url:'../../pagesA/setBasicInfor/Feedback',
 					sucess(){
 							console.log("sucess toFeedback");
 					},

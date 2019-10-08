@@ -4,7 +4,9 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false
+		"urlCheck": false,
+		"es6": true,
+		"minified": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
@@ -104,7 +106,7 @@
 					"name": "Feedback",
 					"query": "",
 					"id": 12,
-					"pathName": "pages/setBasicInfor/Feedback"
+					"pathName": "pagesA/setBasicInfor/Feedback"
 				},
 				{
 					"name": "RetrievePassword",
@@ -165,6 +167,12 @@
 					"query": "",
 					"id": 22,
 					"pathName": "pages/message/AllPair"
+				},
+				{
+					"name": "Preview",
+					"query": "",
+					"id": 23,
+					"pathName": "pagesB/Preview"
 				}
 			]
 		}

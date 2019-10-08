@@ -1,6 +1,23 @@
 
+.cu-chat.data-v-6ce13673{
+	height: 100%;
+}
+.bg-grey.data-v-6ce13673{
+	background-color: #EEEEEE;
+	color: #000000;
+}
+scroll-view.data-v-6ce13673{
+	background-color: #FFFFFF;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 100rpx;
+	/* position: fixed; */
+	height: 90%;
+	width: 100%;
+}
 .full.data-v-6ce13673{
-	position: fixed;
+	/* position: fixed; */
 	height: 100%;
 	width: 100%;
 	display: -webkit-box;
@@ -14,27 +31,164 @@
 	        flex-direction: column;
 	background-color: #EEEEEE;
 }
-.header.data-v-6ce13673{
+/* .full{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #FFFFFF; 
+} */
+.tips.data-v-6ce13673{
+	position: fixed;
+	top:20.67%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+.avatar.data-v-6ce13673{
+	position: fixed;
+	top:32%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	height: 246rpx;
+	width: 246rpx;
+	background-color: #FFFFFF;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	border-radius: 50%;
+	padding: 10rpx;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0B47E1), color-stop(33%, #6819EC), color-stop(66%, #DB17AF), to(#F02C64));
+	background-image: -o-linear-gradient(top, #0B47E1 0%, #6819EC 33%, #DB17AF 66%, #F02C64 100%);
+	background-image: linear-gradient(top, #0B47E1 0%, #6819EC 33%, #DB17AF 66%, #F02C64 100%);
+}
+.avatarContent.data-v-6ce13673{
+	width:100%; 
+	height:100%; 
+	border-radius:50%;
+	background: #FFFFFF;
+}
+.tipsone.data-v-6ce13673{
+	position: fixed;
+	top:55%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	height: 3.28%;
+	width: 21.36%;
+	border-radius: 9999rpx;
+	background-color: #E7E7E7;
+	color: #000000;
+	font-size: 22rpx;
+}
+.tipstwo.data-v-6ce13673{
+	position: fixed;
+	top:61.12%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	height: 2.3%;
+	width: 80.51%;
+	color: #737373;
+	font-size: 28rpx;
+}
+/* .header{
 	position: fixed;
 	top: 0;
-	height: 128rpx;
+	height: 128upx;
 	width: 100%;
 	background: #6A2BF8;
 }
-.bottom.data-v-6ce13673{
+.bottom{
 	position: fixed;
 	width: 100%;
-	height: 120rpx;
+	height: 120upx;
 	bottom: 0;
 	background-color: #FFFFFF;
 }
-input.data-v-6ce13673{
-	width: 495rpx;
-	height: 88rpx;
-	border-radius: 44rpx;
+input{
+	width: 495upx;
+	height: 88upx;
+	border-radius: 44upx;
 	background-color: #EEEEEE;
-	padding-left: 50rpx;
-	margin: 16rpx 0 16rpx 14rpx;
-	font-size: 30rpx;
+	padding-left: 50upx;
+	margin: 16upx 0 16upx 14upx;
+	font-size: 30upx;
+} */
+page.data-v-6ce13673{
+  padding-bottom: 100rpx;
+  background-color: #EEEEEE;
+}
+.cu-item.data-v-6ce13673{
+	padding: 30rpx 30rpx 30rpx;
+}
+.date.data-v-6ce13673{
+	position: absolute;
+	font-size: 24rpx;
+	color: #8799a3;
+	width: calc(100% - 320rpx);
+	top: 0rpx;
+	left: 160rpx;
 }
 

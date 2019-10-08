@@ -1,0 +1,48 @@
+
+.text-xl.data-v-801edc84{
+	letter-spacing:5rpx
+}
+/* .full{
+	top:0;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display:flex;
+	flex-direction:column;
+	background-color: #ffffff;
+	margin: 0;
+} */
+/* .tip{
+	margin-top:25upx;
+} */
+.radius.data-v-801edc84{
+	border-radius: 20rpx;
+}
+.bg-add.data-v-801edc84{
+	height: 100rpx;
+	width: 100rpx;
+}
+.bg-pic.data-v-801edc84{
+	width: 526rpx;
+	height: 742rpx;
+}
+.content.data-v-801edc84 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+

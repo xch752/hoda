@@ -5,8 +5,8 @@
 			<image class="title" src="https://static.mianyangjuan.com//Hoda_purple_sm.png" mode="aspectFit"></image>
 		</view>
 		<!-- 操作按钮 -->
-		<view class="button-group" v-show="slideLimit">
-			<button class="margin-top-xl" 
+		<view class="button-group" v-if="slideLimit">
+			<button class="margin-top-xl" v-if="isMember==0?false:true"
 			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//withdraw@3x.png) no-repeat;background-size: 100% 100%"
 			@click="withdraw"
 			:disabled="btnDisabled">
@@ -37,50 +37,66 @@
 		</view>
 		<!-- 用户 -->
 		<!-- <view class="flex justify-center detailed" > -->
-			<scroll-view class="scroll-detailed bg-white" 
+			<scroll-view class="scroll-detailed bg-white"
 			:scroll-top="scrollTop" 
 			scroll-y="true"  
-			@scroll="scroll" 
-			show-scrollbar="true"
-			v-for="item of userList"
+			
+			v-for="item in userList" 
+			:key="item.id" 
+			v-if="item.show" 
 			:class="item.animation"
-			v-if="item.show"
-			:key="item.id"
 			>	
 				<!-- #ifdef H5 -->  
 				<!-- 图片 -->
 				<view class="scroll-view-item text-white" 
 				style="font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
-				:style="{ 'background-image': 'url(' + item.imgUrl + ')','background-repeat':'no-repeat','background-size':'cover','height':screenHeight+'px' }">
+				:style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover','height':screenHeight+'px' }">
 				<!-- #endif -->  
 				
 				<!-- #ifdef MP-WEIXIN -->
 				<!-- 图片 -->
-				<view class="scroll-view-item text-white" 
+				<view class="scroll-view-item text-white" v-if="item.icon"
 				style="height:100%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
-				:style="{ 'background-image': 'url(' + item.imgUrl + ')','background-repeat':'no-repeat','background-size':'cover'}">
+				:style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover'}">
 				<!-- #endif --> 
 					<!-- 姓名，年龄，vip状态 -->
 					<view class="name" 
-					style="position: absolute;bottom: 0;margin:0 0 40upx 50upx;">
-						{{item.name}},{{item.age}}
-						<image class="vipStatus margin-left-sm" src="https://static.mianyangjuan.com//vip@3x.png" mode="aspectFill"></image>
-						<image class="cerStatus margin-left-sm" src="https://static.mianyangjuan.com//Certification@3x.png" mode="aspectFill"></image>
+					style="position: absolute;bottom: 0;margin:0 0 80upx 50upx;text-shadow:2px 2px 5px #333333;">
+						{{item.userName}},{{item.age}}
+						<image v-if="item.isMember==1?true:false" class="vipStatus margin-left-sm" src="https://static.mianyangjuan.com//vip@3x.png" mode="aspectFill"></image>
+						<image v-if="item.certificationStatus==5?true:item.certificationStatus==2?true:false" class="cerStatus margin-left-sm" src="https://static.mianyangjuan.com//Certification@3x.png" mode="aspectFill"></image>
+					</view>
+					<view v-if="item.userForm.company" 
+					class="company text-sm"
+					style="position: absolute;bottom: 0;margin:0 0 45upx 50upx;text-shadow:2px 2px 5px #333333;">
+						{{item.userForm.company}},{{item.userForm.position}}
+					</view>
+					<view v-if="item.userForm.school"  
+					class="company text-sm"
+					style="position: absolute;bottom: 0;margin:0 0 10upx 50upx;text-shadow:2px 2px 5px #333333;">
+						{{item.userForm.school}},{{item.userForm.graduateTime}}毕业
 					</view>
 					<!-- 三方账号 -->
 					<view class="name"
 					style="position: absolute;top: 0;margin:40upx 0 0 40upx;">
-						<image class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Facebook@3x.png" mode="aspectFill"></image>
-						<image class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Twitter@3x.png" mode="aspectFill"></image>
-						<image class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Instagram@3x.png" mode="aspectFill"></image>
-						<image class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Line@3x.png" mode="aspectFill"></image>
-						<image class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//WeChat@3x.png" mode="aspectFill"></image>
-						<image class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Telephone@3x.png" mode="aspectFill"></image>
+						<image v-if="item.f"  
+						class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Facebook@3x.png" mode="aspectFill"></image>
+						<image v-if="item.t" 
+						class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Twitter@3x.png" mode="aspectFill"></image>
+						<image v-if="item.i"  
+						class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Instagram@3x.png" mode="aspectFill"></image>
+						<image v-if="item.l" 
+						class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Line@3x.png" mode="aspectFill"></image>
+						<image v-if="item.w"  
+						class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//WeChat@3x.png" mode="aspectFill"></image>
+						<image v-if="item.phone"  
+						class="margin-left-sm" style="width: 32upx;height: 32upx;" src="https://static.mianyangjuan.com//Telephone@3x.png" mode="aspectFill"></image>
 					</view>
 				</view>
 				<view class="bg-white text-black text-xl padding-xl"
 				style="word-break:break-all;border:0;">
-					<text style="word-break:break-all">
+					<text v-if="item.introduction" 
+					style="word-break:break-all">
 						{{item.introduction}}
 					</text>
 				</view>
@@ -90,53 +106,60 @@
 						基本资料
 					</text>
 					<view class="flex justify-start" style="flex-flow:row wrap">
-						<view class="text-center flex align-center" v-if="item.height"
+						<view class="text-center flex align-center" v-if="item.userForm.tall"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Height@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.height}}<text>cm</text></text>
+							<text>{{item.userForm.tall}}<text>cm</text></text>
 						</view>
-						<view class="text-center flex align-center" v-if="item.figure"
+						<view class="text-center flex align-center" v-if="item.userForm.figure"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Figure@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.figure}}<text></text></text>
+							<text>{{item.userForm.figure}}<text></text></text>
 						</view>
-						<view class="text-center flex align-center" v-if="item.job"
+						<!-- 职业 -->
+						<!-- <view class="text-center flex align-center" v-if="item.userForm.profession"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//profession@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.job}}<text></text></text>
-						</view>					
-						<view class="text-center flex align-center" v-if="item.income"
+							<text>{{item.userForm.profession}}<text></text></text>
+						</view>	 -->				
+						<view class="text-center flex align-center" v-if="item.userForm.income"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Income@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.income}}<text></text></text>
+							<text>{{item.userForm.income}}<text></text></text>
 						</view>
-						<view class="text-center flex align-center" v-if="item.emotion"
+						<view class="text-center flex align-center" v-if="item.userForm.feeling"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Emotional_state_@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.emotion}}<text></text></text>
+							<text>{{item.userForm.feeling}}<text></text></text>
 						</view>
-						<view class="text-center flex align-center" v-if="item.smoking"
+						<view class="text-center flex align-center" v-if="item.userForm.smoke"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//smoking@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.smoking}}<text></text></text>
+							<text>{{item.userForm.smoke}}<text></text></text>
 						</view>					
-						<view class="text-center flex align-center" v-if="item.drinking"
+						<view class="text-center flex align-center" v-if="item.userForm.drink"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//drink@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.drinking}}<text></text></text>
+							<text>{{item.userForm.drink}}<text></text></text>
 						</view>
-						<view class="text-center flex align-center" v-if="item.child"
+						<view class="text-center flex align-center" v-if="item.userForm.child"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//child@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.child}}<text></text></text>
+							<text>{{item.userForm.child}}<text></text></text>
+						</view>
+						<view class="text-center flex align-center" v-if="item.userForm.feeling"
+						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
+							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//Expectation_relationship@3x.png" mode="aspectFit">
+							</image>
+							<text>{{item.userForm.feeling}}<text></text></text>
 						</view>
 						<view class="text-center flex align-center" v-if="item.relation"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
@@ -144,70 +167,121 @@
 							</image>
 							<text>{{item.relation}}<text></text></text>
 						</view>
-						<view class="text-center flex align-center" v-if="item.constellation"
+						<view class="text-center flex align-center" v-if="item.userForm.constellation"
 						style="padding: 0 15upx 0 15upx;background:#FFFFFF;width: auto;height: 48upx;border-radius: 24upx;line-height: 48upx;margin: 20upx 20upx 0 0;border: #EEEEEE solid 3upx;">
 							<image style="width: 38upx;height: 38upx;margin-right: 5upx;" src="https://static.mianyangjuan.com//constellation@3x.png" mode="aspectFit">
 							</image>
-							<text>{{item.constellation}}<text></text></text>
+							<text>{{item.userForm.constellation}}<text></text></text>
 						</view>
 					</view>	
 				</view>
+				<!-- 相册 -->
+				<image class="scroll-view-item text-white" v-for="(photoItem,index) in item.photos" :key="index" v-if="!index==0"
+				style="width: 100%;height:70%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;margin-bottom: 20upx;"
+				lazy-load="true" 
+				:style="{ 'background-image': 'url(' + photoItem.url + ')','background-repeat':'no-repeat','background-size':'cover'}">
+				</image>
 				<!-- 社交账号 -->
 				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
-						社交账号
+						社交账号 <text class="text-bold text-red margin-left-lg text-sm">配对成功的会员才能查看</text>
 					</text>
-					<view class="flex justify-start align-center margin-top-sm">
+					<view v-if="item.f" 
+					class="flex justify-start align-center margin-top-sm">
 						<image src="https://static.mianyangjuan.com//Facebook_lg_@3x.png" mode="aspectFit"
 						style="width:68upx;height: 68upx;"></image>
-						<text class="text-lg margin-left-sm">**********</text>
+						<text class="text-lg margin-left-sm"><text v-for="(item,index) in item.f.length" :key="index" >*</text></text>
 					</view>
-					<view class="flex justify-start align-center margin-top-sm">
+					<view v-if="item.t" 
+					class="flex justify-start align-center margin-top-sm">
 						<image src="https://static.mianyangjuan.com//Twitter_lg_@3x.png" mode="aspectFit"
 						style="width:68upx;height: 68upx;"></image>
-						<text class="text-lg margin-left-sm">**********</text>
+						<text class="text-lg margin-left-sm"><text v-for="(item,index) in item.t.length" :key="index" >*</text></text>
 					</view>
-					<view class="flex justify-start align-center margin-top-sm">
+					<view v-if="item.i" 
+					class="flex justify-start align-center margin-top-sm">
 						<image src="https://static.mianyangjuan.com//Instagram_lg_@3x.png" mode="aspectFit"
 						style="width:68upx;height: 68upx;"></image>
-						<text class="text-lg margin-left-sm">**********</text>
+						<text class="text-lg margin-left-sm"><text v-for="(item,index) in item.i.length" :key="index" >*</text></text>
 					</view>
-					<view class="flex justify-start align-center margin-top-sm">
+					<view v-if="item.l" 
+					class="flex justify-start align-center margin-top-sm">
 						<image src="https://static.mianyangjuan.com//Line_sm@3x.png" mode="aspectFit"
 						style="width:68upx;height: 68upx;"></image>
-						<text class="text-lg margin-left-sm">**********</text>
+						<text class="text-lg margin-left-sm"><text v-for="(item,index) in item.l.length" :key="index" >*</text></text>
 					</view>
-					<view class="flex justify-start align-center margin-top-sm">
+					<view v-if="item.w" 
+					class="flex justify-start align-center margin-top-sm">
 						<image src="https://static.mianyangjuan.com//WeChat_lg_@3x.png" mode="aspectFit"
 						style="width:68upx;height: 68upx;"></image>
-						<text class="text-lg margin-left-sm">**********</text>
+						<text class="text-lg margin-left-sm"><text v-for="(item,index) in item.w.length" :key="index" >*</text></text>
 					</view>
-					<view class="flex justify-start align-center margin-top-sm">
+					<view v-if="item.phone" 
+					class="flex justify-start align-center margin-top-sm">
 						<image src="https://static.mianyangjuan.com//Telephone_lg_@3x.png" mode="aspectFit"
 						style="width:68upx;height: 68upx;"></image>
-						<text class="text-lg margin-left-sm">**********</text>
+						<text class="text-lg margin-left-sm"><text v-for="(item,index) in item.phone.length" :key="index" >*</text></text>
 					</view>
 				</view>
 				<!-- 兴趣爱好 -->
-				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+				<view v-if="item.userForm.interest" 
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						兴趣爱好
 					</text>
 					<view class="margin-top-sm">
-						{{item.interest}}
+						{{item.userForm.interest}}
 					</view>
 				</view>
 				<!-- Q&A -->
-				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+				<view v-if="item.question.makeFriendReason" 
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
-						Q:金钱在两个人的关系里有多重要？
+						Q:您的交友目的是什么?
 					</text>
 					<view class="margin-top-sm">
-						A:非常重要
+						A:{{item.question.makeFriendReason}}
+					</view>
+				</view>
+				<view v-if="item.question.moneyRelation"  
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+					<text class="text-bold">
+						Q:金钱在两个人的关系里有多重要?
+					</text>
+					<view class="margin-top-sm">
+						A:{{item.question.moneyRelation}}
+					</view>
+				</view>
+				<view v-if="item.question.characters" 
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+					<text class="text-bold">
+						Q:您认为自己是一个性格的人?
+					</text>
+					<view class="margin-top-sm">
+						A:{{item.question.characters}}
+					</view>
+				</view>
+				<view v-if="item.question.meet"  
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+					<text class="text-bold">
+						Q:如果两个人聊得来的话，你接受最快多久见面?
+					</text>
+					<view class="margin-top-sm">
+						A:{{item.question.meet}}
+					</view>
+				</view>
+				<view v-if="item.question.trait"  
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+					<text class="text-bold">
+						Q:对方的哪一个特质是您最关心的?
+					</text>
+					<view class="margin-top-sm">
+						A:{{item.question.trait}}
 					</view>
 				</view>
 				<!-- 当前位置 -->
-				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+				<view v-if="item.address" 
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						当前位置
 					</text>
@@ -221,9 +295,14 @@
 </template>
 
 <script>
+	import common from '../../common/globalVariable.js'
+	import Request from '../../util/luch-request/request.js'
+	// import NIM from '../../util/NIM_Web_NIM_weixin_v6.8.0.js'
 	export default {
 		data() {
 			return {
+				isMember:'',
+				chatList:[{}],
 				screenHeight:'',
 				slideLimit:true,
 				scrollTop: 0,
@@ -236,436 +315,24 @@
 				// 	''
 				// ],
 				btnDisabled:false,
-				userList:[
-					{	
-						id:0,
-						animation:'',
-						show:false,
-						imgUrl:'http://img.qqzhi.com/uploads/2018-12-05/095314426.jpg',
-						name:'Hannah',
-						age:23,
-						introduction:'Looking forward to dating Looking Looking forward to dating fo',
-						height:165,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'天枰座',
-						interest:['篮球'],
-						address:['中国','深圳']
-					},
-					{
-						id:1,
-						animation:'',
-						show:false,
-						imgUrl:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1017590850,3664578715&fm=26&gp=0.jpg',
-						name:'Bob',
-						age:20,
-						introduction:'Students seeking a Transfer Admission Guarantee ',
-						height:178,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['爬山','游泳'],
-						address:['中国','南京']
-					},
-					{
-						id:2,
-						animation:'',
-						show:false,
-						imgUrl:'http://img3.imgtn.bdimg.com/it/u=2708783067,814977852&fm=15&gp=0.jpg',
-						name:'Kathleen',
-						age:32,
-						introduction:'Android Open Source - UniApp D B Handler',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'摩羯座',
-						interest:['游戏','乒乓'],
-						address:['中国','北京']
-					},
-					{
-						id:3,
-						animation:'',
-						show:false,
-						imgUrl:'http://p.store.itangyuan.com/p/chapter/attachment/4B6uegEtef/EgfwEtMwEgbt4BIu4gITelu4KNsdH69RKgiVHhy381iuG1aSiTuF6b2.jpg',
-						name:'Catherine',
-						age:26,
-						introduction:'University of Alabama - The University of Alabama wants you to stay connected, even while on the go for ZTE Mercury Free App Download in Utilities',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'101-200w',
-						emotion:'在一段恋情中',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'稳定的私密关系',
-						constellation:'双鱼座',
-						interest:['瑜伽','游泳','攀岩'],
-						address:['中国','杭州']
-					},
-					{
-						id:4,
-						animation:'',
-						show:false,
-						imgUrl:'http://pic2.zhimg.com/50/v2-d0a633461de5f57127628eee0d38d2e6_hd.jpg',
-						name:'Emily',
-						age:22,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					{
-						id:5,
-						animation:'',
-						show:false,
-						imgUrl:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2744267305,3823782124&fm=26&gp=0.jpg',
-						name:'Emily',
-						age:22,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					{	
-						id:6,
-						animation:'',
-						show:false,
-						imgUrl:'http://n.sinaimg.cn/sinacn17/601/w700h701/20180507/2b9b-hacuuvu5241250.jpg',
-						name:'Hannah',
-						age:23,
-						introduction:'Looking forward to dating Looking Looking forward to dating fo',
-						height:165,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'天枰座',
-						interest:['篮球'],
-						address:['中国','深圳']
-					},
-					{
-						id:7,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/10/20180610125955_mpyqg.thumb.700_0.jpg',
-						name:'Bob',
-						age:20,
-						introduction:'Students seeking a Transfer Admission Guarantee ',
-						height:178,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['爬山','游泳'],
-						address:['中国','南京']
-					},
-					{
-						id:8,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/10/20180610125921_qbmcs.jpg',
-						name:'Kathleen',
-						age:32,
-						introduction:'Android Open Source - UniApp D B Handler',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'摩羯座',
-						interest:['游戏','乒乓'],
-						address:['中国','北京']
-					},
-					{
-						id:9,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201907/09/20190709195456_tBMLh.jpeg',
-						name:'Catherine',
-						age:26,
-						introduction:'University of Alabama - The University of Alabama wants you to stay connected, even while on the go for ZTE Mercury Free App Download in Utilities',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'101-200w',
-						emotion:'在一段恋情中',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'稳定的私密关系',
-						constellation:'双鱼座',
-						interest:['瑜伽','游泳','攀岩'],
-						address:['中国','杭州']
-					},
-					{
-						id:10,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201908/17/20190817211439_ZUnkU.jpeg',
-						name:'Emily',
-						age:22,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					{
-						id:11,
-						animation:'',
-						show:false,
-						imgUrl:'http://pic.qqtn.com/up/2017-12/15133953058033827.jpg',
-						name:'Emily',
-						age:22,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					{
-						id:12,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201807/16/20180716125817_nddwp.jpeg',
-						name:'Hannah',
-						age:23,
-						introduction:'Looking forward to dating Looking Looking forward to dating fo',
-						height:165,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'天枰座',
-						interest:['篮球'],
-						address:['中国','深圳']
-					},
-					{
-						id:13,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184445_xrkla.thumb.700_0.jpeg',
-						name:'Bob',
-						age:20,
-						introduction:'Students seeking a Transfer Admission Guarantee ',
-						height:178,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['爬山','游泳'],
-						address:['中国','南京']
-					},
-					{
-						id:14,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184444_tmmzm.thumb.700_0.jpeg',
-						name:'Kathleen',
-						age:32,
-						introduction:'Android Open Source - UniApp D B Handler',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'摩羯座',
-						interest:['游戏','乒乓'],
-						address:['中国','北京']
-					},
-					{
-						id:15,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_kukeg.thumb.700_0.jpeg',
-						name:'Catherine',
-						age:26,
-						introduction:'University of Alabama - The University of Alabama wants you to stay connected, even while on the go for ZTE Mercury Free App Download in Utilities',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'101-200w',
-						emotion:'在一段恋情中',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'稳定的私密关系',
-						constellation:'双鱼座',
-						interest:['瑜伽','游泳','攀岩'],
-						address:['中国','杭州']
-					},
-					{
-						id:16,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184443_xooqg.thumb.700_0.jpeg',
-						name:'Emily',
-						age:22,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					{
-						id:17,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/14/20180614184442_skijn.thumb.700_0.jpeg',
-						name:'Emily',
-						age:22,
-						introduction:'Do you regularly misplace your keys? The Cobra Tag, StickNFind, and BiKN Smart Case can help with that, and Consumer Reports tells you how',
-						height:156,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['游戏','游泳'],
-						address:['中国','上海']
-					},
-					{	
-						id:18,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090825_umwpk.thumb.700_0.jpeg',
-						name:'Hannah',
-						age:23,
-						introduction:'Looking forward to dating Looking Looking forward to dating fo',
-						height:165,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'天枰座',
-						interest:['篮球'],
-						address:['中国','深圳']
-					},
-					{
-						id:19,
-						animation:'',
-						show:false,
-						imgUrl:'https://c-ssl.duitang.com/uploads/item/201806/15/20180615090826_jogfw.thumb.700_0.jpeg',
-						name:'Ash',
-						age:20,
-						introduction:'Students seeking a Transfer Admission Guarantee ',
-						height:178,
-						figure:'丰满',
-						job:'艺人',
-						income:'51-100w',
-						emotion:'单身',
-						smoking:'保密',
-						drinking:'保密',
-						child:'没有',
-						relation:'长期关系',
-						constellation:'金牛座',
-						interest:['爬山','游泳'],
-						address:['中国','南京']
-					}
-				],
+				userList:[{},{}]
 			};
 		},
 		onLoad() {
-			this.userIndex = this.userList.length-1;
 			// #ifdef H5
 			this.screenHeight=window.screen.height*0.88*0.915;
 			// #endif  
-			this.isShow();
+			
+			// this.initNIM();
+			this.getUsers();
+			this.getUserInfo();
+			// this.userIndex = this.userList.length-1;
+			// this.isShow();
+			console.log(this.userIndex)
+			
+		},
+		onShow() {
+			
 		},
 		methods: {
 			isShow(){
@@ -684,7 +351,28 @@
 				this.old.scrollTop = e.detail.scrollTop
 			},
 			animationLeft() {
+				var THAT = this;
+				console.log(this.userIndex)
 				if(this.userIndex>0){
+					//这里接unlike接口
+					const http = new Request();
+					let params={
+						unlikeUid:common.userId,
+						unlikedUid:THAT.userList[THAT.userIndex].id
+					}
+					console.log(params);
+					http.post('/unlike', {},{
+						params:params,
+						header: {
+						  'Content-Type': 'application/json;charset=UTF-8'
+						},
+						dataType: 'json',
+						responseType: 'text'
+					}).then(res => {
+						console.log(res);
+					}).catch(err =>{
+						console.log(err);
+					})
 					this.userList[this.userIndex].animation = 'animation-slide-left';
 					this.btnDisabled = true;
 					setTimeout(()=>{
@@ -699,6 +387,25 @@
 					}, 750)
 				}
 				else if(this.userIndex==0){
+					//这里接unlike接口
+					const http = new Request();
+					let params={
+						unlikeUid:common.userId,
+						unlikedUid:THAT.userList[THAT.userIndex].id
+					}
+					console.log(params);
+					http.post('/unlike', {},{
+						params:params,
+						header: {
+						  'Content-Type': 'application/json;charset=UTF-8'
+						},
+						dataType: 'json',
+						responseType: 'text'
+					}).then(res => {
+						console.log(res);
+					}).catch(err =>{
+						console.log(err);
+					})
 					this.userList[this.userIndex].animation = 'animation-slide-left';
 					this.btnDisabled = true;
 					setTimeout(()=>{
@@ -715,7 +422,41 @@
 				}
 			},
 			animationRight() {
+				console.log(this.userIndex)
+				var THAT = this;
 				if(this.userIndex>0){
+					//这里接like接口
+					const http = new Request();
+					let params={
+						likeUid:common.userId,
+						likedUid:THAT.userList[THAT.userIndex].id
+					}
+					console.log(params);
+					http.post('/like', {},{
+						params:params,
+						header: {
+						  'Content-Type': 'application/json;charset=UTF-8'
+						},
+						dataType: 'json',
+						responseType: 'text'
+					}).then(res => {
+						console.log(res);
+						if(res.data.result.sta==1){
+							//弹窗
+							uni.navigateTo({
+								url:`../message/Pair?pairUserId=${THAT.userList[THAT.userIndex].id}`,
+								animationType:'fade-in',
+								animationDuration:'100',
+								success: (res) => {
+									console.log('success to pair',res)
+								}
+							})
+						}else{
+							//不弹窗
+						}
+					}).catch(err =>{
+						console.log(err);
+					})
 					this.userList[this.userIndex].animation = 'animation-slide-right';
 					this.btnDisabled = true;
 					setTimeout(()=>{
@@ -730,6 +471,38 @@
 					}, 750)
 				}
 				else if(this.userIndex==0){
+					//这里接like接口
+					const http = new Request();
+					let params={
+						likeUid:common.userId,
+						likedUid:THAT.userList[THAT.userIndex].id
+					}
+					console.log(params);
+					http.post('/like', {},{
+						params:params,
+						header: {
+						  'Content-Type': 'application/json;charset=UTF-8'
+						},
+						dataType: 'json',
+						responseType: 'text'
+					}).then(res => {
+						console.log(res);
+						if(res.data.result.sta==1){
+							//弹窗
+							uni.navigateTo({
+								url:`../message/Pair?pairUserId=${THAT.userList[THAT.userIndex].id}`,
+								animationType:'fade-in',
+								animationDuration:'100',
+								success: (res) => {
+									console.log('success to pair',res)
+								}
+							})
+						}else{
+							//不弹窗
+						}
+					}).catch(err =>{
+						console.log(err);
+					})
 					this.userList[this.userIndex].animation = 'animation-slide-right';
 					this.btnDisabled = true;
 					setTimeout(()=>{
@@ -764,7 +537,7 @@
 			},
 			toMemberCenter(){
 				uni.navigateTo({
-					url:'../mine/subPages/memberCenter',
+					url:'../../pagesB/subPages/memberCenter',
 					success() {
 						console.log("success toMemberCenter")
 					},
@@ -788,6 +561,123 @@
 					}
 				}
 			},
+			getUsers(){
+				var THAT = this;
+				const http = new Request();
+				let params={
+					params:{
+						id:common.userId
+					}
+				}
+				http.get('/users', params).then(res => {
+					console.log(params);
+					console.log(res);
+					res.data.result.users.map((cur,index)=>{
+						cur.animation = '';
+						cur.show = '';
+						cur.age = THAT.jsGetAge(cur.age);
+						cur.userForm.figure = cur.userForm.figure=='0'?'苗条':cur.userForm.figure=='1'?'健美':cur.userForm.figure=='2'?'匀称':cur.userForm.figure=='3'?'微胖':cur.userForm.figure=='4'?'丰满':'';
+						cur.userForm.income = cur.userForm.income=='0'?'10万以内':cur.userForm.income=='1'?'11-20万':cur.userForm.income=='2'?'21-50万':cur.userForm.income=='3'?'51-100万':cur.userForm.income=='4'?'100万以上':'';
+						cur.userForm.feeling = cur.userForm.feeling=='0'?'单身':cur.userForm.feeling=='1'?'在一段恋情中':cur.userForm.feeling=='2'?'已婚':cur.userForm.feeling=='3'?'离婚':'';
+						cur.userForm.smoke = cur.userForm.smoke=='0'?'从不抽烟':cur.userForm.smoke=='1'?'偶尔抽烟':cur.userForm.smoke=='2'?'经常抽烟':cur.userForm.smoke=='3'?'保密':'';
+						cur.userForm.drink = cur.userForm.drink=='0'?'从不喝酒':cur.userForm.drink=='1'?'偶尔喝酒':cur.userForm.drink=='2'?'经常喝酒':cur.userForm.drink=='3'?'保密':'';
+						cur.userForm.child = cur.userForm.child=='0'?'没有':cur.userForm.child=='1'?'1个':cur.userForm.child=='2'?'2个':cur.userForm.child=='3'?'3个以上':'';
+						cur.relation = cur.relation=='0'?'恋爱关系':cur.relation=='1'?'私密关系':cur.relation=='2'?'还没想好':cur.relation=='3'?'婚姻':'';
+						//question
+						if(cur.question){
+							if(cur.question.makeFriendReason){
+								cur.question.makeFriendReason = cur.question.makeFriendReason=='0'?'新朋友':cur.question.makeFriendReason=='1'?'短期交往':cur.question.makeFriendReason=='2'?'长期恋爱':cur.question.makeFriendReason=='3'?'灵魂伴侣':cur.question.makeFriendReason=='4'?'暂不确定':'';	
+							}
+							if(cur.question.moneyRelation){
+								cur.question.moneyRelation = cur.question.moneyRelation=='0'?'非常重要':cur.question.moneyRelation=='1'?'一般重要':cur.question.moneyRelation=='2'?'并不重要':'';
+							}
+							if(cur.question.characters){
+								cur.question.characters = cur.question.characters=='0'?'相当保守':cur.question.characters=='1'?'慢热腼腆':cur.question.characters=='2'?'外冷内热':cur.question.characters=='3'?'开朗活泼':cur.question.characters=='4'?'热情奔放':cur.question.characters=='5'?'毫无底线':'';
+							}
+							if(cur.question.meet){
+								cur.question.meet = cur.question.meet=='0'?'当天奔现':cur.question.meet=='1'?'一周内搞定':cur.question.meet=='2'?'一个月内':cur.question.meet=='3'?'不着急,慢慢来':'';
+							}
+							if(cur.question.trait){
+								cur.question.trait = cur.question.trait=='0'?'颜值':cur.question.trait=='1'?'身材':cur.question.trait=='2'?'性格':cur.question.trait=='3'?'经济条件':cur.question.trait=='4'?'工作学历':cur.question.trait=='5'?'家庭背景':'';
+							}
+						}
+						
+					})
+					THAT.userList = res.data.result.users.reverse();
+					THAT.userIndex = THAT.userList.length-1;
+					THAT.isShow();
+				}).catch(err => {
+					console.log(err);
+				})
+			},
+			jsGetAge(strBirthday)
+			{       
+			    var returnAge;
+			    var strBirthdayArr=strBirthday.split("-");
+			    var birthYear = strBirthdayArr[0];
+			    var birthMonth = strBirthdayArr[1];
+			    var birthDay = strBirthdayArr[2];
+			    let d = new Date();
+			    var nowYear = d.getFullYear();
+			    var nowMonth = d.getMonth() + 1;
+			    var nowDay = d.getDate();
+			    if(nowYear == birthYear)
+			    {
+			        returnAge = 0;//同年 则为0岁
+			    }
+			    else
+			    {
+			        var ageDiff = nowYear - birthYear ; //年之差
+			        if(ageDiff > 0)
+			        {
+			            if(nowMonth == birthMonth)
+			            {
+			                var dayDiff = nowDay - birthDay;//日之差
+			                if(dayDiff < 0)
+			                {
+			                    returnAge = ageDiff - 1;
+			                }
+			                else
+			                {
+			                    returnAge = ageDiff ;
+			                }
+			            }
+			            else
+			            {
+			                var monthDiff = nowMonth - birthMonth;//月之差
+			                if(monthDiff < 0)
+			                {
+			                    returnAge = ageDiff - 1;
+			                }
+			                else
+			                {
+			                    returnAge = ageDiff ;
+			                }
+			            }
+			        }
+			        else
+			        {
+			            returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
+			        }
+			    }
+			    return returnAge;//返回周岁年龄
+			},
+			getUserInfo(){
+				var THAT = this;
+				const http = new Request();
+				let params={
+					params:{
+						id:common.userId
+					}
+				}
+				http.get('/user', params).then(res => {
+					console.log(res);
+					common.isMember = res.data.result.user.isMember;
+					THAT.isMember = common.isMember;
+				}).catch(err=>{
+					console.log(err);
+				})
+			}
 			// showTrue(){
 			// 	console.log("showtrue")
 			// 	for(var item of this.userList){
