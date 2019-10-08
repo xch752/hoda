@@ -1,7 +1,7 @@
 <template>
 	<view class="full">
 		<!-- 消息 -->
-		<view v-if="checkValue=='message'?true:false">
+		<view v-show="checkValue=='message'?true:false">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-white text-center" style="font-size: 40upx;margin-right:40upx">消息</view>
@@ -10,10 +10,10 @@
 				<view class="flex justify-center">
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-right: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='message'?true:false"></view>
+					v-show="checkValue=='message'?true:false"></view>
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-left: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='like'?true:false"></view>
+					v-show="checkValue=='like'?true:false"></view>
 				</view>
 			</view>
 			<!-- 配对用户 -->
@@ -68,14 +68,14 @@
 				</view>
 			</view>
 			<!-- 没有聊天记录 -->
-			<view class="flex justify-center align-center chatchoose" v-if="!isChatRecord">
+			<view class="flex justify-center align-center chatchoose" v-show="!isChatRecord">
 				<view style="text-align:center">
 					<image src="https://static.mianyangjuan.com//no_Chat_@3x.png" mode="aspectFit" style="width: 120upx;height: 126upx;"></image>
 					<view class="text-gray text-sm margin-top-sm">还没有聊天记录</view>
 				</view>
 			</view>
 			<!-- 有聊天记录 -->
-			<view class="flex chatchoose" v-if="isChatRecord">
+			<view class="flex chatchoose" v-show="isChatRecord">
 				<!-- <scroll-view scroll-y="true" class="chatList flex scroll-view" >
 					<view class="chatListItem scroll-view-item" v-for="item of chatList" :key="item.id" @click="toChatRoom(item.title)">
 						<view class="chatListItemDetail flex justify-start">
@@ -106,7 +106,7 @@
 							</view>
 							<view class="action">
 								<view class="text-grey text-xs">{{item.updateTime}}</view>
-								<view v-if="item.unread" class="cu-tag round bg-red sm">{{item.unread}}</view>
+								<view v-show="item.unread" class="cu-tag round bg-red sm">{{item.unread}}</view>
 							</view>
 							<view class="move">
 								<view class="bg-red" @click="deleteChatListItem(index)">删除</view>
@@ -117,7 +117,7 @@
 			</view>
 		</view>
 		<!-- 喜欢 -->
-		<view v-if="checkValue=='message'?false:true">
+		<view v-show="checkValue=='message'?false:true">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
 					<view class="text-gray text-center" style="line-height: 60upx;font-size: 30upx;margin-right: 50upx;" @click="checkValueChange()">消息</view>
@@ -126,10 +126,10 @@
 				<view class="flex justify-center">
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-right: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='message'?true:false"></view>
+					v-show="checkValue=='message'?true:false"></view>
 					<view class="bg-white" 
 					style="height: 4upx;width: 20upx;margin-left: 150upx;border-radius: 2upx;"
-					v-if="checkValue=='like'?true:false"></view>
+					v-show="checkValue=='like'?true:false"></view>
 				</view>
 			</view>
 			<view>
@@ -285,7 +285,7 @@
 						THAT.chatList = [].concat(JSON.parse(JSON.stringify(common.chatList)));
 					}
 				}, 200);
-			},10000)
+			},2000)
 			// this.chatList=common.chatList
 			// setInterval(()=>{
 			// 	// if(THAT.chatList!=common.chatList){

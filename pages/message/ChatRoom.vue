@@ -160,6 +160,7 @@
 							}
 							
 						})
+						console.log('THAT.msgList',THAT.msgList);
 						THAT.flag = setInterval(()=>{
 							if(THAT.msgList.length!=cur.msgs.length){
 								console.log(THAT.msgList)

@@ -173,7 +173,9 @@ export default class IMController {
 		}
 		function onMsg(msg) {
 			var flag = false;
+			var ind = 0;
 		    console.log('收到消息', msg.scene, msg.type, msg);
+
 			common.msgs.map((cur,index)=>{
 				// console.log('cur',cur)
 				// console.log('common.msgs',common.msgs)
@@ -190,10 +192,19 @@ export default class IMController {
 					// common.msgs[index].time=common.calcTimeHeader(common.msgs[index].time);
 					// console.log('cur',index)
 				}
+				ind++;
 			})
+			//在线收到新的会话列表时，存在BUG，比如小助手
 			if(flag == false){
-				common.msgs.push(msg);
+				console.log('ind',ind);
+				common.msgs[ind]={sessionId:'p2p-'+msg.from,scene:'p2p',to:msg.to,msgs:[],timetag:(new Date()).valueOf(),time:'NaN-NaN-NaN NaN:NaN'};
+				console.log('common.msgs[ind].msgs',common.msgs[ind].msgs);
+				common.msgs[ind].msgs.push(msg);
+				console.log('common.msgs[ind].msgs',common.msgs[ind].msgs);
 			}
+			console.log('msg',msg);
+			console.log('common.msgs',common.msgs);
+			
 		}
 		function onMyInfo(user) {
 		    console.log('收到我的名片', user);
