@@ -11,7 +11,7 @@
 		},
 		onLoad:function(option){
 			if(option.system=='iOS'){
-				this.url="https://apps.apple.com/cn/app/hoda-messenger-%E5%90%8C%E5%9F%8E%E6%88%80%E6%84%9B%E4%BA%A4%E5%8F%8B%E8%BB%9F%E9%AB%94/id1459514761"
+				this.url="https://apps.apple.com/cn/app/%C4%E3%CE%D2near-%D5%E6%C8%CB%D4%BC%BB%E1%BD%BB%D3%D1%C8%ED%BC%FE/id1459514761"
 				// this.url="https://a.app.qq.com/o/simple.jsp?pkgname=com.honey.jiaoyou"
 			}
 			else{
