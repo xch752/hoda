@@ -692,6 +692,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* @import "../../colorui/animation.css"; */
 .full.data-v-2de45767{
 	position: fixed;
@@ -723,6 +735,24 @@
 }
 
 
+.expand.data-v-2de45767{
+	width: 300rpx;
+	height: 80rpx;
+	border-radius:999rpx;
+	background-color: #FFFFFF;
+	color: #000000;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	text-align: center;	
+	font-size: 31rpx;
+	line-height: 80rpx;
+}
 
 /* 条件编译到微信小程序 */
 .detailed.data-v-2de45767{

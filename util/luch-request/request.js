@@ -8,13 +8,17 @@
  * http://ext.dcloud.net.cn/plugin?id=392
  */
 let configMap = new Array()
+//本地IP
 configMap[0]="http://192.168.1.5:9066"
+//本地服务器IP
 configMap[1]="http://192.168.1.29:9066"
+//正式环境
 configMap[2]="https://api.hoda.dating"
 
 export default class Request {
   config = {
-    baseUrl: configMap[1],
+	  //环境切换
+    baseUrl: configMap[2],
     header: {
       'Content-Type': 'application/json;charset=UTF-8'
     },

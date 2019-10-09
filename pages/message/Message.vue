@@ -93,25 +93,33 @@
 				</scroll-view> -->
 				<scroll-view :scroll-y="modalName==null" class="page" :class="modalName!=null?'show':''">
 					<view class="cu-list menu-avatar">
-						<view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item,index) in chatList" :key="index"
+						<!-- 滑动删除功能取消 -->
+						<!-- <view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item,index) in chatList" :key="index"
 						 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
-						 @click="toChatRoom(item.nick,item.to,item.avatar)">
-							<view class="cu-avatar round lg" 
+						 > -->
+						 <view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item,index) in chatList" :key="index"
+						 :data-target="'move-box-' + index"
+						  >
+							<view class="cu-avatar round lg"
+							 @click="toChatRoom(item.nick,item.to,item.avatar)" 
 							:style="{'backlground':'#FFFFFF', 'background-image': 'url(' + item.avatar + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
-							<view class="content">
+							<view class="content"
+							@click="toChatRoom(item.nick,item.to,item.avatar)">
 								<!-- 昵称，头像走接口获取 -->
 								<view class="text-black text-bold">{{item.nick}}</view>
 								<view class="text-gray text-sm" style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
 									{{item.lastMsg.text}}
 								</view>
 							</view>
-							<view class="action">
+							<view class="action" 
+							@click="toChatRoom(item.nick,item.to,item.avatar)">
 								<view class="text-grey text-xs">{{item.updateTime}}</view>
 								<view v-show="item.unread" class="cu-tag round bg-red sm">{{item.unread}}</view>
 							</view>
-							<view class="move">
+							<!-- 滑动删除功能取消 -->
+							<!-- <view class="move">
 								<view class="bg-red" @click="deleteChatListItem(index)">删除</view>
-							</view>
+							</view> -->
 						</view>
 					</view>	
 				</scroll-view>

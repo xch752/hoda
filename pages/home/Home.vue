@@ -32,7 +32,11 @@
 				<view class="text-white text-xl">休息8小时</view>
 			</view>
 			<view class="flex justify-center align-center margin-bottom-xl">
-				<view class="text-white text-df memberTip">您还不是会员,会员无限滑动,<span @click="toMemberCenter()" >立即成为会员</span></view>
+				<view class="text-white text-df memberTip">下载APP,体验无限滑动 <span @click="toDownloadApp()" >点此立即下载</span></view>
+			</view>
+			<view v-if="slideNumber==0?false:true"  
+			class="flex justify-center align-center margin-bottom-xl">
+				<button type="primary" class="expand" @click="getUsers()">继续</button>
 			</view>
 		</view>
 		<!-- 用户 -->
@@ -175,11 +179,16 @@
 					</view>	
 				</view>
 				<!-- 相册 -->
-				<image class="scroll-view-item text-white" v-for="(photoItem,index) in item.photos" :key="index" v-if="!index==0"
+				<view class="scroll-view-item text-white" v-for="(photoItem,index) in item.photos" :key="index" v-if="!index==0"
 				style="width: 100%;height:70%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;margin-bottom: 20upx;"
-				lazy-load="true" 
+				
 				:style="{ 'background-image': 'url(' + photoItem.url + ')','background-repeat':'no-repeat','background-size':'cover'}">
-				</image>
+				</view>
+				<!-- <image class="scroll-view-item text-white" v-for="(photoItem,index) in item.photos" :key="index" v-if="!index==0"
+				style="width: 100%;height:70%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;margin-bottom: 20upx;"
+				
+				:style="{ 'background-image': 'url(' + photoItem.url + ')','background-repeat':'no-repeat','background-size':'cover'}">
+				</image> -->
 				<!-- 社交账号 -->
 				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
@@ -300,6 +309,7 @@
 	export default {
 		data() {
 			return {
+				slideNumber:4,
 				isMember:'',
 				chatList:[{}],
 				screenHeight:'',
@@ -532,15 +542,15 @@
 				this.btnDisabled=true;
 				// this.isShow();
 			},
-			//跳转会员中心
-			toMemberCenter(){
+			//跳转下载
+			toDownloadApp(){
 				uni.navigateTo({
-					url:'../../pagesB/subPages/memberCenter',
+					url:'../../pagesB/DownloadApp',
 					success() {
-						console.log("success toMemberCenter")
+						console.log("success toDownloadApp")
 					},
 					fail() {
-						console.log("fail toMemberCenter")
+						console.log("fail toDownloadApp")
 					}
 				})
 			},
@@ -562,6 +572,8 @@
 			//获取用户信息
 			getUsers(){
 				var THAT = this;
+				THAT.slideNumber --;
+				THAT.slideLimit = true;
 				const http = new Request();
 				let params={
 					params:{
@@ -723,6 +735,19 @@
 		z-index: 99999;
 	}
 	/* #endif */
+	
+	.expand{
+		width: 300upx;
+		height: 80upx;
+		border-radius:999upx;
+		background-color: #FFFFFF;
+		color: #000000;
+		justify-content: center;
+		align-items: center;
+		text-align: center;	
+		font-size: 31upx;
+		line-height: 80upx;
+	}
 	
 	/* #ifdef MP-WEIXIN*/ /* 条件编译到微信小程序 */
 	.detailed{
