@@ -1,3 +1,4 @@
+<!-- 查看喜欢的人 -->
 <template>
 	<view class="full">
 		<!-- 操作按钮 -->
@@ -285,13 +286,14 @@
 			this.screenHeight=window.screen.height*0.88*0.915;
 			// #endif  
 			this.initUser();
-			
 		},
 		methods:{
+			//滑动
 			scroll: function(e) {
 				// console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
 			},
+			//初始化用户信息
 			initUser(){
 				var THAT = this;
 				const http = new Request();
@@ -328,6 +330,7 @@
 					console.log(err);
 				})
 			},
+			//日期转换年龄
 			jsGetAge(strBirthday)
 			{       
 			    var returnAge;
@@ -380,6 +383,7 @@
 			    }
 			    return returnAge;//返回虚岁年龄
 			},
+			//喜欢
 			likePeople(){
 				var THAT = this;
 				const http = new Request();
@@ -417,6 +421,7 @@
 					console.log(err);
 				})
 			},
+			//不喜欢
 			disLikePeople(){
 				var THAT = this;
 				const http= new Request();
@@ -488,7 +493,6 @@
 		background: url(https://static.mianyangjuan.com//like@3x.png) no-repeat;
 		background-size: 100% 100%;
 	}
-	
 	.disLikeButton{
 		position: fixed;
 		left: 10upx;
@@ -500,7 +504,6 @@
 		background: url(https://static.mianyangjuan.com//Dislike@3x.png) no-repeat;
 		background-size: 100% 100%;
 	}
-	
 	/* #ifdef MP-WEIXIN*/ /* 条件编译到微信小程序 */
 	.detailed{
 		top:20upx;

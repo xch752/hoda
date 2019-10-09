@@ -1,3 +1,5 @@
+<!-- 该页面未使用 -->
+<!-- 聊天室配对 -->
 <template>
 	<view class="full">
 		<view class="flex justify-center tips">

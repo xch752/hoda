@@ -1,3 +1,4 @@
+<!-- 下载APP 推广页面 -->
 <template>
 	<view class="full">
 		<view class="bg-top flex justify-center text-white" style="background: url(https://static.mianyangjuan.com//download-top.png);background-repeat:no-repeat;background-size: 100% 100%;width: 750upx;height: 627upx;">

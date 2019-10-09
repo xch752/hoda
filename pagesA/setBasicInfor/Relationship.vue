@@ -1,3 +1,4 @@
+<!-- 期待关系 -->
 <template>
 	<view class="full">
 		<view class="flex padding justify-center">

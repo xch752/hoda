@@ -1,6 +1,7 @@
+<!-- 消息页面 与 喜欢页面 -->
 <template>
 	<view class="full">
-		<!-- 消息 -->
+		<!-- 消息页面 -->
 		<view v-show="checkValue=='message'?true:false">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
@@ -60,7 +61,7 @@
 					</view>
 				</scroll-view>
 			</view>
-			<!-- 消息 -->
+			<!-- 会话列表 -->
 			<view>
 				<view class="flex justify-start padding-top padding-left-lg text-bold text-df solid-bottom"
 				style="height: 96upx;">
@@ -116,7 +117,7 @@
 				</scroll-view>
 			</view>
 		</view>
-		<!-- 喜欢 -->
+		<!-- 喜欢页面 -->
 		<view v-show="checkValue=='message'?false:true">
 			<view class="header">
 				<view class="flex justify-center padding-top-xl" style="padding-top: 60upx;">
@@ -306,6 +307,7 @@
 			clearInterval(this.flag);
 		},
 		methods:{
+			//跳转所有配对用户页面
 			toAllPair(){
 				uni.navigateTo({
 					url:'AllPair',
@@ -317,6 +319,7 @@
 					}
 				})
 			},
+			//跳转聊天室
 			toChatRoom(fromNick,userId,avatar,second){
 				common.chatList.map((cur,index)=>{
 					if(cur.to==userId){
@@ -334,6 +337,7 @@
 					}
 				})
 			},
+			//消息页面，喜欢页面切换
 			checkValueChange(){
 				if(this.checkValue==='message'){
 					uni.setStorage({
@@ -349,8 +353,8 @@
 					});
 					this.checkValue='message';
 				}
-				
 			},
+			//跳转配对聊天室 未使用
 			toChatRoomPair(userId,second){
 				uni.navigateTo({
 					url:`ChatRoomPair?userId=${userId}&second=${second}`,
@@ -368,7 +372,6 @@
 				this.listTouchStartX = e.touches[0].pageX;
 				this.listTouchStartY = e.touches[0].pageY;
 			},
-			
 			// ListTouch计算方向
 			ListTouchMove(e) {
 				if((e.touches[0].pageX - this.listTouchStartX) > 80 && Math.abs(e.touches[0].pageY - this.listTouchStartY) < 80){
@@ -391,6 +394,7 @@
 			deleteChatListItem(index){
 				this.chatList[index].show=false;
 			},
+			//跳转查看
 			toCheckPeople(id){
 				uni.navigateTo({
 					url:'CheckPeople?id='+id,
@@ -402,6 +406,7 @@
 					}
 				})
 			},
+			//获取配对列表
 			getPairList(){
 				var THAT = this;
 				const http = new Request();
@@ -420,6 +425,7 @@
 					console.log(err);
 				})
 			},
+			//时间戳函数
 			timeStamp( second_time ){  
 				var time = parseInt(second_time) + "秒";  
 				if( parseInt(second_time )> 60){  
@@ -439,6 +445,7 @@
 				}  
 				return time;          
 			},
+			//获取喜欢列表
 			getLikeList(){
 				var THAT =this;
 				const http = new Request();
@@ -479,6 +486,7 @@
 					console.log(err);
 				})
 			},
+			//跳转会员中心
 			toMemberCenter(){
 				uni.navigateTo({
 					url:'../../pagesB/subPages/memberCenter',
@@ -500,9 +508,9 @@
 		background: #6A2BF8;
 	}
 	.scroll-view{
-			/* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
-			white-space: nowrap;
-			width: 100%;
+		/* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
+		white-space: nowrap;
+		width: 100%;
 	}
 	.matchUser{
 		width: 100%;

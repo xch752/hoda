@@ -1,9 +1,10 @@
+<!-- 登陆注册 -->
 <template>
 	<view class="full">
+		<!-- 头部 -->
 		<view class="text-center bg-mauve" 
 		style="height:448upx;background: url(https://static.mianyangjuan.com//background_lg_@3x.png);background-repeat:no-repeat;background-size: 100% 100%;opacity: 0.90;">
 			<view>
-				<!-- {{nickname}} -->
 				<image src="https://static.mianyangjuan.com//Hoda_white_lg.png" mode="aspectFit" style="width: 231upx;height: 93upx;margin-top: 177upx;"></image>
 			</view>
 			<view class="flex  p-xs mb-sm padding-top-xl flex-sub">
@@ -17,7 +18,7 @@
 				<view class="flex-twice radius padding-right-xl text-xxl"><text v-if="typeCheck==1"  class="lg text-white cuIcon-usefullfill"></text></view>
 			</view>
 		</view>
-		
+		<!-- 登陆 -->
 		<view class="content" v-if="typeCheck==0">
 			<view class="cu-form-group" style="padding:30upx 0 30upx 0;">
 				<view class="title">手机号</view>
@@ -30,7 +31,7 @@
 			<button class="cu-btn round bg-mauve lg padding-xl margin-top-xl" style="width: 560upx;padding: 20upx 0 20upx 0;" @click="toHome">登录</button>
 			<view class="padding-top-sm" @click="toRetrievePassword"><text class="text-center text-grey">忘记密码?</text></view>
 		</view>
-		
+		<!-- 注册 -->
 		<view class="content"  v-if="typeCheck==1">
 			<view class="cu-form-group" style="padding:30upx 0 30upx 0;">
 				<view class="title">手机号</view>
@@ -57,14 +58,12 @@
 			<view class="padding-top-sm padding-bottom-sm"><text class="text-center text-grey">注册即表示你已阅读，并同意《用户注册协议》</text></view>
 		</view>	
 	</view>
-	
 </template>
 
 <script>
 	import Request from '../../util/luch-request/request.js'
 	import common from '../../common/globalVariable.js'
 	import IMController from '../../common/im.js'
-	// import {mapState,mapMutations} from 'vuex';
 	export default {
 		data() {
 			return {
@@ -83,9 +82,6 @@
 				verificationCodeValue:''//验证码
 			}
 		},
-		// computed:{
-		// 	...mapState(['nickname'])
-		// },
 		onLoad() {
 			let THAT = this;
 			THAT.getLoginStorage();//取本地账号密码
@@ -104,45 +100,20 @@
 					}
 				}
 			})
-			
-			// uni.request({
-			// 	url:'/userList',
-			// 	data:{
-			// 		id:'',
-			// 		phone:'',
-			// 		userName:'',
-			// 		sex:'',
-			// 		beginDate:'',
-			// 		endDate:'',
-			// 		status:'',
-			// 		pageNo:1,
-			// 		isMember:'',
-			// 		channel:'',
-			// 		userType:'',
-			// 		approvalStatus:'',
-			// 		phoneType:'',
-			// 		certificationStatus:''
-			// 	},
-			// 	success:function(res){
-			// 		console.log(res);
-			// 	},
-			// 	fail:function(err){
-			// 		console.log(err);
-			// 	}
-			// })
-			
-			
 		},
 		onShow() {
 			console.log("onShow")
 		},
 		methods: {
+			// 切换登陆
 			chooseLogin(){
 				this.typeCheck=0;
 			},
+			// 切换注册
 			chooseRegister(){
 				this.typeCheck=1;
 			},
+			//跳转忘记密码
 			toRetrievePassword(){
 				uni.navigateTo({
 					url:'../../pagesA/RetrievePassword/RetrievePassword',
@@ -154,6 +125,7 @@
 					}
 				})
 			},
+			//跳转选择性别
 			toGender(){
 				if(!this.registerUserName){
 					uni.showToast({
@@ -173,12 +145,6 @@
 						icon:"none"
 					})
 				}
-				// else if(){ //验证码错误
-				// 	uni.showToast({
-				// 	title:"验证码错误",
-				// 	icon:"none"
-				// 	})
-				// }
 				else{
 					const http = new Request();
 					let params={
@@ -224,18 +190,18 @@
 					}).catch(err =>{
 						console.log(err);
 					})
-					
 					console.log(`账号:${this.registerUserName} 密码:${this.registerPassword} 密码重复:${this.registerPasswordSecond} 验证码:${this.verificationCodeValue}`)
 				}
 				
 			},
+			//跳转主页
 			toHome(){
 				//登陆接口
 				var THAT = this;
 				const http = new Request();
 				let params={
 					params:{
-						//转义字符%2B
+						//转义字符%2B 传值时+可能需要转义
 						phone:'+'+'86'+THAT.logUserName,
 						password:THAT.logPassword,
 						channel:THAT.channel
@@ -282,7 +248,8 @@
 					console.log(err);
 				})
 			},
-			verificationCode(){//验证码函数
+			//验证码函数
+			verificationCode(){
 				var THAT = this;
 				if(this.registerUserName){
 					const http = new Request();
@@ -327,7 +294,8 @@
 					})
 				}
 			},
-			getLoginStorage(){//取本地缓存的登陆账号密码
+			//取本地缓存的登陆账号密码
+			getLoginStorage(){
 				var That = this;
 				uni.getStorage({
 					key:"UserName",
@@ -372,5 +340,5 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		}
+	}
 </style>

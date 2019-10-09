@@ -1,3 +1,4 @@
+//全局变量
 let gender = '';
 let uploadAvatar = '';
 let uploadCertification = 'https://static.mianyangjuan.com//Upload_Avatar@3x.png';

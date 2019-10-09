@@ -1,3 +1,5 @@
+<!-- 未使用 -->
+<!-- 真人认证支付 -->
 <template>
 	<view class="full">
 		<swiper class="card-swiper" :indicator-dots="false" :circular="false"

@@ -1,3 +1,4 @@
+<!-- 昵称，年龄，头像 -->
 <template>
 	<view class="full">
 		<view class="justify-center radius text-center tip">
@@ -66,6 +67,7 @@
 			common.uploadAvatar=this.uploadAvatarUrl
 		},
 		methods:{
+			//跳转认证审核
 			toCertiFicationNotes(){
 				if(this.uploadAvatarUrl==='https://static.mianyangjuan.com//Upload_Avatar@3x.png'){
 					uni.showToast({
@@ -121,6 +123,7 @@
 					})
 				}
 			},
+			//跳转认证
 			toCertiFication(){
 				if(this.uploadAvatarUrl==='https://static.mianyangjuan.com//Upload_Avatar@3x.png'){
 					uni.showToast({
@@ -153,8 +156,8 @@
 						}
 					})
 				}
-				
 			},
+			//拍照
 			takePicture(){
 				var THAT=this;
 				uni.chooseImage({
@@ -220,6 +223,7 @@
 			DateChange(e) {
 				this.date = e.detail.value
 			},
+			//七牛初始化
 			initQiniu(){
 				var token;
 				var policy = {};

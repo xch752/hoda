@@ -1,5 +1,7 @@
+<!-- 我的中心 -->
 <template>
 	<view class="full">
+		<!-- 头部 -->
 		<view class="header">
 			<view class="flex margin-top-xl" style="margin-top: 60upx;">
 				<view class="flex-twice"><view class="text-white text-df margin-top-sm suggestion" @click="toPreview()">预览</view></view>
@@ -13,7 +15,7 @@
 				<image v-if="certificationStatus" class="cerStatus margin-left-sm" src="https://static.mianyangjuan.com//Certification@3x.png" mode="aspectFill"></image>
 			</view>
 		</view>
-
+		<!-- 喜欢我的人 -->
 		<view class="item flex padding justify-between align-center" @click="toWhoLikeMe()">
 			<view class="flex justify-start">
 				<image src="https://static.mianyangjuan.com//whoLikeMe@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
@@ -23,7 +25,7 @@
 			</view>
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
 		</view>
-		
+		<!-- 会员中心 -->
 		<view class="item flex padding justify-between align-center" @click="toMemberCenter()">
 			<view class="flex justify-start">
 				<image src="https://static.mianyangjuan.com//member_center@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
@@ -33,7 +35,7 @@
 			</view>
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
 		</view>
-		
+		<!-- 完善资料 -->
 		<view class="item flex padding justify-between align-center" @click="toDownloadApp()">
 			<view class="flex justify-start">
 				<image src="https://static.mianyangjuan.com//personal_data@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
@@ -43,7 +45,7 @@
 			</view>
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
 		</view>
-		
+		<!-- 添加账号 -->
 		<view class="item flex padding justify-between align-center" @click="toTripartiteAccount()">
 			<view class="flex justify-start">
 				<image src="https://static.mianyangjuan.com//tripartite_Account@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
@@ -53,7 +55,7 @@
 			</view>
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
 		</view>
-		
+		<!-- 意见反馈 -->
 		<view class="item flex padding justify-between align-center" @click="toFeedback()">
 			<view class="flex justify-start">
 				<image src="https://static.mianyangjuan.com//feedback@3x.png" mode="aspectFill" style="width: 46upx;height: 46upx;"></image>
@@ -63,7 +65,7 @@
 			</view>
 			<view><image src="https://static.mianyangjuan.com//right_arrow@3x.png" mode="aspectFit" style="width: 26upx;height: 26upx;"></image></view>
 		</view>
-		
+		<!-- 推广图片 -->
 		<view class="flex justify-center margin-top-xl" @click="toDownloadApp()">
 			<image src="https://static.mianyangjuan.com//Promotion@3x.png" mode="aspectFit" style="width: 700upx;height: 178upx;"></image>
 		</view>
@@ -86,7 +88,6 @@
 		onLoad(){
 			this.userId = common.userId;
 			console.log(this.userId);
-			
 			var THAT = this;
 			const http = new Request();
 			let params={
@@ -109,6 +110,7 @@
 			})
 		},
 		methods:{
+			//跳转预览页面
 			toPreview(){
 				uni.navigateTo({
 					url:'../../pagesB/Preview',
@@ -120,6 +122,7 @@
 					}
 				})
 			},
+			//跳转喜欢我的人 message.vue
 			toWhoLikeMe(){
 				uni.switchTab({
 					url:'../message/Message',
@@ -139,6 +142,7 @@
 					}
 				})
 			},
+			//跳转会员中心
 			toMemberCenter(){
 				uni.navigateTo({
 					url:'../../pagesB/subPages/memberCenter',
@@ -161,6 +165,7 @@
 			// 		}
 			// 	})
 			// },
+			//跳转添加三方账号页面
 			toTripartiteAccount(){
 				uni.navigateTo({
 					url:'../../pagesB/subPages/tripartiteAccount',
@@ -172,6 +177,7 @@
 					}
 				})
 			},
+			//跳转登陆
 			toLogin(){
 				uni.showModal({
 				    title:'确定退出',
@@ -194,6 +200,7 @@
 				    }
 				});				
 			},
+			//跳转下载APP页面
 			toDownloadApp(){
 				uni.navigateTo({
 					url:'../../pagesB/DownloadApp',
@@ -205,6 +212,7 @@
 					}
 				})
 			},
+			//跳转用户反馈
 			toFeedback(){
 				uni.navigateTo({
 					url:'../../pagesA/setBasicInfor/Feedback',

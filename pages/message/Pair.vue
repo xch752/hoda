@@ -1,5 +1,8 @@
+<!-- 未使用 -->
+<!-- 配对页面 -->
 <template>
 	<view class="full">
+		<!-- 男性 -->
 		<view v-if="sex==2?true:false">
 			<view class="congratulations"></view>
 			<view>
@@ -12,7 +15,7 @@
 			<button type="primary" class="expand" >延长匹配时间</button>
 			<button type="primary" class="continue" @click="closePage()">继续</button>
 		</view>
-		
+		<!-- 女性 -->
 		<view v-if="sex==1?true:false">
 			<view class="congratulations"></view>
 			<view>
@@ -29,7 +32,6 @@
 			<button type="primary" class="btn-send" @click="sendMsg()"></button>
 			<button type="primary" class="continue" @click="closePage()">继续</button>
 		</view>
-		
 	</view>
 </template>
 
@@ -55,6 +57,7 @@
 			console.log('sex',sex,'myAvatar',myAvatar,'pairUserID',pairUserID,'pairNickName',pairNickName,'pairAvatar',pairAvatar)
 		},
 		methods:{
+			//发送消息
 			sendMsg(){
 				var THAT = this;
 				var msg = common.nim.sendText({
@@ -81,8 +84,6 @@
 							console.log(common.msgs[ind].msgs);
 							common.msgs[ind].msgs.push(msg);
 						}
-						
-						
 						// THAT.msgList.push(msg);
 						setTimeout(()=>{
 							console.log('common.msgs',common.msgs)
@@ -105,6 +106,7 @@
 					}
 				});
 			},
+			//获取登陆者信息
 			myInfo(){
 				var THAT = this;
 				const http = new Request();
@@ -122,6 +124,7 @@
 					console.log(err);
 				})
 			},
+			//配对用户的信息
 			pairUserInfo(){
 				var THAT = this;
 				const http = new Request();
@@ -140,11 +143,13 @@
 					console.log(err);
 				})
 			},
+			//关闭当前页
 			closePage(){
 				uni.navigateBack({
 					delta:1
 				})
 			},
+			//跳转到downloadapp页面 推广下载
 			toDownloadApp(){
 				uni.navigateTo({
 					url:'../../pagesB/DownloadApp',

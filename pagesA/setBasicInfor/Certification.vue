@@ -1,3 +1,6 @@
+<!-- 未使用 -->
+<!-- 用户认证 -->
+<!-- 需要用户上传认证照片 -->
 <template>
 	<view class="full">
 		<view class="justify-center radius text-center tip">
@@ -25,8 +28,8 @@
 
 <script>
 	import common from '../../common/globalVariable.js'
-	// import {genUpToken} from '../../util/qiniuToken.js'
-	// import qiniuUploader from '../../util/qiniuUploader.js'
+	import {genUpToken} from '../../util/qiniuToken.js'
+	import qiniuUploader from '../../util/qiniuUploader.js'
 	export default {
 		data(){
 			return {
@@ -43,9 +46,9 @@
 		},
 		onUnload:function(){
 			common.uploadCertification=this.uploadurl;
-
 		},
 		methods:{
+			//拍照
 			takePicture(){
 				var THAT=this;
 				uni.chooseImage({
@@ -97,6 +100,7 @@
 					}
 				});				
 			},
+			//跳转身高设置
 			toHeight(){
 				if(!(this.uploadurl==='https://static.mianyangjuan.com//add_image@3x.png')){
 					uni.reLaunch({
@@ -115,8 +119,8 @@
 						icon:"none"
 					})
 				}
-				
 			},
+			//初始化七牛
 			initQiniu(){
 				var token;
 				var policy = {};

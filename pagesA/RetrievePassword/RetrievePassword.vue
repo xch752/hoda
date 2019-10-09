@@ -1,5 +1,7 @@
+<!-- 忘记密码 -->
 <template>
 	<view class="full">
+		<!-- 头部 -->
 		<view class="text-center" style="height:277upx;background: url(https://static.mianyangjuan.com//background_sm_@3x.png);background-repeat:no-repeat;background-size: 100% 100%;opacity: 0.90;">
 			<view class="flex justify-start">
 				<text class="arrow xl text-white cuIcon-back" @click="closePage"></text>
@@ -11,7 +13,7 @@
 				<view class="flex-twice radius text-xxl justify-center" style="padding-top: 5upx;"><text class="lg text-white cuIcon-usefullfill"></text></view>
 			</view>
 		</view>
-		
+		<!-- 表单 -->
 		<view class="content margin-top-xl">
 			<view class="cu-form-group" style="padding:30upx 0 30upx 0;">
 				<view class="title">手机号</view>
@@ -71,12 +73,14 @@
 			})
 		},
 		methods:{
+			//关闭当前页面
 			closePage(){
 				uni.navigateBack({
 				    delta: 1
 				});
 			},
-			verificationCode(){//验证码函数
+			//验证码函数
+			verificationCode(){
 				var THAT = this;
 				if(THAT.logUserName){
 					const http = new Request();
@@ -130,6 +134,7 @@
 					})
 				}
 			},
+			// 重置密码
 			retrievePassword(){
 				let THAT = this;
 				if(!THAT.logUserName){
@@ -192,7 +197,6 @@
 						console.log(err);
 					})
 				}
-				
 			}
 		}
 	}

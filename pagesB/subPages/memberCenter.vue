@@ -1,5 +1,7 @@
+<!-- 会员中心 -->
 <template>
 	<view class="full">
+		<!-- 轮播 -->
 		<swiper class="screen-swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
 		 :autoplay="true" interval="5000" duration="500">
 			<swiper-item v-for="(item,index) in swiperList" :key="index">
@@ -7,6 +9,7 @@
 				<video :src="item.url" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
 			</swiper-item>
 		</swiper>
+		<!-- 会员选项 -->
 		<view class="flex justify-center">
 			<view class="card-item" style="margin-right: 35upx;" :class="payList[0].choose?'active':''" @click="payChoose(0)">
 				<view class="member-time">一周</view>
@@ -36,6 +39,7 @@
 				<view class="member-priceall"><text>$</text>99.99</view>
 			</view>
 		</view>
+		<!-- 提交 -->
 		<view class="flex justify-center" style="margin-top: 35upx;">
 			<button class="cu-btn round bg-mauve lg padding-xl margin-top-xl" style="width: 695upx;padding: 20upx 0 20upx 0;" @click="showmsg">成为VIP</button>
 		</view>
@@ -108,18 +112,21 @@
 			
 		},
 		methods:{
+			//选择选项
 			payChoose(num){
 				for (let item of this.payList) {
 					item.choose=false;
 				}
 				this.payList[num].choose = true;
 			},
+			//显示模态弹窗
 			showmsg(){
 				uni.showModal({
 					title:'提示',
 					content:'下载APP成为会员',
 					showCancel:false,
 					success:function(){
+						//跳转
 						uni.navigateTo({
 							url:'../DownloadApp',
 							success() {

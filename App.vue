@@ -16,6 +16,10 @@
 </script>
 
 <style>
+	/* 
+		引入colorUI 
+		在coolrUI目录下
+	*/
 	 @import "colorui/main.css";
 	 @import "colorui/icon.css";
 	 @import "common/theme.css"

@@ -1,3 +1,4 @@
+<!-- 所有配对 -->
 <template>
 	<view class="full">
 		<scroll-view scroll-y="true" class="chatList flex scroll-view">
@@ -20,13 +21,14 @@
 	export default{
 		data(){
 			return {
-				allMatchUserList:[]
+				allMatchUserList:[]//所有配对列表
 			}
 		},
 		onLoad:function(){
 			this.getPairList();
 		},
 		methods:{
+			//跳转聊天室
 			toChatRoom(fromNick,userId,avatar,second){
 				uni.navigateTo({
 					url:`ChatRoom?second=${second}&fromNick=${fromNick}&userId=${userId}&avatar=${avatar}`,
@@ -39,6 +41,7 @@
 					}
 				})
 			},
+			//获取配对列表
 			getPairList(){
 				var THAT = this;
 				const http = new Request();
@@ -61,6 +64,7 @@
 					console.log(err);
 				})
 			},
+			//时间戳转换函数
 			timeStamp( second_time ){
 				var time = parseInt(second_time) + "秒";  
 				if( parseInt(second_time )> 60){  
@@ -86,10 +90,10 @@
 
 <style scoped>
 	.scroll-view{
-			/* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
-			white-space: nowrap;
-			width: 100%;
-		}
+		/* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
+		white-space: nowrap;
+		width: 100%;
+	}
 	.matchUser{
 		height: 184upx;
 		background-color: #F6F6F6;

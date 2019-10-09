@@ -1,3 +1,5 @@
+<!-- 未使用 -->
+<!-- 用户认证审核 -->
 <template>
 	<view class="full">
 		<view class="flex margin-top-xl">
@@ -60,6 +62,7 @@
 			// console.log(this.uploadCertification)
 		},
 		methods:{
+			//跳转主页
 			toHome(){
 				uni.reLaunch({
 					url:'../../pages/home/Home',
@@ -71,6 +74,7 @@
 					}
 				})
 			},
+			//跳转反馈页面
 			toFeedback(){
 				uni.navigateTo({
 					url:'Feedback',
@@ -82,6 +86,7 @@
 					},
 				})
 			},
+			//初始化七牛
 			initQiniu(){
 				var token;
 				var policy = {};
@@ -94,7 +99,8 @@
 				token=genUpToken(AK,SK,policy);
 				this.QiniuData.token=token;
 			},
-			reSubmitAva(){//头像重新提交
+			//头像重新提交
+			reSubmitAva(){
 				var THAT=this;
 				uni.chooseImage({
 				    count: 1, //默认9
@@ -146,7 +152,8 @@
 					}
 				});
 			},
-			reSubmitCer(){//真人认证重新提交
+			//真人认证重新提交
+			reSubmitCer(){
 				var THAT=this;
 				uni.chooseImage({
 				    count: 1, //默认9

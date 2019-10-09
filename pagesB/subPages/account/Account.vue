@@ -1,11 +1,14 @@
+<!-- 添加三方账号 -->
 <template>
 	<view class="full">
+		<!-- 表单 -->
 		<view class="flex justify-center" style="margin: 85upx 0 65upx 0;">
 			<text class="text-gray text-df">请输入您的{{title}}账号</text>
 		</view>
 		<view class="flex justify-center text-center">
 			<input class="solid-bottom" type="text" :placeholder="'您的'+title+'账号'" v-model="account" />
 		</view>
+		<!-- 提交按钮 -->
 		<view class="flex justify-center">
 			<button @click="postAccount()" class="cu-btn round bg-mauve lg padding-xl margin-top-xl" style="width: 560upx;padding: 20upx 0 20upx 0;">确定</button>
 		</view>
@@ -40,6 +43,7 @@
 			})
 		},
 		methods:{
+			//post请求 提交表单
 			postAccount(){
 				let params;
 				switch (this.title){

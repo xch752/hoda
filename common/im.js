@@ -1,3 +1,4 @@
+//IM 网易云信
 import NIM from '../util/NIM_Web_NIM_weixin_v6.8.0.js'
 import common from '../common/globalVariable.js'
 import Request from '../util/luch-request/request.js'

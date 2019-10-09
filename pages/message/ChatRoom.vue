@@ -1,5 +1,7 @@
+<!-- 聊天室 -->
 <template>
 	<view class="full">
+		<!-- 如果还没有信息 -->
 		<view v-if="msgList.length==0?true:false">
 			<view class="flex justify-center tips">
 				<text class="text-black text-xxl text-bold">你们互相喜欢对方</text>
@@ -19,11 +21,10 @@
 				你们的配对将在{{second}}后失效，等待她开启聊天
 			</view>
 		</view>
-		
+		<!-- 聊天界面 -->
 		<scroll-view :scroll-top="scrollTop" 
 			scroll-y="true"  
 			@scroll="scroll" >
-			
 			<view class="cu-chat">
 				<view class="cu-item" :class="item.flow=='out'?'self':''" v-for="(item,index) in msgList" :key="index" >
 					<view v-if="item.show" class="date" style="text-align: center;" >{{item.time}}</view>
@@ -38,12 +39,10 @@
 					<view v-if="item.flow=='out'?true:false" class="cu-avatar radius" 
 					:style="'background-image :'+'url(' + myAvatar + ')'"></view>
 				</view>
-				
 				<view style="height: 100upx;"></view>
 			</view>
 		</scroll-view>
-		
-		
+		<!-- 发送消息 -->
 		<view v-if="showSend" class="cu-bar foot input" :style="[{bottom:InputBottom+'px'}]">
 			<view class="action">
 				<image @click="showModal()" src="https://static.mianyangjuan.com//Voice@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
@@ -55,41 +54,31 @@
 			</view>
 			<image @click="sendMSG()" src="https://static.mianyangjuan.com//send@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
 		</view>
-		
-		<!-- <view class="bottom">
-			<view class="flex justify-start">
-				<image src="https://static.mianyangjuan.com//Voice@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
-				<input type="text" value="" placeholder="请输入内容..." placeholder-class="phClass"/>
-				<image src="https://static.mianyangjuan.com//Emoticon@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
-				<image src="https://static.mianyangjuan.com//send@3x.png" mode="aspectFit" style="width: 60upx;height: 60upx;margin: 30upx 0 30upx 15upx;"></image>
-			</view>
-		</view> -->
 	</view>
 </template>
 
 <script>
 	import common from '../../common/globalVariable.js'
-	// import NIM from '../../util/NIM_Web_NIM_weixin_v6.8.0.js'
 	export default{
 		data(){
 			return {
-				height:0,
+				height:0,//高度
 				scrollTop: 3000,
 				old: {
 					scrollTop: 0
 				},
 				InputBottom: 0,
-				fromNick:'',
-				userId:'',
-				msgList:[],
-				body:'',
-				flag:'',
-				avatar:'',
-				myAvatar:'',
-				isChat:'',
-				second:'',
-				sex:'',
-				showSend:true,
+				fromNick:'',//昵称
+				userId:'',//用户ID
+				msgList:[],//消息链表
+				body:'',//发送消息体
+				flag:'',//判断
+				avatar:'',//头像
+				myAvatar:'',//我的头像
+				isChat:'',//是否聊天
+				second:'',//配对剩余秒数
+				sex:'',//性别
+				showSend:true,//是否显示发送框
 			}
 		},
 		onLoad: function (option) {
@@ -126,6 +115,7 @@
 			}
 		},
 		methods:{
+			//滚动
 			scroll: function(e) {
 				console.log(e.detail.scrollTop)
 				this.old.scrollTop = e.detail.scrollTop
@@ -136,6 +126,7 @@
 			InputBlur(e) {
 				this.InputBottom = 0
 			},
+			//消息初始化
 			initHistoryChat(){
 				var THAT = this;
 				common.msgs.map((cur,index)=>{
@@ -153,12 +144,10 @@
 						// if(THAT.msgList[THAT.msgList.length-1].time-THAT.msgList[THAT.msgList.length-2].time<300000){
 						// 	THAT.msgList[THAT.msgList.length-1].time=null;
 						// }
-						
 						THAT.msgList.map((cur,index)=>{
 							if(cur.time!=null){
 								cur.time=common.calcTimeHeader(cur.time);
 							}
-							
 						})
 						console.log('THAT.msgList',THAT.msgList);
 						THAT.flag = setInterval(()=>{
@@ -178,7 +167,6 @@
 								// if(THAT.msgList[THAT.msgList.length-1].time-THAT.msgList[THAT.msgList.length-2].time<300000){
 								// 	THAT.msgList[THAT.msgList.length-1].time=null;
 								// }
-								
 								THAT.msgList.map((cur,index)=>{
 									if(cur.time!=null){
 										cur.time=common.calcTimeHeader(cur.time);
@@ -205,6 +193,7 @@
 				})
 				// THAT.old.scrollTop = THAT.msgList.length*75;
 			},
+			//发送消息
 			sendMSG(){
 				var THAT = this;
 				var msg = common.nim.sendText({
@@ -215,9 +204,7 @@
 						console.log(error);
 						console.log(msg);
 						console.log('发送' + msg.scene + ' ' + msg.type + '消息' + (!error?'成功':'失败') + ', id=' + msg.idClient);
-						
 						// THAT.msgList.push(msg);
-						
 						console.log(common.msgs);
 						var ind = 0;
 						var flag = false;
@@ -243,6 +230,7 @@
 					}
 				});
 			},
+			//显示模态弹窗
 			showModal(){
 				uni.showModal({
 				    title: '提示',
@@ -259,6 +247,7 @@
 				    }
 				});
 			},
+			//时间戳
 			timeStamp( second_time ){
 				var time = parseInt(second_time) + "秒";  
 				if( parseInt(second_time )> 60){  

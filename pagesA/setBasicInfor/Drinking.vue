@@ -1,3 +1,4 @@
+<!-- 喝酒 -->
 <template>
 	<view class="full">
 		<view class="flex padding justify-center">

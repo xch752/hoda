@@ -1,3 +1,5 @@
+<!-- 未使用 -->
+<!-- 系统设置 -->
 <template>
 	<view class="full">
 		<view class="item flex padding justify-between align-center solid-bottom">
@@ -33,6 +35,7 @@
 			
 		},
 		methods:{
+			//跳转登陆 登出
 			toLogin(){
 				uni.reLaunch({
 					url:'../../login/login',

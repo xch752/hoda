@@ -1,5 +1,7 @@
+<!-- 反馈列表 -->
 <template>
 	<view class="full">
+		<!-- 表单 -->
 		<view class="flex justify-start" style="margin: 42upx 50upx 0 50upx;">
 			<text class="text-black">为了方便我们联系您，请留下您的联系方式</text>
 		</view>
@@ -9,6 +11,7 @@
 			style="width: 100%;height: 88upx;background-color: #F4F5F9;" 
 			v-model="contact"/>
 		</view>
+		<!-- 表单 -->
 		<view class="flex justify-start" style="margin: 40upx 50upx 0 50upx;">
 			<text class="text-black text-sm">请详细描述您遇到的问题</text>
 		</view>
@@ -21,6 +24,7 @@
 		<view class="flex justify-start" style="margin: 42upx 50upx 0 50upx;">
 			<text class="text-black">您也可以联系我们的邮箱：hodating@gmail.com</text>
 		</view>
+		<!-- 图片提交 -->
 		<view class="flex justify-start" style="margin-left: 50upx;margin-top: 36upx;">
 			<view v-for="(item,index) in uploadAvatarUrl" :key="index"
 			class="flex justify-center align-center" style="width: 150upx;height: 150upx;margin-right: 25upx;background: #F4F5F9;border-radius: 10upx;">
@@ -32,6 +36,7 @@
 				<image src="https://static.mianyangjuan.com//add_image@3x.png" mode="aspectFill" style="width: 45upx;height: 45upx;"></image>
 			</view>
 		</view>
+		<!-- 提交 -->
 		<view class="flex justify-center">
 			<button @click="feedback()" class="cu-btn round bg-mauve lg padding-xl margin-top-xl" style="width: 560upx;padding: 20upx 0 20upx 0;">提交</button>
 		</view>
@@ -71,6 +76,7 @@
 			this.initQiniu();
 		},
 		methods:{
+			//反馈提交
 			feedback(){
 				var THAT = this;
 				if(THAT.uploadAvatarUrl.length!=0){
@@ -122,10 +128,12 @@
 					})
 				}
 			},
+			//清空
 			clearValue(){
 				this.contact = '';
 				this.feedbackValue = '';
 			},
+			//拍照
 			takePicture(){
 				var THAT=this;
 				uni.chooseImage({
@@ -188,6 +196,7 @@
 					}
 				});
 			},
+			//初始化七牛
 			initQiniu(){
 				var token;
 				var policy = {};

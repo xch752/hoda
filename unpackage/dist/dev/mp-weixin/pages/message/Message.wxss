@@ -4,9 +4,9 @@
 	background: #6A2BF8;
 }
 .scroll-view.data-v-432f65d2{
-		/* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
-		white-space: nowrap;
-		width: 100%;
+	/* 文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
+	white-space: nowrap;
+	width: 100%;
 }
 .matchUser.data-v-432f65d2{
 	width: 100%;

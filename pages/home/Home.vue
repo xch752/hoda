@@ -1,3 +1,4 @@
+<!-- 主页 -->
 <template>
 	<view class="full">
 		<!-- hoda图标 -->
@@ -8,17 +9,17 @@
 		<view class="button-group" v-if="slideLimit">
 			<button class="margin-top-xl" v-if="isMember==0?false:true"
 			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//withdraw@3x.png) no-repeat;background-size: 100% 100%"
-			@click="withdraw"
+			@click="withdraw()"
 			:disabled="btnDisabled">
 			</button>
 			<button class="margin-top-xl" 
 			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//like@3x.png) no-repeat;background-size: 100% 100%" 
-			@click="animationRight"
+			@click="animationRight()"
 			:disabled="btnDisabled">
 			</button>
 			<button class="margin-top-xl" 
 			style="border-radius: 50%;width: 90upx;height: 90upx; background: url(https://static.mianyangjuan.com//Dislike@3x.png) no-repeat;background-size: 100% 100%"
-			 @click="animationLeft"
+			 @click="animationLeft()"
 			 :disabled="btnDisabled">
 			 </button>
 		</view>
@@ -33,28 +34,26 @@
 			<view class="flex justify-center align-center margin-bottom-xl">
 				<view class="text-white text-df memberTip">您还不是会员,会员无限滑动,<span @click="toMemberCenter()" >立即成为会员</span></view>
 			</view>
-			
 		</view>
 		<!-- 用户 -->
 		<!-- <view class="flex justify-center detailed" > -->
 			<scroll-view class="scroll-detailed bg-white"
 			:scroll-top="scrollTop" 
 			scroll-y="true"  
-			
 			v-for="item in userList" 
 			:key="item.id" 
 			v-if="item.show" 
 			:class="item.animation"
-			>	
+			>
 				<!-- #ifdef H5 -->  
-				<!-- 图片 -->
+				<!-- 头像 -->
 				<view class="scroll-view-item text-white" 
 				style="font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
 				:style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover','height':screenHeight+'px' }">
 				<!-- #endif -->  
 				
 				<!-- #ifdef MP-WEIXIN -->
-				<!-- 图片 -->
+				<!-- 头像 -->
 				<view class="scroll-view-item text-white" v-if="item.icon"
 				style="height:100%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
 				:style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover'}">
@@ -310,10 +309,6 @@
 					scrollTop: 0
 				},
 				userIndex:0,
-				// animation:[
-				// 	'',
-				// 	''
-				// ],
 				btnDisabled:false,
 				userList:[{},{}]
 			};
@@ -322,19 +317,17 @@
 			// #ifdef H5
 			this.screenHeight=window.screen.height*0.88*0.915;
 			// #endif  
-			
-			// this.initNIM();
 			this.getUsers();
 			this.getUserInfo();
 			// this.userIndex = this.userList.length-1;
 			// this.isShow();
 			console.log(this.userIndex)
-			
 		},
 		onShow() {
 			
 		},
 		methods: {
+			//用户卡片显示初始化
 			isShow(){
 				for (let s = 0 ;s<=this.userIndex ; s++) {
 					if(this.userIndex-s<2){
@@ -346,10 +339,12 @@
 				}
 				console.log(this.userList);
 			},
+			//滚动
 			scroll: function(e) {
 				// console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
 			},
+			//左滑，不喜欢
 			animationLeft() {
 				var THAT = this;
 				console.log(this.userIndex)
@@ -421,6 +416,7 @@
 					}, 750)
 				}
 			},
+			//右滑喜欢
 			animationRight() {
 				console.log(this.userIndex)
 				var THAT = this;
@@ -520,7 +516,8 @@
 				}
 				// this.isShow();
 			},
-			withdraw(){//撤回
+			//撤回
+			withdraw(){
 				if(this.userIndex<this.userList.length-1){
 					if(this.userIndex>0){this.userList[this.userIndex-1].show=false;}
 					this.userIndex++
@@ -535,6 +532,7 @@
 				this.btnDisabled=true;
 				// this.isShow();
 			},
+			//跳转会员中心
 			toMemberCenter(){
 				uni.navigateTo({
 					url:'../../pagesB/subPages/memberCenter',
@@ -561,6 +559,7 @@
 					}
 				}
 			},
+			//获取用户信息
 			getUsers(){
 				var THAT = this;
 				const http = new Request();
@@ -572,6 +571,7 @@
 				http.get('/users', params).then(res => {
 					console.log(params);
 					console.log(res);
+					//用户信息处理
 					res.data.result.users.map((cur,index)=>{
 						cur.animation = '';
 						cur.show = '';
@@ -610,6 +610,7 @@
 					console.log(err);
 				})
 			},
+			//日期转年龄函数
 			jsGetAge(strBirthday)
 			{       
 			    var returnAge;
@@ -662,6 +663,7 @@
 			    }
 			    return returnAge;//返回周岁年龄
 			},
+			//获取登陆者用户信息
 			getUserInfo(){
 				var THAT = this;
 				const http = new Request();

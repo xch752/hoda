@@ -1,3 +1,4 @@
+<!-- 性别 -->
 <template>
 	<view class="full">
 		<view class="justify-center radius text-center tip margin-bottom-xl">
@@ -73,6 +74,7 @@
 				this.fontFemale='text-mauve'
 				console.log(this.genderCheck);
 			},
+			//跳转昵称设置
 			toNickName(){
 				if(this.genderCheck==1){
 					uni.navigateTo({

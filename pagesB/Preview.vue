@@ -1,3 +1,4 @@
+<!-- 预览页面 -->
 <template>
 	<view class="full">
 		<view class="flex justify-center detailed" >
@@ -274,13 +275,14 @@
 			this.screenHeight=window.screen.height*0.88*0.915;
 			// #endif  
 			this.initUser();
-			
 		},
 		methods:{
+			//滚动
 			scroll: function(e) {
 				// console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
 			},
+			//用户信息初始化
 			initUser(){
 				var THAT = this;
 				const http = new Request();
@@ -317,6 +319,7 @@
 					console.log(err);
 				})
 			},
+			//日期转换年龄
 			jsGetAge(strBirthday)
 			{       
 			    var returnAge;
