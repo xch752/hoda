@@ -64,7 +64,7 @@
 					</text>
 				</view>
 				<!-- 基本资料 -->
-				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+				<view v-if="userResult.user.userForm!=null?true:false" class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						基本资料
 					</text>
@@ -144,7 +144,7 @@
 				:style="{ 'background-image': 'url(' + item.url + ')','background-repeat':'no-repeat','background-size':'cover'}">
 				</view>
 				<!-- 社交账号 -->
-				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+				<view v-if="userResult.user.phone" class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						社交账号 <text class="text-bold text-red margin-left-lg text-sm">配对成功的会员才能查看</text>
 					</text>
@@ -195,8 +195,72 @@
 						{{userResult.user.userForm.interest}}
 					</view>
 				</view>
-				<!-- Q&A -->
-				<view v-if="userResult.question.makeFriendReason" 
+				<!-- QA -->
+				<view v-if="userResult.isQuestion"
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;padding-bottom: 20upx;border:0;">
+					<text class="text-bold">
+						TA的交友观
+					</text>
+				</view>
+				<view class="flex justify-start" style="flex-flow:row wrap;margin: 0 0 0 30upx;">
+					<view v-if="userResult.question.makeFriendReason"  
+					class="text-white flex align-center qa-item1">
+						<view>
+							<text class="text-sm" style="width: 186upx;">
+								TA的交友目的?
+							</text>
+							<view class="text-bold" style="width: 186upx;">
+								{{userResult.question.makeFriendReason}}
+							</view>
+						</view>
+					</view>
+					<view v-if="userResult.question.moneyRelation" 
+					class="text-white flex align-center qa-item2">
+						<view>
+							<text class="text-sm" style="width: 186upx;">
+								TA的金钱观?
+							</text>
+							<view class="text-bold" style="width: 186upx;">
+								{{userResult.question.moneyRelation}}
+							</view>
+						</view>
+					</view>
+					<view v-if="userResult.question.characters" 
+					class="text-white flex align-center qa-item3">
+						<view>
+							<text class="text-sm" style="width: 186upx;">
+								TA的性格?
+							</text>
+							<view class="text-bold" style="width: 186upx;">
+								{{userResult.question.characters}}
+							</view>
+						</view>
+					</view>
+					<view v-if="userResult.question.meet" 
+					class="text-white flex align-center qa-item4">
+						<view>
+							<text class="text-sm" style="width: 290upx;">
+								TA最快能接受多久见面?
+							</text>
+							<view class="text-bold" style="width: 290upx;">
+								{{userResult.question.meet}}
+							</view>
+						</view>
+					</view>
+					<view v-if="userResult.question.trait" 
+					class="text-white flex align-center qa-item5">
+						<view>
+							<text class="text-sm" style="width: 290upx;">
+								TA最关心的对方的特质?
+							</text>
+							<view class="text-bold" style="width: 290upx;">
+								{{userResult.question.trait}}
+							</view> 
+						</view>
+					</view>
+				</view>
+				<!-- 旧Q&A -->
+				<!-- <view v-if="userResult.question.makeFriendReason" 
 				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						Q:您的交友目的是什么?
@@ -240,7 +304,7 @@
 					<view class="margin-top-sm">
 						A:{{userResult.question.trait}}
 					</view>
-				</view>
+				</view> -->
 				<!-- 当前位置 -->
 				<view v-if="userResult.user.address" 
 				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
@@ -309,11 +373,14 @@
 					THAT.userResult.user.relation = THAT.userResult.user.relation=='0'?'恋爱关系':THAT.userResult.user.relation=='1'?'私密关系':THAT.userResult.user.relation=='2'?'还没想好':THAT.userResult.user.relation=='3'?'婚姻':'';
 					//question
 					if(THAT.userResult.question){
+						THAT.userResult.isQuestion = true;
 						THAT.userResult.question.makeFriendReason = THAT.userResult.question.makeFriendReason=='0'?'新朋友':THAT.userResult.question.makeFriendReason=='1'?'短期交往':THAT.userResult.question.makeFriendReason=='2'?'长期恋爱':THAT.userResult.question.makeFriendReason=='3'?'灵魂伴侣':THAT.userResult.question.makeFriendReason=='4'?'暂不确定':'';
 						THAT.userResult.question.moneyRelation = THAT.userResult.question.moneyRelation=='0'?'非常重要':THAT.userResult.question.moneyRelation=='1'?'一般重要':THAT.userResult.question.moneyRelation=='2'?'并不重要':'';
 						THAT.userResult.question.characters = THAT.userResult.question.characters=='0'?'相当保守':THAT.userResult.question.characters=='1'?'慢热腼腆':THAT.userResult.question.characters=='2'?'外冷内热':THAT.userResult.question.characters=='3'?'开朗活泼':THAT.userResult.question.characters=='4'?'热情奔放':THAT.userResult.question.characters=='5'?'毫无底线':'';
 						THAT.userResult.question.meet = THAT.userResult.question.meet=='0'?'当天奔现':THAT.userResult.question.meet=='1'?'一周内搞定':THAT.userResult.question.meet=='2'?'一个月内':THAT.userResult.question.meet=='3'?'不着急,慢慢来':'';
 						THAT.userResult.question.trait = THAT.userResult.question.trait=='0'?'颜值':THAT.userResult.question.trait=='1'?'身材':THAT.userResult.question.trait=='2'?'性格':THAT.userResult.question.trait=='3'?'经济条件':THAT.userResult.question.trait=='4'?'工作学历':THAT.userResult.question.trait=='5'?'家庭背景':'';
+					}else{
+						THAT.userResult.isQuestion = false;
 					}
 				}).catch(err => {
 					console.log(err);
@@ -484,5 +551,45 @@
 	}
 	.memberTip span{
 		text-decoration:underline;
+	}
+	.qa-item1{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#6A2BF8,#E1A9F8);
+		width: 186upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item2{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#F8D92B,#DAA030);
+		width: 186upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item3{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#FDBF5F,#FAB691);
+		width: 186upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item4{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#6CACFD,#91FAE0);
+		width: 290upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item5{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#FF5D58,#FA91DB);
+		width: 290upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
 	}
 </style>

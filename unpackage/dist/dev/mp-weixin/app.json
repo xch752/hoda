@@ -214,5 +214,10 @@
       ]
     }
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "为了给您推荐附件的用户,hoda想要获取您的位置信息"
+    }
+  },
   "usingComponents": {}
 }

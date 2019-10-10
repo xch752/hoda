@@ -56,8 +56,10 @@
 					<view class="scroll-view-item matchUserItem flex align-center justify-start" style="margin-right: 0;"
 					v-for="(item,index) of matchUserList" :key="index" @click="toChatRoom(item.userName,item.likeUid,item.icon,item.second)">
 						<view class="matchUserItemContent flex align-center justify-center">
-							<view style="width: 94%;height: 94%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+							<image :src="item.icon" mode="aspectFill" style="width: 94%;height: 94%; border-radius: 50%;"></image>
+							<!-- <view style="width: 94%;height: 94%; border-radius: 50%;" :style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover' }"></view> -->
 						</view>
+						
 					</view>
 				</scroll-view>
 			</view>
@@ -145,7 +147,10 @@
 				<scroll-view scroll-y="true" class="scrollView">
 					<view v-for="(likeItem,index) of likeUserList" :key="index" >
 						<view class="flex justify-start">
-							<view class="margin-sm"><text class="text-bold text-lg">{{likeItem[0].createTime[2]}}</text><text class="text-gray">/ {{likeItem[0].createTime[1]}}月</text></view>
+							<!-- 时间 未处理 -->
+							<view class="margin-sm"><text class="text-bold text-lg">{{likeItem[0].createTime}}</text></view>
+							<!-- 时间 已处理-->
+							<!-- <view class="margin-sm"><text class="text-bold text-lg">{{likeItem[0].createTime[2]}}</text><text class="text-gray">/ {{likeItem[0].createTime[1]}}月</text></view> -->
 						</view>
 						<scroll-view scroll-x="true" class="likeUser flex scroll-view" style="width: 100%;overflow: hidden;">
 							<view v-if="isMember==0?true:false" class="likeUserItemPar" v-for="Item of likeItem" :key="Item.likeUid">
@@ -483,11 +488,12 @@
 					Object.keys(nameContainer).map(key=>{
 					  arrWrap.push(nameContainer[key])
 					})
-					arrWrap.map((cur,index)=>{
-						cur.map((item,ind)=>{
-							item.createTime = item.createTime.split('/');
-						})
-					})
+					//时间数组处理
+					// arrWrap.map((cur,index)=>{
+					// 	cur.map((item,ind)=>{
+					// 		item.createTime = item.createTime.split('/');
+					// 	})
+					// })
 					console.log(arrWrap);
 					THAT.likeUserList = arrWrap;
 				}).catch(err => {

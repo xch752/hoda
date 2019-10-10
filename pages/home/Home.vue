@@ -29,14 +29,32 @@
 				<image src="https://static.mianyangjuan.com//time@3x.png" mode="" style="width: 100upx;height: 100upx;"></image>
 			</view>
 			<view class="flex justify-center align-center margin-bottom-xl margin-top-xl">
-				<view class="text-white text-xl">休息8小时</view>
+				<view class="text-white text-xl">休息一下</view>
 			</view>
 			<view class="flex justify-center align-center margin-bottom-xl">
 				<view class="text-white text-df memberTip">下载APP,体验无限滑动 <span @click="toDownloadApp()" >点此立即下载</span></view>
 			</view>
-			<view v-if="slideNumber==0?false:true"  
+			<view v-if="slideNumber==1?false:true"  
 			class="flex justify-center align-center margin-bottom-xl">
 				<button type="primary" class="expand" @click="getUsers()">继续</button>
+			</view>
+		</view>
+		<!-- 滑卡数据为0 -->
+		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;" v-if="isNull">
+			<view class="flex justify-center align-center margin-bottom-lg">
+				<image src="https://static.mianyangjuan.com//usercome.png" mode="" style="width: 190upx;height: 165upx;"></image>
+			</view>
+			<view class="flex justify-center align-center margin-bottom-xl margin-top-lg">
+				<view class="text-white text-df memberTip">大批用户正在来的路上...</view>
+			</view>
+		</view>
+		<!-- 无网络 -->
+		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;" v-if="!isNetwork">
+			<view class="flex justify-center align-center margin-bottom-lg">
+				<image src="https://static.mianyangjuan.com//noNet.png" mode="" style="width: 178upx;height: 146upx;"></image>
+			</view>
+			<view class="flex justify-center align-center margin-bottom-xl margin-top-lg">
+				<view class="text-white text-df memberTip">网络跑到外太空去了</view>
 			</view>
 		</view>
 		<!-- 用户 -->
@@ -104,7 +122,7 @@
 					</text>
 				</view>
 				<!-- 基本资料 -->
-				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+				<view v-if="item.userForm!=null?true:false" class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						基本资料
 					</text>
@@ -190,7 +208,7 @@
 				:style="{ 'background-image': 'url(' + photoItem.url + ')','background-repeat':'no-repeat','background-size':'cover'}">
 				</image> -->
 				<!-- 社交账号 -->
-				<view class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
+				<view v-if="item.phone" class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						社交账号 <text class="text-bold text-red margin-left-lg text-sm">配对成功的会员才能查看</text>
 					</text>
@@ -242,7 +260,72 @@
 					</view>
 				</view>
 				<!-- Q&A -->
-				<view v-if="item.question.makeFriendReason" 
+				<view v-if="item.isQuestion" 
+				class="bg-white text-black text-df padding-xl" style="padding-top: 0;padding-bottom: 20upx;border:0;">
+					<text class="text-bold">
+						TA的交友观
+					</text>
+				</view>
+				<view class="flex justify-start" style="flex-flow:row wrap;margin: 0 0 0 30upx;">
+					<view v-if="item.question.makeFriendReason"  
+					class="text-white flex align-center qa-item1">
+						<view>
+							<text class="text-sm" style="width: 186upx;">
+								TA的交友目的?
+							</text>
+							<view class="text-bold" style="width: 186upx;">
+								{{item.question.makeFriendReason}}
+							</view>
+						</view>
+					</view>
+					<view v-if="item.question.moneyRelation" 
+					class="text-white flex align-center qa-item2">
+						<view>
+							<text class="text-sm" style="width: 186upx;">
+								TA的金钱观?
+							</text>
+							<view class="text-bold" style="width: 186upx;">
+								{{item.question.moneyRelation}}
+							</view>
+						</view>
+					</view>
+					<view v-if="item.question.characters" 
+					class="text-white flex align-center qa-item3">
+						<view>
+							<text class="text-sm" style="width: 186upx;">
+								TA的性格?
+							</text>
+							<view class="text-bold" style="width: 186upx;">
+								{{item.question.characters}}
+							</view>
+						</view>
+					</view>
+					<view v-if="item.question.meet" 
+					class="text-white flex align-center qa-item4">
+						<view>
+							<text class="text-sm" style="width: 290upx;">
+								TA最快能接受多久见面?
+							</text>
+							<view class="text-bold" style="width: 290upx;">
+								{{item.question.meet}}
+							</view>
+						</view>
+					</view>
+					<view v-if="item.question.trait" 
+					class="text-white flex align-center qa-item5">
+						<view>
+							<text class="text-sm" style="width: 290upx;">
+								TA最关心的对方的特质?
+							</text>
+							<view class="text-bold" style="width: 290upx;">
+								{{item.question.trait}}
+							</view> 
+						</view>
+					</view>
+				</view>
+				
+				<!-- 旧question -->
+				<!-- <view v-if="item.question.makeFriendReason" 
 				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
 					<text class="text-bold">
 						Q:您的交友目的是什么?
@@ -286,7 +369,8 @@
 					<view class="margin-top-sm">
 						A:{{item.question.trait}}
 					</view>
-				</view>
+				</view> -->
+				
 				<!-- 当前位置 -->
 				<view v-if="item.address" 
 				class="bg-white text-black text-df padding-xl" style="padding-top: 0;border:0;">
@@ -309,6 +393,7 @@
 	export default {
 		data() {
 			return {
+				nowDayNum:'',
 				slideNumber:4,
 				isMember:'',
 				chatList:[{}],
@@ -320,18 +405,81 @@
 				},
 				userIndex:0,
 				btnDisabled:false,
-				userList:[{},{}]
+				userList:[{},{}],
+				isNull:false,
+				isNetwork:true
 			};
 		},
 		onLoad() {
+			var THAT = this;
+			var day = new Date().getDate().toString();
 			// #ifdef H5
 			this.screenHeight=window.screen.height*0.88*0.915;
-			// #endif  
+			// #endif
+			/**********************************************/
+			//同步获取日期
+			try {
+			    THAT.nowDayNum = uni.getStorageSync('Today');
+			    if (THAT.nowDayNum) {
+			        console.log('THAT.nowDayNum',THAT.nowDayNum);
+			    }else{
+					THAT.nowDayNum = day;
+					console.log('THAT.nowDayNum',THAT.nowDayNum);
+				}
+			} catch (e) {
+			    // error
+				console.log(e);
+			}
+			//同步获取限制次数
+			try {
+			    THAT.slideNumber = uni.getStorageSync('slideNumber');
+				if (THAT.slideNumber){
+					console.log('THAT.slideNumber',THAT.slideNumber)
+				}else{
+					THAT.slideNumber =4;
+					console.log('THAT.slideNumber',THAT.slideNumber)
+				}
+			} catch (e) {
+			    // error
+				console.log(e);
+			}
+			console.log('THAT.nowDayNum',THAT.nowDayNum,'day',day)
+			if(THAT.nowDayNum == day){
+				//同一天
+				console.log('同一天');
+				try {
+				    uni.setStorageSync('THAT.nowDayNum',day);
+				} catch (e) {
+				    // error
+					console.log(e);
+				}
+			}else{
+				//新的一天
+				console.log('新一天');
+				//同步存储日期
+				try {
+				    uni.setStorageSync('THAT.nowDayNum',day);
+				} catch (e) {
+				    // error
+					console.log(e);
+				}
+				//同步限制次数
+				try {
+				    uni.setStorageSync('THAT.slideNumber',4);
+				} catch (e) {
+				    // error
+					console.log(e);
+				}
+			}
+			console.log('THAT.nowDayNum',THAT.nowDayNum,'day',day);
+			/**********************************************/
+			this.onNetwork();//监听网络状况
+			this.getAddress();
 			this.getUsers();
 			this.getUserInfo();
 			// this.userIndex = this.userList.length-1;
 			// this.isShow();
-			console.log(this.userIndex)
+			// console.log(this.userIndex)
 		},
 		onShow() {
 			
@@ -347,7 +495,10 @@
 						this.userList[s].show=false;
 					}
 				}
-				console.log(this.userList);
+				console.log('滑卡数据',this.userList);
+				if(this.userList.length==0){
+					this.isNull = true;
+				}
 			},
 			//滚动
 			scroll: function(e) {
@@ -572,55 +723,85 @@
 			//获取用户信息
 			getUsers(){
 				var THAT = this;
-				THAT.slideNumber --;
-				THAT.slideLimit = true;
-				const http = new Request();
-				let params={
-					params:{
-						id:common.userId
+				/**********************************************/
+				//同步获取限制次数
+				try {
+				    THAT.slideNumber = uni.getStorageSync('slideNumber');
+				    if (THAT.slideNumber) {
+				        console.log('THAT.slideNumber',THAT.slideNumber);
+				    }
+					else{
+						THAT.slideNumber = 4;
+						console.log('THAT.slideNumber',THAT.slideNumber);
 					}
+				} catch (e) {
+				    // error
+					console.log(e);
 				}
-				http.get('/users', params).then(res => {
-					console.log(params);
-					console.log(res);
-					//用户信息处理
-					res.data.result.users.map((cur,index)=>{
-						cur.animation = '';
-						cur.show = '';
-						cur.age = THAT.jsGetAge(cur.age);
-						cur.userForm.figure = cur.userForm.figure=='0'?'苗条':cur.userForm.figure=='1'?'健美':cur.userForm.figure=='2'?'匀称':cur.userForm.figure=='3'?'微胖':cur.userForm.figure=='4'?'丰满':'';
-						cur.userForm.income = cur.userForm.income=='0'?'10万以内':cur.userForm.income=='1'?'11-20万':cur.userForm.income=='2'?'21-50万':cur.userForm.income=='3'?'51-100万':cur.userForm.income=='4'?'100万以上':'';
-						cur.userForm.feeling = cur.userForm.feeling=='0'?'单身':cur.userForm.feeling=='1'?'在一段恋情中':cur.userForm.feeling=='2'?'已婚':cur.userForm.feeling=='3'?'离婚':'';
-						cur.userForm.smoke = cur.userForm.smoke=='0'?'从不抽烟':cur.userForm.smoke=='1'?'偶尔抽烟':cur.userForm.smoke=='2'?'经常抽烟':cur.userForm.smoke=='3'?'保密':'';
-						cur.userForm.drink = cur.userForm.drink=='0'?'从不喝酒':cur.userForm.drink=='1'?'偶尔喝酒':cur.userForm.drink=='2'?'经常喝酒':cur.userForm.drink=='3'?'保密':'';
-						cur.userForm.child = cur.userForm.child=='0'?'没有':cur.userForm.child=='1'?'1个':cur.userForm.child=='2'?'2个':cur.userForm.child=='3'?'3个以上':'';
-						cur.relation = cur.relation=='0'?'恋爱关系':cur.relation=='1'?'私密关系':cur.relation=='2'?'还没想好':cur.relation=='3'?'婚姻':'';
-						//question
-						if(cur.question){
-							if(cur.question.makeFriendReason){
-								cur.question.makeFriendReason = cur.question.makeFriendReason=='0'?'新朋友':cur.question.makeFriendReason=='1'?'短期交往':cur.question.makeFriendReason=='2'?'长期恋爱':cur.question.makeFriendReason=='3'?'灵魂伴侣':cur.question.makeFriendReason=='4'?'暂不确定':'';	
-							}
-							if(cur.question.moneyRelation){
-								cur.question.moneyRelation = cur.question.moneyRelation=='0'?'非常重要':cur.question.moneyRelation=='1'?'一般重要':cur.question.moneyRelation=='2'?'并不重要':'';
-							}
-							if(cur.question.characters){
-								cur.question.characters = cur.question.characters=='0'?'相当保守':cur.question.characters=='1'?'慢热腼腆':cur.question.characters=='2'?'外冷内热':cur.question.characters=='3'?'开朗活泼':cur.question.characters=='4'?'热情奔放':cur.question.characters=='5'?'毫无底线':'';
-							}
-							if(cur.question.meet){
-								cur.question.meet = cur.question.meet=='0'?'当天奔现':cur.question.meet=='1'?'一周内搞定':cur.question.meet=='2'?'一个月内':cur.question.meet=='3'?'不着急,慢慢来':'';
-							}
-							if(cur.question.trait){
-								cur.question.trait = cur.question.trait=='0'?'颜值':cur.question.trait=='1'?'身材':cur.question.trait=='2'?'性格':cur.question.trait=='3'?'经济条件':cur.question.trait=='4'?'工作学历':cur.question.trait=='5'?'家庭背景':'';
-							}
+				//限制次数-1
+				if(THAT.slideNumber>1){
+					THAT.slideNumber--;
+					//同步写入限制次数
+					try {
+						uni.setStorageSync('slideNumber',THAT.slideNumber);
+						console.log('THAT.slideNumber',THAT.slideNumber)
+					} catch (e) {
+						// error
+						console.log(e);
+					}
+					THAT.slideLimit = true;
+					const http = new Request();
+					let params={
+						params:{
+							id:common.userId
 						}
-						
+					}
+					http.get('/users', params).then(res => {
+						//用户信息处理
+						res.data.result.users.map((cur,index)=>{
+							cur.animation = '';
+							cur.show = '';
+							cur.age = THAT.jsGetAge(cur.age);
+							cur.userForm.figure = cur.userForm.figure=='0'?'苗条':cur.userForm.figure=='1'?'健美':cur.userForm.figure=='2'?'匀称':cur.userForm.figure=='3'?'微胖':cur.userForm.figure=='4'?'丰满':'';
+							cur.userForm.income = cur.userForm.income=='0'?'10万以内':cur.userForm.income=='1'?'11-20万':cur.userForm.income=='2'?'21-50万':cur.userForm.income=='3'?'51-100万':cur.userForm.income=='4'?'100万以上':'';
+							cur.userForm.feeling = cur.userForm.feeling=='0'?'单身':cur.userForm.feeling=='1'?'在一段恋情中':cur.userForm.feeling=='2'?'已婚':cur.userForm.feeling=='3'?'离婚':'';
+							cur.userForm.smoke = cur.userForm.smoke=='0'?'从不抽烟':cur.userForm.smoke=='1'?'偶尔抽烟':cur.userForm.smoke=='2'?'经常抽烟':cur.userForm.smoke=='3'?'保密':'';
+							cur.userForm.drink = cur.userForm.drink=='0'?'从不喝酒':cur.userForm.drink=='1'?'偶尔喝酒':cur.userForm.drink=='2'?'经常喝酒':cur.userForm.drink=='3'?'保密':'';
+							cur.userForm.child = cur.userForm.child=='0'?'没有':cur.userForm.child=='1'?'1个':cur.userForm.child=='2'?'2个':cur.userForm.child=='3'?'3个以上':'';
+							cur.relation = cur.relation=='0'?'恋爱关系':cur.relation=='1'?'私密关系':cur.relation=='2'?'还没想好':cur.relation=='3'?'婚姻':'';
+							//question
+							if(cur.question){
+								cur.isQuestion = true;
+								if(cur.question.makeFriendReason){
+									cur.question.makeFriendReason = cur.question.makeFriendReason=='0'?'新朋友':cur.question.makeFriendReason=='1'?'短期交往':cur.question.makeFriendReason=='2'?'长期恋爱':cur.question.makeFriendReason=='3'?'灵魂伴侣':cur.question.makeFriendReason=='4'?'暂不确定':'';	
+								}
+								if(cur.question.moneyRelation){
+									cur.question.moneyRelation = cur.question.moneyRelation=='0'?'非常重要':cur.question.moneyRelation=='1'?'一般重要':cur.question.moneyRelation=='2'?'并不重要':'';
+								}
+								if(cur.question.characters){
+									cur.question.characters = cur.question.characters=='0'?'相当保守':cur.question.characters=='1'?'慢热腼腆':cur.question.characters=='2'?'外冷内热':cur.question.characters=='3'?'开朗活泼':cur.question.characters=='4'?'热情奔放':cur.question.characters=='5'?'毫无底线':'';
+								}
+								if(cur.question.meet){
+									cur.question.meet = cur.question.meet=='0'?'当天奔现':cur.question.meet=='1'?'一周内搞定':cur.question.meet=='2'?'一个月内':cur.question.meet=='3'?'不着急,慢慢来':'';
+								}
+								if(cur.question.trait){
+									cur.question.trait = cur.question.trait=='0'?'颜值':cur.question.trait=='1'?'身材':cur.question.trait=='2'?'性格':cur.question.trait=='3'?'经济条件':cur.question.trait=='4'?'工作学历':cur.question.trait=='5'?'家庭背景':'';
+								}
+							}else{
+								cur.isQuestion = false;
+							}
+						})
+						THAT.userList = res.data.result.users.reverse();
+						THAT.userIndex = THAT.userList.length-1;
+						THAT.isShow();
+					}).catch(err => {
+						console.log(err);
 					})
-					THAT.userList = res.data.result.users.reverse();
-					THAT.userIndex = THAT.userList.length-1;
-					THAT.isShow();
-				}).catch(err => {
-					console.log(err);
-				})
+				}else{
+					THAT.slideLimit=false;
+				}
+				/**********************************************/
+				
 			},
 			//日期转年龄函数
 			jsGetAge(strBirthday)
@@ -691,7 +872,29 @@
 				}).catch(err=>{
 					console.log(err);
 				})
-			}
+			},
+			//获取用户地理位置
+			getAddress(){
+				uni.getLocation({
+					type: 'wgs84',
+					success: function (res) {
+						console.log('地理位置',res);
+					}
+				})
+			},
+			//监听网络状况
+			onNetwork(){
+				var THAT = this;
+				uni.onNetworkStatusChange((res)=>{
+					if(isConnected==true){
+						THAT.slideLimit = true;
+						THAT.isNetwork = true;
+					}else{
+						THAT.slideLimit = false;
+						THAT.isNetwork = false;
+					}
+				});
+			} 
 			// showTrue(){
 			// 	console.log("showtrue")
 			// 	for(var item of this.userList){
@@ -741,12 +944,13 @@
 		height: 80upx;
 		border-radius:999upx;
 		background-color: #FFFFFF;
-		color: #000000;
+		color: #6A2BF8;
 		justify-content: center;
 		align-items: center;
 		text-align: center;	
 		font-size: 31upx;
 		line-height: 80upx;
+		font-weight: bold;
 	}
 	
 	/* #ifdef MP-WEIXIN*/ /* 条件编译到微信小程序 */
@@ -829,6 +1033,46 @@
 	}
 	.memberTip span{
 		text-decoration:underline;
+	}
+	.qa-item1{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#6A2BF8,#E1A9F8);
+		width: 186upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item2{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#F8D92B,#DAA030);
+		width: 186upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item3{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#FDBF5F,#FAB691);
+		width: 186upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item4{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#6CACFD,#91FAE0);
+		width: 290upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
+	}
+	.qa-item5{
+		margin: 0 0 20upx 20upx;
+		background: linear-gradient(#FF5D58,#FA91DB);
+		width: 290upx;
+		height: 85upx;
+		border-radius: 10upx;
+		text-align: center;
 	}
 	/* 动画 */
 	[class*=animation-] {

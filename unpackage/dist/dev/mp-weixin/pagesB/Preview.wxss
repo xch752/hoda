@@ -92,4 +92,54 @@
 .memberTip ._span.data-v-9ffadbb8{
 	text-decoration:underline;
 }
+.qa-item1.data-v-9ffadbb8{
+	margin: 0 0 20rpx 20rpx;
+	background: -webkit-gradient(linear,left top, left bottom,from(#6A2BF8),to(#E1A9F8));
+	background: -o-linear-gradient(#6A2BF8,#E1A9F8);
+	background: linear-gradient(#6A2BF8,#E1A9F8);
+	width: 186rpx;
+	height: 85rpx;
+	border-radius: 10rpx;
+	text-align: center;
+}
+.qa-item2.data-v-9ffadbb8{
+	margin: 0 0 20rpx 20rpx;
+	background: -webkit-gradient(linear,left top, left bottom,from(#F8D92B),to(#DAA030));
+	background: -o-linear-gradient(#F8D92B,#DAA030);
+	background: linear-gradient(#F8D92B,#DAA030);
+	width: 186rpx;
+	height: 85rpx;
+	border-radius: 10rpx;
+	text-align: center;
+}
+.qa-item3.data-v-9ffadbb8{
+	margin: 0 0 20rpx 20rpx;
+	background: -webkit-gradient(linear,left top, left bottom,from(#FDBF5F),to(#FAB691));
+	background: -o-linear-gradient(#FDBF5F,#FAB691);
+	background: linear-gradient(#FDBF5F,#FAB691);
+	width: 186rpx;
+	height: 85rpx;
+	border-radius: 10rpx;
+	text-align: center;
+}
+.qa-item4.data-v-9ffadbb8{
+	margin: 0 0 20rpx 20rpx;
+	background: -webkit-gradient(linear,left top, left bottom,from(#6CACFD),to(#91FAE0));
+	background: -o-linear-gradient(#6CACFD,#91FAE0);
+	background: linear-gradient(#6CACFD,#91FAE0);
+	width: 290rpx;
+	height: 85rpx;
+	border-radius: 10rpx;
+	text-align: center;
+}
+.qa-item5.data-v-9ffadbb8{
+	margin: 0 0 20rpx 20rpx;
+	background: -webkit-gradient(linear,left top, left bottom,from(#FF5D58),to(#FA91DB));
+	background: -o-linear-gradient(#FF5D58,#FA91DB);
+	background: linear-gradient(#FF5D58,#FA91DB);
+	width: 290rpx;
+	height: 85rpx;
+	border-radius: 10rpx;
+	text-align: center;
+}
 

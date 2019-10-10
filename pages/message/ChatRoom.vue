@@ -8,7 +8,8 @@
 			</view>
 			<view class="avatar">
 				<view class="avatarContent flex justify-center align-center">
-					<view style="width: 96%;height: 96%; border-radius: 50%;" :style="{ 'background-image': 'url(' + avatar + ')','background-repeat':'no-repeat','background-size':'cover' }"></view>
+					<image :src="avatar" mode="aspectFill" style="width: 94%;height: 94%; border-radius: 50%;"></image>
+					<!-- <view style="width: 96%;height: 96%; border-radius: 50%;" :style="{ 'background-image': 'url(' + avatar + ')','background-repeat':'no-repeat','background-size':'cover' }"></view> -->
 				</view>
 			</view>
 			<view class="tipsone">

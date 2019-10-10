@@ -6,8 +6,10 @@
 		<view v-if="sex==2?true:false">
 			<view class="congratulations"></view>
 			<view>
-				<view class="avatar_female" :style="{'background-image': 'url(' + myAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}" ></view>
-				<view class="avatar_male" :style="{'background-image': 'url(' + pairAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}"></view>
+				<image class="avatar_female" :src="myAvatar" mode="aspectFill"></image>
+				<image class="avatar_male" :src="pairAvatar" mode="aspectFill"></image>
+				<!-- <view class="avatar_female" :style="{'background-image': 'url(' + myAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}" ></view> -->
+				<!-- <view class="avatar_male" :style="{'background-image': 'url(' + pairAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}"></view> -->
 			</view>
 			<view class="text-white tips">
 				新配对! {{pairNickname}}需要在24小时内发消息给您。
@@ -19,8 +21,10 @@
 		<view v-if="sex==1?true:false">
 			<view class="congratulations"></view>
 			<view>
-				<view class="avatar_female" :style="{'background-image': 'url(' + pairAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}"></view>
-				<view class="avatar_male" :style="{'background-image': 'url(' + myAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}"></view>
+				<image class="avatar_female" :src="pairAvatar" mode="aspectFill"></image>
+				<image class="avatar_male" :src="myAvatar" mode="aspectFill"></image>
+				<!-- <view class="avatar_female" :style="{'background-image': 'url(' + pairAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}"></view> -->
+				<!-- <view class="avatar_male" :style="{'background-image': 'url(' + myAvatar + ')','background-repeat':'no-repeat','background-size':'cover'}"></view> -->
 			</view>
 			<view class="text-white tips">
 				新配对! 您需要在24小时内发消息给他。
