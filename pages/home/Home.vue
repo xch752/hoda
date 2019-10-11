@@ -24,7 +24,7 @@
 			 </button>
 		</view>
 		<!-- 无法无限滑动 -->
-		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;" v-if="!slideLimit">
+		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;z-index: 99999;" v-if="!slideLimit">
 			<view class="flex justify-center align-center margin-bottom-xl">
 				<image src="https://static.mianyangjuan.com//time@3x.png" mode="" style="width: 100upx;height: 100upx;"></image>
 			</view>
@@ -40,7 +40,7 @@
 			</view>
 		</view>
 		<!-- 滑卡数据为0 -->
-		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;" v-if="isNull">
+		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;" v-if="(userList.length==0&&isNull==false)?true:false">
 			<view class="flex justify-center align-center margin-bottom-lg">
 				<image src="https://static.mianyangjuan.com//usercome.png" mode="" style="width: 190upx;height: 165upx;"></image>
 			</view>
@@ -55,6 +55,15 @@
 			</view>
 			<view class="flex justify-center align-center margin-bottom-xl margin-top-lg">
 				<view class="text-white text-df memberTip">网络跑到外太空去了</view>
+			</view>
+		</view>
+		<!-- 无内容 -->
+		<view class="flex justify-center align-center detailed" style="background-color: #6A2BF8;" v-if="isNull">
+			<view class="flex justify-center align-center margin-bottom-lg">
+				<image src="https://static.mianyangjuan.com//nocontent.png" mode="" style="width: 178upx;height: 146upx;"></image>
+			</view>
+			<view class="flex justify-center align-center margin-bottom-xl margin-top-lg">
+				<view class="text-white text-df memberTip">暂无内容</view>
 			</view>
 		</view>
 		<!-- 用户 -->
@@ -78,7 +87,7 @@
 				<!-- 头像 -->
 				<view class="scroll-view-item text-white" v-if="item.icon"
 				style="height:100%;font-size: 50upx;justify-content: center;background-color: #FFFFFF;"
-				:style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover'}">
+				:style="{ 'background-image': 'url(' + item.icon + ')','background-repeat':'no-repeat','background-size':'cover','background-position':'center top'}">
 				<!-- #endif --> 
 					<!-- 姓名，年龄，vip状态 -->
 					<view class="name" 
@@ -393,7 +402,6 @@
 	export default {
 		data() {
 			return {
-				nowDayNum:'',
 				slideNumber:4,
 				isMember:'',
 				chatList:[{}],
@@ -405,7 +413,8 @@
 				},
 				userIndex:0,
 				btnDisabled:false,
-				userList:[{},{}],
+				// userList:[{},{}],
+				userList:[],
 				isNull:false,
 				isNetwork:true
 			};
@@ -418,60 +427,26 @@
 			// #endif
 			/**********************************************/
 			//同步获取日期
-			try {
-			    THAT.nowDayNum = uni.getStorageSync('Today');
-			    if (THAT.nowDayNum) {
-			        console.log('THAT.nowDayNum',THAT.nowDayNum);
-			    }else{
-					THAT.nowDayNum = day;
-					console.log('THAT.nowDayNum',THAT.nowDayNum);
-				}
-			} catch (e) {
-			    // error
-				console.log(e);
-			}
-			//同步获取限制次数
-			try {
-			    THAT.slideNumber = uni.getStorageSync('slideNumber');
-				if (THAT.slideNumber){
-					console.log('THAT.slideNumber',THAT.slideNumber)
-				}else{
-					THAT.slideNumber =4;
-					console.log('THAT.slideNumber',THAT.slideNumber)
-				}
-			} catch (e) {
-			    // error
-				console.log(e);
-			}
-			console.log('THAT.nowDayNum',THAT.nowDayNum,'day',day)
-			if(THAT.nowDayNum == day){
-				//同一天
-				console.log('同一天');
-				try {
-				    uni.setStorageSync('THAT.nowDayNum',day);
-				} catch (e) {
-				    // error
-					console.log(e);
-				}
-			}else{
-				//新的一天
+			console.log('getStoreToday',uni.getStorageSync('Today'),'day',day);
+			if (uni.getStorageSync('Today') != day ) {
 				console.log('新一天');
-				//同步存储日期
-				try {
-				    uni.setStorageSync('THAT.nowDayNum',day);
-				} catch (e) {
-				    // error
-					console.log(e);
-				}
-				//同步限制次数
-				try {
-				    uni.setStorageSync('THAT.slideNumber',4);
-				} catch (e) {
-				    // error
-					console.log(e);
-				}
+				//同步设置日期
+				uni.setStorageSync('Today',day);
+				//同步设置限制次数
+				uni.setStorageSync('slideNumber',5);
+			}else{
+				console.log('同一天');
 			}
-			console.log('THAT.nowDayNum',THAT.nowDayNum,'day',day);
+			console.log('getStoreToday',uni.getStorageSync('Today'),'day',day);
+			//同步获取限制次数
+			THAT.slideNumber = uni.getStorageSync('slideNumber');
+			if (uni.getStorageSync('slideNumber')){
+				console.log('THAT.slideNumber',THAT.slideNumber);
+			}else{
+				uni.setStorageSync('slideNumber',5);
+				THAT.slideNumber = 5;
+				console.log('THAT.slideNumber=4',THAT.slideNumber);
+			}
 			/**********************************************/
 			this.onNetwork();//监听网络状况
 			this.getAddress();
@@ -723,6 +698,7 @@
 			//获取用户信息
 			getUsers(){
 				var THAT = this;
+				THAT.userList=[];
 				/**********************************************/
 				//同步获取限制次数
 				try {
@@ -731,7 +707,8 @@
 				        console.log('THAT.slideNumber',THAT.slideNumber);
 				    }
 					else{
-						THAT.slideNumber = 4;
+						THAT.slideNumber = 5;
+						uni.setStorageSync('slideNumber',5);
 						console.log('THAT.slideNumber',THAT.slideNumber);
 					}
 				} catch (e) {

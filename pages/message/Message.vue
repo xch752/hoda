@@ -156,7 +156,7 @@
 							<view v-if="isMember==0?true:false" class="likeUserItemPar" v-for="Item of likeItem" :key="Item.likeUid">
 								<image class="likeUserItem scroll-view-item filter" 
 								:src="Item.icon" mode="aspectFill" 
-								@tap="toMemberCenter()"
+								@tap="toDownloadAPP()"
 								></image>
 							</view>
 							<view v-if="isMember==1?true:false" class="likeUserItemPar" v-for="Item of likeItem" :key="Item.likeUid">
@@ -500,15 +500,15 @@
 					console.log(err);
 				})
 			},
-			//跳转会员中心
-			toMemberCenter(){
+			//跳转下载中心
+			toDownloadAPP(){
 				uni.navigateTo({
-					url:'../../pagesB/subPages/memberCenter',
+					url:'../../pagesB/DownloadApp',
 					success: (res) => {
-						console.log('success to memberCenter',res);
+						console.log('success to DownloadApp',res);
 					},
 					fail: (err) => {
-						console.log('fail to memberCenter',err);
+						console.log('fail to DownloadApp',err);
 					}
 				})
 			}

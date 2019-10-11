@@ -12,6 +12,15 @@
 				</view>
 			</view>
 		</scroll-view>
+		<!-- 无内容 -->
+		<view class="flex justify-center align-center detailed" v-if="allMatchUserList.length==0?true:false">
+			<view class="flex justify-center align-center margin-bottom-lg">
+				<image src="https://static.mianyangjuan.com//nocontent.png" mode="" style="width: 178upx;height: 146upx;"></image>
+			</view>
+			<view class="flex justify-center align-center margin-bottom-xl margin-top-lg">
+				<view class="text-df memberTip">暂无有效配对</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -143,5 +152,20 @@
 	}
 	.chatListItemDetail .chat-content{
 		margin-left: 30upx;
+	}
+	.detailed{
+		top:0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.memberTip{
+		letter-spacing: 5upx;
+		color: #6A2BF8;
 	}
 </style>

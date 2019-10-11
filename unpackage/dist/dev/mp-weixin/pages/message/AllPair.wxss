@@ -60,4 +60,26 @@
 .chatListItemDetail .chat-content.data-v-542abb2b{
 	margin-left: 30rpx;
 }
+.detailed.data-v-542abb2b{
+	top:0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.memberTip.data-v-542abb2b{
+	letter-spacing: 5rpx;
+	color: #6A2BF8;
+}
 
